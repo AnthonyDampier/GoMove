@@ -20,6 +20,9 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
+// create program
+import CreateProgram from '../CreateProgram/CreateProgram';
+
 import './App.css';
 
 function App() {
@@ -38,6 +41,13 @@ function App() {
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
+          {/* Visiting localhost:3000/about will show the about page. */}
+          <Route
+            // shows AboutPage at all times (logged in or not)
+            path="/CreateProgram"
+          >
+            <CreateProgram />
+          </Route>
 
           {/* Visiting localhost:3000/about will show the about page. */}
           <Route
