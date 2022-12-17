@@ -1,11 +1,11 @@
-.creation-page {
+.user-page {
     display: flex;
     justify-content: space-around;
     margin-left: 20px;
     margin-right: 20px;
 }
 
-.create-new-program {
+.top-programs {
     padding: 10px;
     width: 62vw;
     border: 1px black solid;
