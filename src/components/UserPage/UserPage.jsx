@@ -16,10 +16,7 @@ function UserPage() {
       <h1>Welcome, {user.username}!</h1>
       {/* <p>Your ID is: {user.id}</p> */}
       <div id="section" className="user-page">
-        <div id="container" className="top-programs">
-          <h2>List of top 10 programs</h2>
           <ListOfTenPrograms/>
-        </div>
         <div id="container" className="your-program-performance">
           <YourTopPrograms/>
         </div>

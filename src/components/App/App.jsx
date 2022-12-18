@@ -21,7 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
 // create program
-import CreateProgram from '../CreateProgram/CreateProgram';
+import CreateProgram from '../CreateProgram/CreateProgramPage.jsx';
 
 import './App.css';
 
