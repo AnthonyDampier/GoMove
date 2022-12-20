@@ -25,7 +25,7 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.use('./api/workoutGenre', workoutGenreRouter);
+app.use('/api/workoutGenre', workoutGenreRouter);
 app.use('./api/exerciseType', exerciseTypeRouter);
 
 // Serve static files
