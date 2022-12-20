@@ -6,9 +6,6 @@ import ExerciseTypeOptions from "../ExerciseTypeOptions/ExerciseTypeOptions.jsx"
 
 function ExerciseForm(props){
     // information needed to insert into database
-    const programId = props.programId;
-    const sessionId = props.sessionId;
-    const exerciseId = props.exerciseId;
 
     const [exercise, setExercise] = useState(0);
     const [reps, setReps] = useState(0);
@@ -38,16 +35,21 @@ function ExerciseForm(props){
 
     useEffect(()=> {
         if (props.submitProgram === true){
-            console.log('programId', props.programId,
-                        'sessionId:', props.sessionId, 
-                        'exerciseId: ', props.exerciseId,
-                        'sets: ', sets,
-                        'reps: ', reps,
-                        'percentOfmax: ', percentOfMax, '%',
-                        'SubmitProgram is: ', props.submitProgram,
-                        );
-            // TODO: Dispatch from here programID, sessionID, exerciseID, ExerciseType, Sets, Reps
-            // !! Remember to make percentOfMax a decimal PR/100
+            if (reps !== 0 && sets !== 0){
+                console.log('programId', props.programId,
+                            'sessionId:', props.sessionId, 
+                            'exerciseId: ', props.exerciseId,
+                            'sets: ', sets,
+                            'reps: ', reps,
+                            'percentOfmax: ', percentOfMax, '%',
+                            'SubmitProgram is: ', props.submitProgram,
+                            );
+                // TODO: Dispatch from here programID, sessionID, exerciseID, ExerciseType, Sets, Reps
+                // !! Remember to make percentOfMax a decimal PR/100
+            } else {
+                // TODO: create a pop up component.
+                alert('please complete form for Session ', props.sessionId, ' Exercise ', props.exerciseId);
+            } 
         }
     }, [props.submitProgram])
 

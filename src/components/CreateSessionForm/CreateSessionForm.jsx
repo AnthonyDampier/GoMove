@@ -40,11 +40,7 @@ function CreateSessionForm(props){
             setConfirm(true);
         }
     }
-    useEffect(()=> {
-        if (props.submitProgram == true){
-            console.log('in CreateSessionForm submitProgram:', true);
-        }
-    }, [props.submitProgram]);
+
 
     //props contains {sessionId: , programId: }
     return(

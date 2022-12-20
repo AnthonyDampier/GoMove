@@ -58,6 +58,7 @@ function CreateProgramForm(){
     const handleSubmitProgram = () => {
         // console.log('in CreateProgramForm submitProgram');
         setSubmitProgram(true);
+        // setSubmitProgram(false);
     }
 
 
@@ -112,7 +113,7 @@ function CreateProgramForm(){
                         </button>
                     </div>
                     { createSession === true && <Sessions numOfSessions={numOfSessions} programId={programId} submitProgram={submitProgram}/>}
-                    {createSession === true && <button onClick={() => handleSubmitProgram()}>Submit Program</button>}
+                    { createSession === true && <button onClick={() => handleSubmitProgram()}>Submit Program</button>}
                 </div>
             </div>
         </>
