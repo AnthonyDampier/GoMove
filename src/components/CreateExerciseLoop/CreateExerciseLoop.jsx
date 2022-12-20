@@ -8,7 +8,7 @@ function CreateExerciseLoop(props){
 
     const createArrayOfExercise = (props) => {
         let exercises = []
-        console.log('in createArrayOfexercise');
+        // console.log('in createArrayOfExercise');
         //loop based on props.numOfExercise
         for(let i = 1; i <= props.numOfExercises; i++){
             exercises.push({key: i, sessionId: props.sessionId, exerciseId: i})
@@ -18,10 +18,7 @@ function CreateExerciseLoop(props){
 
     useEffect(()=> {
         createArrayOfExercise(props);
-        if (props.submitProgram === true){
-            console.log('Session:', props.sessionId ,'in CreateExerciseLoop submitProgram is:', props.submitProgram);
-        }
-    }, [props.submitProgram]);
+    }, []);
 
     return(
         <>
@@ -31,6 +28,7 @@ function CreateExerciseLoop(props){
                     // <p>{exercise.key}</p>
                     <ExerciseForm 
                         key={exercise.key} 
+                        programId={props.programId}
                         sessionId={exercise.sessionId} 
                         exerciseId={exercise.exerciseId}
                         submitProgram={props.submitProgram}

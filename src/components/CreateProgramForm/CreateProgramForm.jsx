@@ -21,7 +21,7 @@ function CreateProgramForm(){
     // updates type of Workout based on users selection input
     const updateType = (event) => {
         const workoutType = event.target.value;
-        console.log('update type:', event.target.value);
+        // console.log('update type:', event.target.value);
         setWorkoutType(workoutType);
     }
 
@@ -32,7 +32,7 @@ function CreateProgramForm(){
     // updates session number based on users number input; disallows above max and below min
     const updateSessionNumber = (event) => {
         const sessions = event.target.value
-        console.log(sessions);
+        // console.log(sessions);
         if (sessions > max){
             setNumOfSessions(max);
         } else if (sessions < min){
@@ -44,19 +44,19 @@ function CreateProgramForm(){
 
     // TODO: dispatch to create a program with title, author, workoutType. Return the ID of Program inserted. 
     const createProgram = () => {
-        console.log('create function')
+        // console.log('create function')
         if (title != '' && workoutType !== 0 && numOfSessions !== 0){
             //TODO: yield dispatch ({type: CreateProgram})
 
 
             // programId = getProgramId w/ title & author
-            console.log('create sessions');
+            // console.log('create sessions');
             setCreateSession(true);
         }
     }
 
     const handleSubmitProgram = () => {
-        console.log('in CreateProgramForm submitProgram');
+        // console.log('in CreateProgramForm submitProgram');
         setSubmitProgram(true);
     }
 

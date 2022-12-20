@@ -15,7 +15,7 @@ function CreateSessionForm(props){
     // updates session number based on users number input; disallows above max and below min
     const updateExerciseNumber = (event) => {
         const exercises = event.target.value
-        console.log(exercises);
+        // console.log(exercises);
         if (exercises > max){
             setNumberOfExercise(max);
         } else if (exercises < min){
@@ -26,7 +26,7 @@ function CreateSessionForm(props){
     }
 
     const generateExercise = () => {
-        console.log('in generateExercise');
+        // console.log('in generateExercise');
         if (confirmExerciseChange){
             if(confirm('Changing Your Exercise Number Will Erase All Progress In This Session')){
                 createExercises(true);
@@ -61,8 +61,8 @@ function CreateSessionForm(props){
             <div>
                 {createExercises && <CreateExerciseLoop 
                     numOfExercises={numOfExercises} 
+                    programId={props.programId}
                     sessionId={props.sessionId}
-                    programId={props.programId} 
                     submitProgram={props.submitProgram}
                 />}
             </div>

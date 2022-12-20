@@ -12,7 +12,7 @@ function CreateSessionsLoop(props){
     const createArrayOfSessions = (props) =>{
         // create sessions array
         let sessions = []
-        console.log('createArrayOfSessions');
+        // console.log('createArrayOfSessions');
         // loops based on props of numOfSessions
         for (let i = 1; i <= props.numOfSessions; i++){
             sessions.push({key: i, programId: props.programId, sessionId: i});
@@ -23,9 +23,9 @@ function CreateSessionsLoop(props){
 
     useEffect(() => {
         createArrayOfSessions(props);
-        if (props.submitProgram === true){
-            console.log('in CreateSessionLoop submitProgram is: ', props.submitProgram);        
-        }
+        // if (props.submitProgram === true){
+        //     console.log('in CreateSessionLoop submitProgram is: ', props.submitProgram);        
+        // }
     }, [props.submitProgram]);
 
 
