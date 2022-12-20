@@ -2,27 +2,28 @@ import {useState, useEffect, useRef} from "react";
 import {useDispatch} from 'react-redux';
 
 //imported components
-import WorkoutTypeOptions from "../WorkoutTypeOptions/WorkoutTypeOptions";
+import WorkoutTypeOptions from "../WorkoutGenreOptions/WorkoutGenresOptions";
 import Sessions from "../CreateSessionsLoop/CreateSessionsLoop.jsx"
 
 function CreateProgramForm(){
     const [title, setTitle] = useState('');
-    const [workoutType, setWorkoutType] = useState(0);
+    const [workoutGenre, setWorkoutType] = useState(0);
     const [numOfSessions, setNumOfSessions] = useState(0);
 
     // TODO: props to session programId
     const [programId, setProgramId] = useState(0);
 
     const [createSession, setCreateSession] = useState(false);
+    const [disableSessionSubmit, setDisableSessionButton] = useState(true);
     const [disable, setDisable] = useState(false);
 
     const [submitProgram, setSubmitProgram] = useState(false);
 
     // updates type of Workout based on users selection input
-    const updateType = (event) => {
-        const workoutType = event.target.value;
+    const updateGenre = (event) => {
+        const workoutGenre = event.target.value;
         // console.log('update type:', event.target.value);
-        setWorkoutType(workoutType);
+        setWorkoutType(workoutGenre);
     }
 
     // session limits
@@ -42,24 +43,33 @@ function CreateProgramForm(){
         }
     }
 
-    // TODO: dispatch to create a program with title, author, workoutType. Return the ID of Program inserted. 
     const createProgram = () => {
         // console.log('create function')
-        if (title != '' && workoutType !== 0 && numOfSessions !== 0){
-            //TODO: yield dispatch ({type: CreateProgram})
+        if (title != '' && numOfSessions !== 0){
+            console.log(
+                'Program Title: ', title, 
+                'workoutGenre: ', workoutGenre,
+                'Number of Sessions: ', numOfSessions);
+            // TODO yield dispatch ({type: CreateProgram})
+
 
 
             // programId = getProgramId w/ title & author
             // console.log('create sessions');
             setCreateSession(true);
+            setDisable(true);
         }
     }
 
     const handleSubmitProgram = () => {
         // console.log('in CreateProgramForm submitProgram');
         setSubmitProgram(true);
-        // setSubmitProgram(false);
     }
+    useEffect (() => {
+        if (numOfSessions > 0){
+            setDisableSessionButton(false);
+        }
+    }, [numOfSessions])
 
 
     return(
@@ -85,8 +95,8 @@ function CreateProgramForm(){
                         <select 
                             name="workoutType"
                             id='type' 
-                            value={workoutType} 
-                            onChange={(event) => updateType(event)}
+                            value={workoutGenre} 
+                            onChange={(event) => updateGenre(event)}
                             // will disable after submit form
                             disabled={disable}
                             >
@@ -107,7 +117,7 @@ function CreateProgramForm(){
                         <button 
                             onClick={() => createProgram()}
                             // will disable after submit form
-                            disabled={disable}
+                            disabled={disableSessionSubmit}
                             >
                             submit
                         </button>

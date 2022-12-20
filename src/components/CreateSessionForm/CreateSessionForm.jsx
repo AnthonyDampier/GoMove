@@ -5,8 +5,9 @@ import CreateExerciseLoop from '../CreateExerciseLoop/CreateExerciseLoop';
 
 function CreateSessionForm(props){
     const [numOfExercises, setNumberOfExercise] = useState(0);
-    const [confirmExerciseChange, setConfirm] = useState(false);
+    const [confirmExerciseChange, setConfirmation] = useState(false);
     const [createExercises, setCreateExercises] = useState(false);
+    const [submitSession, setSubmitSession] = useState(props.submitProgram);
 
     // session limits
     const min = 0;
@@ -36,10 +37,27 @@ function CreateSessionForm(props){
             user will be notified if they try to change; 
             because they may lose their inputs 
             */
+            console.log(
+                    'programId', props.programId,
+                'sessionId:', props.sessionId, 
+                'exerciseNumber: ', numOfExercises,
+            )
+            // TODO dispatch this payload 
             setCreateExercises(true);
-            setConfirm(true);
+            setConfirmation(true);
         }
     }
+
+    useEffect(() => {
+        if (submitSession === true){
+            console.log(
+                'programId', props.programId,
+                'sessionId:', props.sessionId, 
+                'exerciseNumber: ', numOfExercises,
+                'SubmitProgram is: ', props.submitProgram
+            )
+        }
+    }, [submitSession]);
 
 
     //props contains {sessionId: , programId: }

@@ -34,8 +34,7 @@ function ExerciseForm(props){
     } 
 
     useEffect(()=> {
-        if (props.submitProgram === true){
-            if (reps !== 0 && sets !== 0){
+        if (props.submitProgram === true && reps !== 0 && sets !== 0){
                 console.log('programId', props.programId,
                             'sessionId:', props.sessionId, 
                             'exerciseId: ', props.exerciseId,
@@ -45,11 +44,6 @@ function ExerciseForm(props){
                             'SubmitProgram is: ', props.submitProgram,
                             );
                 // TODO: Dispatch from here programID, sessionID, exerciseID, ExerciseType, Sets, Reps
-                // !! Remember to make percentOfMax a decimal PR/100
-            } else {
-                // TODO: create a pop up component.
-                alert('please complete form for Session ', props.sessionId, ' Exercise ', props.exerciseId);
-            } 
         }
     }, [props.submitProgram])
 

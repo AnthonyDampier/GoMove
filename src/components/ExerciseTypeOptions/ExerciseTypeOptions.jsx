@@ -1,13 +1,25 @@
-//TODO: get exercise types from DB
+
+
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 function ExerciseTypeOptions(){
+    const dispatch = useDispatch();
+
+    const exercises = useSelector((store) => store.exerciseType);
+
+    useEffect(() => {
+        dispatch({type: 'FETCH_EXERCISE_TYPES'});
+    }, [])
+
     return(
         <>
-            <option value=""></option>
-            <option value="1">Adventure</option>
-            <option value="2">Animated</option>
-            <option value="3">Biographical</option>
-            <option value="4">Comedy</option>
+            {exercises.map(item => {
+                return(
+                    <option key={item.id} value={item.id}>{item.exercise_name}</option>
+                )
+            })
+            }
         </>
     )
 }
