@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 //import components
 import CreateSessionForm from '../CreateSessionForm/CreateSessionForm';
 
-function CreateSessionsForForm(props){
+function CreateSessionsLoop(props){
 
     // renders new state on change of sessionsArray
     const [sessionsArray, setSessionArray] = useState([]);
@@ -16,14 +16,17 @@ function CreateSessionsForForm(props){
         // loops based on props of numOfSessions
         for (let i = 1; i <= props.numOfSessions; i++){
             sessions.push({key: i, programId: props.programId, sessionId: i});
-            console.log(i);
+            // console.log(i);
         }
         setSessionArray(sessions);
     }
 
     useEffect(() => {
         createArrayOfSessions(props);
-    }, [])
+        if (props.submitProgram === true){
+            console.log('in CreateSessionLoop submitProgram is: ', props.submitProgram);        
+        }
+    }, [props.submitProgram]);
 
 
     return(
@@ -32,11 +35,16 @@ function CreateSessionsForForm(props){
                 {/* <p>Sessions: {JSON.stringify(sessionsArray)}</p> */}
                 {sessionsArray.map(session => {
                         return(
-                            <CreateSessionForm key={session.key} programId={session.programId} sessionId={session.key}/>
+                            <CreateSessionForm 
+                                key={session.key} 
+                                programId={session.programId} 
+                                sessionId={session.key}
+                                submitProgram={props.submitProgram}
+                            />
                         );
                     })}
             </>
     )
 }
 
-export default CreateSessionsForForm;
+export default CreateSessionsLoop;

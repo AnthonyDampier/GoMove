@@ -1,9 +1,9 @@
-import {useState} from "react";
+import {useState, useEffect, useRef} from "react";
 import {useDispatch} from 'react-redux';
 
 //imported components
 import WorkoutTypeOptions from "../WorkoutTypeOptions/WorkoutTypeOptions";
-import Sessions from "../CreateSessionsForForm/CreateSessionsForForm.jsx"
+import Sessions from "../CreateSessionsLoop/CreateSessionsLoop.jsx"
 
 function CreateProgramForm(){
     const [title, setTitle] = useState('');
@@ -15,6 +15,8 @@ function CreateProgramForm(){
 
     const [createSession, setCreateSession] = useState(false);
     const [disable, setDisable] = useState(false);
+
+    const [submitProgram, setSubmitProgram] = useState(false);
 
     // updates type of Workout based on users selection input
     const updateType = (event) => {
@@ -44,11 +46,18 @@ function CreateProgramForm(){
     const createProgram = () => {
         console.log('create function')
         if (title != '' && workoutType !== 0 && numOfSessions !== 0){
-            // yield dispatch ({type: CreateProgram})
+            //TODO: yield dispatch ({type: CreateProgram})
+
+
             // programId = getProgramId w/ title & author
             console.log('create sessions');
             setCreateSession(true);
         }
+    }
+
+    const handleSubmitProgram = () => {
+        console.log('in CreateProgramForm submitProgram');
+        setSubmitProgram(true);
     }
 
 
@@ -102,7 +111,8 @@ function CreateProgramForm(){
                             submit
                         </button>
                     </div>
-                    { createSession === true && <Sessions numOfSessions={numOfSessions} programId={programId}/>}
+                    { createSession === true && <Sessions numOfSessions={numOfSessions} programId={programId} submitProgram={submitProgram}/>}
+                    {createSession === true && <button onClick={() => handleSubmitProgram()}>Submit Program</button>}
                 </div>
             </div>
         </>

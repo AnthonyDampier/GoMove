@@ -17,3 +17,11 @@
     width: 27vw;
     border: 1px black solid;
 }
+
+.session-form {
+    border: 1px blueviolet solid;
+}
+
+.exercise-form {
+    border: 1px black solid;
+}

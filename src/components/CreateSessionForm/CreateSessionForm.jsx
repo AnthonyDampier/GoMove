@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 //import components
 import CreateExerciseLoop from '../CreateExerciseLoop/CreateExerciseLoop';
@@ -32,30 +32,41 @@ function CreateSessionForm(props){
                 createExercises(true);
             }
         } else {
-            /* after the first submittion of exercise the
+            /* after the first submitting exercise the
             user will be notified if they try to change; 
             because they may lose their inputs 
             */
             setCreateExercises(true);
-            confirmExerciseChange(true);
+            setConfirm(true);
         }
     }
+    useEffect(()=> {
+        if (props.submitProgram == true){
+            console.log('in CreateSessionForm submitProgram:', true);
+        }
+    }, [props.submitProgram]);
+
     //props contains {sessionId: , programId: }
     return(
-        <>
+        <div className="session-form">
             <h4>Session: {props.sessionId}</h4>
             <label>Number of Exercise</label>
             <input 
                 type='number'
                 min={min} 
-                max={6} 
-                value={numOfExercise}
+                max={max} 
+                value={numOfExercises}
                 onChange={(event)=> updateExerciseNumber(event)}/>
             <button onClick={() => generateExercise()}>Create Exercises</button>
             <div>
-                {createExercises && <CreateExerciseLoop numOfExercises={numOfExercises}/>}
+                {createExercises && <CreateExerciseLoop 
+                    numOfExercises={numOfExercises} 
+                    sessionId={props.sessionId}
+                    programId={props.programId} 
+                    submitProgram={props.submitProgram}
+                />}
             </div>
-        </>
+        </div>
     )
 }
 
