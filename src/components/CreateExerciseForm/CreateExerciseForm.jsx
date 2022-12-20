@@ -13,10 +13,11 @@ function ExerciseForm(props){
     const [exercise, setExercise] = useState(0);
     const [reps, setReps] = useState(0);
     const [sets, setSets] = useState(0);
+    const [percentOfMax, setPercentOfMax] = useState(100);
 
     const updateExercise = (event) => {
         const exerciseType = event.target.value;
-        console.log('exerciseType: ', exerciseType);
+        // console.log('exerciseType: ', exerciseType);
         setExercise(exerciseType);
     }
 
@@ -37,8 +38,16 @@ function ExerciseForm(props){
 
     useEffect(()=> {
         if (props.submitProgram === true){
-            console.log('Session:', props.sessionId, 'Exercise: ', props.exerciseId, 'SubmitProgram is: ', props.submitProgram);
+            console.log('programId', props.programId,
+                        'sessionId:', props.sessionId, 
+                        'exerciseId: ', props.exerciseId,
+                        'sets: ', sets,
+                        'reps: ', reps,
+                        'percentOfmax: ', percentOfMax, '%',
+                        'SubmitProgram is: ', props.submitProgram,
+                        );
             // TODO: Dispatch from here programID, sessionID, exerciseID, ExerciseType, Sets, Reps
+            // !! Remember to make percentOfMax a decimal PR/100
         }
     }, [props.submitProgram])
 
@@ -55,6 +64,19 @@ function ExerciseForm(props){
             setReps(min)
         } else {
             setReps(newReps);
+        }
+    }
+
+    const updatePercentOfMax = (event) => {
+        const min = 0;
+        const max = 100;
+        const newPercentOfMax = event.target.value;
+        if (newPercentOfMax > max){
+            setPercentOfMax(max);
+        } else if (newPercentOfMax < min){
+            setPercentOfMax(min);
+        } else {
+            setPercentOfMax(newPercentOfMax);
         }
     }
 
@@ -86,7 +108,19 @@ function ExerciseForm(props){
                 <input 
                     type='number'
                     value={reps}
-                onChange={(event) => updateReps(event)}/>
+                onChange={(event) => updateReps(event)}
+                />
+            </div>
+            <div>
+                <label>
+                    Percent of Max:
+                </label>
+                <input 
+                    type='number'
+                    value={percentOfMax}
+                onChange={(event) => updatePercentOfMax(event)}
+                />
+                <label>%</label>
             </div>
         </div>
     )
