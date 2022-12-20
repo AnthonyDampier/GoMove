@@ -41,7 +41,7 @@ function ExerciseForm(props){
                             'exerciseId: ', props.exerciseId,
                             'sets: ', sets,
                             'reps: ', reps,
-                            'percentOfmax: ', percentOfMax, '%',
+                            'percentOfMax: ', percentOfMax, '%',
                             'SubmitProgram is: ', props.submitProgram,
                             );
                 // TODO: Dispatch from here programID, sessionID, exerciseID, ExerciseType, Sets, Reps
