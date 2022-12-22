@@ -8,9 +8,9 @@ function ExerciseTypeOptions(){
 
     const exercises = useSelector((store) => store.exerciseType);
 
-    useEffect(() => {
-        dispatch({type: 'FETCH_EXERCISE_TYPES'});
-    }, [])
+    // useEffect(() => {
+    //     dispatch({type: 'FETCH_EXERCISE_TYPES'});
+    // }, [])
 
     return(
         <>

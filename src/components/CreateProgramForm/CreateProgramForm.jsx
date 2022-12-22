@@ -6,6 +6,8 @@ import WorkoutTypeOptions from "../WorkoutGenreOptions/WorkoutGenresOptions";
 import Sessions from "../CreateSessionsLoop/CreateSessionsLoop.jsx"
 
 function CreateProgramForm(){
+    const dispatch = useDispatch();
+
     const [title, setTitle] = useState('');
     const [workoutGenre, setWorkoutType] = useState(0);
     const [numOfSessions, setNumOfSessions] = useState(0);
@@ -44,21 +46,17 @@ function CreateProgramForm(){
     }
 
     const createProgram = () => {
-        // console.log('create function')
-        if (title != '' && numOfSessions !== 0){
-            console.log(
-                'Program Title: ', title, 
-                'workoutGenre: ', workoutGenre,
-                'Number of Sessions: ', numOfSessions);
-            // TODO yield dispatch ({type: CreateProgram})
+        console.log(
+            'Program Title: ', title, 
+            'workoutGenre: ', workoutGenre,
+            'Number of Sessions: ', numOfSessions);
+        // TODO yield dispatch ({type: CreateProgram})
+        dispatch({type: 'INSERT_PROGRAM', payload: {title: title, workoutGenre: workoutGenre, numOfSessions: numOfSessions}});
 
-
-
-            // programId = getProgramId w/ title & author
-            // console.log('create sessions');
-            setCreateSession(true);
-            setDisable(true);
-        }
+        // programId = getProgramId w/ title & author
+        // console.log('create sessions');
+        setCreateSession(true);
+        setDisable(true);
     }
 
     const handleSubmitProgram = () => {
@@ -66,10 +64,14 @@ function CreateProgramForm(){
         setSubmitProgram(true);
     }
     useEffect (() => {
-        if (numOfSessions > 0){
+        if (numOfSessions > 0 && workoutGenre !== 0 && title != ''){
             setDisableSessionButton(false);
         }
-    }, [numOfSessions])
+    }, [numOfSessions, workoutGenre])
+
+    useEffect(()=>{
+        dispatch({type: 'FETCH_EXERCISE_TYPES'});
+    }, [])
 
 
     return(
