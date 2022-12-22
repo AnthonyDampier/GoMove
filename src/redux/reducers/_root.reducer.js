@@ -4,6 +4,7 @@ import user from './user.reducer';
 import exerciseType from './exercise_type.reducer';
 import workoutGenre from './workout_genre.reducer';
 import workoutPrograms from './workout_program.reducer';
+import createdWorkoutProgram from './create_workout_program.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   exerciseType, // will have an array of with { exercisesId, exercises, ... }
   workoutGenre, // will have an array of {genreId, genreText}
   workoutPrograms,
+  createdWorkoutProgram,
 });
 
 export default rootReducer;

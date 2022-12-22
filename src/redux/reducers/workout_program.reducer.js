@@ -1,6 +1,6 @@
 const workoutProgramReducer = (state = {}, action) => {
     switch (action.type) {
-        case 'SET_WORKOUT_PROGRAMS':
+        case 'SET_CREATED_PROGRAM':
             return action.payload;
         default:
             return state;

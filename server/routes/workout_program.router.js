@@ -18,6 +18,26 @@ router.get('/', (req, res) => {
     })
 });
 
+router.get('/retrieveProgramID', (req, res) => {
+    // GET route code here
+    console.log('in workout_program.router /retrieveProgramID');
+    //retrieves most recent entry from current users
+    const queryText = `SELECT * from "program" 
+                    WHERE author_user_id = $1 
+                    ORDER BY id DESC 
+                    LIMIT 1;`;
+
+    pool.query(queryText, [req.user.id])
+    .then( (response) => {
+        console.log('Results:', response.rows);
+        res.send(response.rows);
+    })
+    .catch(() => {
+        console.log('ERROR: in workout_program.router');
+        res.sendStatus(500);
+    })
+});
+
 /**
  * POST route template
  */
