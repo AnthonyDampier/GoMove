@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux';
 
 //imported components
 import WorkoutTypeOptions from "../WorkoutGenreOptions/WorkoutGenresOptions";
-import Sessions from "../CreateSessionsLoop/CreateSessionsLoop.jsx"
+import SessionsLoop from "../CreateSessionsLoop/CreateSessionsLoop.jsx"
 
 function CreateProgramForm(){
     const dispatch = useDispatch();
@@ -13,7 +13,7 @@ function CreateProgramForm(){
     const [numOfSessions, setNumOfSessions] = useState(0);
 
     // TODO: props to session programId
-    const [programId, setProgramId] = useState(0);
+    const [programId, setProgramId] = useState(-1);
 
     const [createSession, setCreateSession] = useState(false);
     const [disableSessionSubmit, setDisableSessionButton] = useState(true);
@@ -124,7 +124,7 @@ function CreateProgramForm(){
                             submit
                         </button>
                     </div>
-                    { createSession === true && <Sessions numOfSessions={numOfSessions} programId={programId} submitProgram={submitProgram}/>}
+                    { createSession === true && <SessionsLoop numOfSessions={numOfSessions} programId={programId} submitProgram={submitProgram}/>}
                     { createSession === true && <button onClick={() => handleSubmitProgram()}>Submit Program</button>}
                 </div>
             </div>
