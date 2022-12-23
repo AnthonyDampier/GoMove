@@ -2,15 +2,15 @@ import {useEffect, useState} from 'react';
 
 //import component
 import ExerciseTypeOptions from "../ExerciseTypeOptions/ExerciseTypeOptions.jsx";
+import CreateSetLoop from '../CreateSetLoop/CreateSetLoop.jsx';
 
 
 function ExerciseForm(props){
     // information needed to insert into database
 
     const [exercise, setExercise] = useState(0);
-    const [reps, setReps] = useState(0);
     const [sets, setSets] = useState(0);
-    const [percentOfMax, setPercentOfMax] = useState(100);
+    const [createSets, setCreateSets] = useState(false);
 
     const updateExercise = (event) => {
         const exerciseType = event.target.value;
@@ -33,48 +33,61 @@ function ExerciseForm(props){
         }
     } 
 
-    useEffect(()=> {
-        if (props.submitProgram === true && reps !== 0 && sets !== 0){
-                console.log('programId', props.programId,
-                            'sessionId:', props.sessionId, 
-                            'exerciseId: ', props.exerciseId,
-                            'sets: ', sets,
-                            'reps: ', reps,
-                            'percentOfMax: ', percentOfMax, '%',
-                            'SubmitProgram is: ', props.submitProgram,
-                            );
-                // TODO: Dispatch from here programID, sessionID, exerciseID, ExerciseType, Sets, Reps
-        }
-    }, [props.submitProgram])
+    // useEffect(()=> {
+    //     console.log('programId', props.programId,
+    //     'sessionId:', props.sessionId, 
+    //     'exerciseId: ', props.exerciseId,
+    //     'sets: ', sets,
+    //     'reps: ', reps,
+    //     'percentOfMax: ', percentOfMax, '%',
+    //     'SubmitProgram is: ', props.submitProgram,
+    //     );
+    //     if (props.submitProgram === true && reps !== 0 && sets !== 0){
+    //             console.log('programId', props.programId,
+    //                         'sessionId:', props.sessionId, 
+    //                         'exerciseId: ', props.exerciseId,
+    //                         'sets: ', sets,
+    //                         'reps: ', reps,
+    //                         'percentOfMax: ', percentOfMax, '%',
+    //                         'SubmitProgram is: ', props.submitProgram,
+    //                         );
+    //             // TODO: Dispatch from here programID, sessionID, exerciseID, ExerciseType, Sets, Reps
+    //     }
+    // }, [props.submitProgram])
 
-
-    const updateReps = (event) => {
-        // disallows user to input anything not at or between min and max
-        const min = 0;
-        const max = 5;
-        const newReps = event.target.value;
-        // console.log('reps: ', newReps);
-        if (newReps > max) {
-            setReps(max);
-        } else if (newReps < min){
-            setReps(min)
-        } else {
-            setReps(newReps);
-        }
+    const handleSetClick = () => {
+        setCreateSets(true);
     }
 
-    const updatePercentOfMax = (event) => {
-        const min = 0;
-        const max = 100;
-        const newPercentOfMax = event.target.value;
-        if (newPercentOfMax > max){
-            setPercentOfMax(max);
-        } else if (newPercentOfMax < min){
-            setPercentOfMax(min);
-        } else {
-            setPercentOfMax(newPercentOfMax);
-        }
-    }
+    // const [reps, setReps] = useState(0);
+    // const updateReps = (event) => {
+    //     // disallows user to input anything not at or between min and max
+    //     const min = 0;
+    //     const max = 5;
+    //     const newReps = event.target.value;
+    //     // console.log('reps: ', newReps);
+    //     if (newReps > max) {
+    //         setReps(max);
+    //     } else if (newReps < min){
+    //         setReps(min)
+    //     } else {
+    //         setReps(newReps);
+    //     }
+    // }
+    //     const [percentOfMax, setPercentOfMax] = useState(100);
+
+    // const updatePercentOfMax = (event) => {
+    //     const min = 0;
+    //     const max = 100;
+    //     const newPercentOfMax = event.target.value;
+    //     if (newPercentOfMax > max){
+    //         setPercentOfMax(max);
+    //     } else if (newPercentOfMax < min){
+    //         setPercentOfMax(min);
+    //     } else {
+    //         setPercentOfMax(newPercentOfMax);
+    //     }
+    // }
 
     return(
         <div className="exercise-form">
@@ -84,7 +97,8 @@ function ExerciseForm(props){
                 </label>
                 <select 
                     onChange={(event) => updateExercise(event)}
-                    value={exercise}>
+                    value={exercise}
+                    >
                     <ExerciseTypeOptions/>
                 </select>
             </div>
@@ -96,7 +110,18 @@ function ExerciseForm(props){
                 type='number'
                 value={sets}
                 onChange={(event) => updateSets(event)}/>
+                <button onClick={() => handleSetClick()}>Create Sets</button>
             </div>
+            <div>
+                {createSets && <CreateSetLoop 
+                    programId={props.programId}
+                    sessionId={props.sessionId}
+                    exerciseId={props.exerciseId}
+                    numOfSets={sets}
+                    submitProgram={props.submitProgram}
+                />}
+            </div>
+            {/*
             <div>
                 <label>
                     Reps:
@@ -117,7 +142,7 @@ function ExerciseForm(props){
                 onChange={(event) => updatePercentOfMax(event)}
                 />
                 <label>%</label>
-            </div>
+            </div>/ */}
         </div>
     )
 }

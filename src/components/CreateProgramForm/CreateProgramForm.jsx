@@ -52,7 +52,7 @@ function CreateProgramForm(){
             'Number of Sessions: ', numOfSessions);
         // TODO yield dispatch ({type: CreateProgram})
         dispatch({type: 'INSERT_PROGRAM', payload: {title: title, workoutGenre: workoutGenre, numOfSessions: numOfSessions}});
-
+        dispatch({type: 'GET_CREATED_PROGRAM'});
         // programId = getProgramId w/ title & author
         // console.log('create sessions');
         setCreateSession(true);

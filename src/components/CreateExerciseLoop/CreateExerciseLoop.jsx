@@ -11,7 +11,10 @@ function CreateExerciseLoop(props){
         // console.log('in createArrayOfExercise');
         //loop based on props.numOfExercise
         for(let i = 1; i <= props.numOfExercises; i++){
-            exercises.push({key: i, sessionId: props.sessionId, exerciseId: i})
+            exercises.push({
+                key: i,  
+                exerciseId: i
+            })
         }
         setExerciseArray(exercises);
     }
@@ -29,7 +32,7 @@ function CreateExerciseLoop(props){
                     <ExerciseForm 
                         key={exercise.key} 
                         programId={props.programId}
-                        sessionId={exercise.sessionId} 
+                        sessionId={props.sessionId} 
                         exerciseId={exercise.exerciseId}
                         submitProgram={props.submitProgram}
                     />

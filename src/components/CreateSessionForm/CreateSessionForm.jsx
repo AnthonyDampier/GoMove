@@ -38,7 +38,7 @@ function CreateSessionForm(props){
             because they may lose their inputs 
             */
             console.log(
-                    'programId', props.programId,
+                'programId', props.programId,
                 'sessionId:', props.sessionId, 
                 'exerciseNumber: ', numOfExercises,
             )
