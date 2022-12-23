@@ -40,7 +40,6 @@ function createSetLoop(props){
                     />
                 )
             })
-
             }
         </>
     )

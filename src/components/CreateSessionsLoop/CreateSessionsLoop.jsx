@@ -16,7 +16,7 @@ function CreateSessionsLoop(props){
         let sessions = []
         // console.log('createArrayOfSessions');
         // loops based on props of numOfSessions
-        // console.log(programId);
+        console.log(programId);
         for (let i = 1; i <= props.numOfSessions; i++){
             sessions.push({key: i, programId: programId, sessionId: i});
             // console.log(i);

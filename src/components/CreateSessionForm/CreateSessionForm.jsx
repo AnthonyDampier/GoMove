@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import { useSelector } from 'react-redux';
 
 //import components
 import CreateExerciseLoop from '../CreateExerciseLoop/CreateExerciseLoop';
@@ -8,6 +9,7 @@ function CreateSessionForm(props){
     const [confirmExerciseChange, setConfirmation] = useState(false);
     const [createExercises, setCreateExercises] = useState(false);
     const [submitSession, setSubmitSession] = useState(props.submitProgram);
+    const programId = useSelector(store => store.createdWorkoutProgram)
 
     // session limits
     const min = 0;
@@ -38,7 +40,7 @@ function CreateSessionForm(props){
             because they may lose their inputs 
             */
             console.log(
-                'programId', props.programId,
+                'programId', programId.id,
                 'sessionId:', props.sessionId, 
                 'exerciseNumber: ', numOfExercises,
             )
@@ -51,7 +53,7 @@ function CreateSessionForm(props){
     useEffect(() => {
         if (submitSession === true){
             console.log(
-                'programId', props.programId,
+                'programId', programId,
                 'sessionId:', props.sessionId, 
                 'exerciseNumber: ', numOfExercises,
                 'SubmitProgram is: ', props.submitProgram
@@ -75,7 +77,7 @@ function CreateSessionForm(props){
             <div>
                 {createExercises && <CreateExerciseLoop 
                     numOfExercises={numOfExercises} 
-                    programId={props.programId}
+                    programId={programId.id}
                     sessionId={props.sessionId}
                     submitProgram={props.submitProgram}
                 />}

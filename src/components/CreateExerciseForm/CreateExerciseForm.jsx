@@ -11,6 +11,7 @@ function ExerciseForm(props){
     const [exercise, setExercise] = useState(0);
     const [sets, setSets] = useState(0);
     const [createSets, setCreateSets] = useState(false);
+    const [disableSetBtn, setDisableSetBtn] = useState(true);
 
     const updateExercise = (event) => {
         const exerciseType = event.target.value;
@@ -32,6 +33,16 @@ function ExerciseForm(props){
             setSets(newSets);
         }
     } 
+
+    const handleSetClick = () => {
+        setCreateSets(true);
+    }
+
+    useEffect(() => {
+        if (sets > 0 && exercise > 0){
+            setDisableSetBtn(false);
+        }
+    }, [sets, exercise])
 
     // useEffect(()=> {
     //     console.log('programId', props.programId,
@@ -55,9 +66,6 @@ function ExerciseForm(props){
     //     }
     // }, [props.submitProgram])
 
-    const handleSetClick = () => {
-        setCreateSets(true);
-    }
 
     // const [reps, setReps] = useState(0);
     // const updateReps = (event) => {
@@ -110,7 +118,7 @@ function ExerciseForm(props){
                 type='number'
                 value={sets}
                 onChange={(event) => updateSets(event)}/>
-                <button onClick={() => handleSetClick()}>Create Sets</button>
+                <button onClick={() => handleSetClick()} disabled={disableSetBtn}>Create Sets</button>
             </div>
             <div>
                 {createSets && <CreateSetLoop 
