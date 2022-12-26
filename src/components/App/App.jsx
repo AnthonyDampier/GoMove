@@ -35,7 +35,6 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch({type: 'FETCH_WORKOUT_GENRES'});
   }, [])
 
   return (

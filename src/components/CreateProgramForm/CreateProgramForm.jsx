@@ -1,19 +1,22 @@
 import {useState, useEffect, useRef} from "react";
 import {useDispatch} from 'react-redux';
+import { useHistory } from "react-router-dom";
 
 //imported components
 import WorkoutTypeOptions from "../WorkoutGenreOptions/WorkoutGenresOptions";
 import SessionsLoop from "../CreateSessionsLoop/CreateSessionsLoop.jsx"
+import { useSelector } from "react-redux";
 
 function CreateProgramForm(){
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const [title, setTitle] = useState('');
     const [workoutGenre, setWorkoutType] = useState(0);
     const [numOfSessions, setNumOfSessions] = useState(0);
 
     // TODO: props to session programId
-    const [programId, setProgramId] = useState(-1);
+    const [programId, setProgramId] = useState(useSelector(store => store.createdWorkoutProgram) != undefined? useSelector(store => store.createdWorkoutProgram) : -1);
 
     const [createSession, setCreateSession] = useState(false);
     const [disableSessionSubmit, setDisableSessionButton] = useState(true);
@@ -27,6 +30,8 @@ function CreateProgramForm(){
         // console.log('update type:', event.target.value);
         setWorkoutType(workoutGenre);
     }
+
+
 
     // session limits
     const min = 0;
@@ -59,10 +64,10 @@ function CreateProgramForm(){
         setDisable(true);
     }
 
-    const handleSubmitProgram = () => {
-        // console.log('in CreateProgramForm submitProgram');
-        setSubmitProgram(true);
+    const handleReviewProgram = () => {
+        history.push('/Program/'+ programId.id);
     }
+
     useEffect (() => {
         if (numOfSessions > 0 && workoutGenre !== 0 && title != ''){
             setDisableSessionButton(false);
@@ -71,8 +76,8 @@ function CreateProgramForm(){
 
     useEffect(()=>{
         dispatch({type: 'FETCH_EXERCISE_TYPES'});
+        dispatch({type: 'FETCH_WORKOUT_GENRES'});
     }, [])
-
 
     return(
         <>
@@ -124,8 +129,8 @@ function CreateProgramForm(){
                             submit
                         </button>
                     </div>
-                    { createSession === true && <SessionsLoop numOfSessions={numOfSessions} submitProgram={submitProgram}/>}
-                    { createSession === true && <button onClick={() => handleSubmitProgram()}>Submit Program</button>}
+                    { createSession === true && <SessionsLoop numOfSessions={numOfSessions}/>}
+                    { createSession === true && <button onClick={() => handleReviewProgram()}>Submit Program</button>}
                 </div>
             </div>
         </>

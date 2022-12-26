@@ -16,6 +16,7 @@ function createSetForm(props){
     const [reps, setReps] = useState(0);
     const [percentOfMax, setPercentOfMax] = useState(100);
     const program = useSelector(store => store.createdWorkoutProgram)
+    const [saved, setSaved] = useState(false);
 
     const updateReps = (event) => {
         let updateReps = event.target.value;
@@ -37,19 +38,19 @@ function createSetForm(props){
         }
     }
 
-    useEffect(()=> {
-        if (props.submitProgram === true && reps !== 0){
+    const saveSet = () => {
+        console.log('saveSet');
+        if (reps !== 0){
+            if(saved === false){
+                console.log('dispatch data');
                 console.log('programId', program.id,
-                            'sessionId:', props.sessionId, 
-                            'exerciseId: ', props.exerciseId,
-                            'exerciseType:', props.exerciseType,
-                            'setId: ', props.setId,
-                            'reps: ', reps,
-                            'percentOfMax: ', percentOfMax, '%',
-                            'SubmitProgram is: ', props.submitProgram,
-                            );
-                // TODO: Dispatch from here programID, sessionID, exerciseID, ExerciseType, Sets, Reps
-                // !! remember to divide percentOfMax by 100.
+                'sessionId:', props.sessionId, 
+                'exerciseId: ', props.exerciseId,
+                'exerciseType:', props.exerciseType,
+                'setId: ', props.setId,
+                'reps: ', reps,
+                'percentOfMax: ', percentOfMax, '%',
+                );
 
                 dispatch({
                     type: 'INSERT_EXERCISE', 
@@ -63,22 +64,30 @@ function createSetForm(props){
                         percentageOfMax: percentOfMax/100,
                     }
                 })
-
+                setSaved(true);
+            } else {
+                console.log('')
+            }
+        } else {
+            alert('Enter reps for all exercises');
         }
-    }, [props.submitProgram])
+    }
 
     return(
-        <div>
-            <label>Sets {props.setId}</label>
-            <div>
-                <label>Reps</label>
-                <input type='number' value={reps} onChange={(event) => updateReps(event)}/>
+        <>
+            <div  className={saved && 'setSaved'}>
+                <label>Sets {props.setId}</label>
+                <div>
+                    <label>Reps</label>
+                    <input type='number' value={reps} onChange={(event) => updateReps(event)}/>
+                </div>
+                <div>
+                    <label>% of Max</label>
+                    <input type='number' value={percentOfMax} onChange={(event) => updatePercentOfMax(event)}/>
+                </div>
+                <button onClick={() => saveSet()} disabled={saved}>SAVE</button>
             </div>
-            <div>
-                <label>% of Max</label>
-                <input type='number' value={percentOfMax} onChange={(event) => updatePercentOfMax(event)}/>
-            </div>
-        </div>
+        </>
     )
 }
 
