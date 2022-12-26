@@ -46,10 +46,17 @@ function App() {
           <Redirect exact from="/" to="/home" />
           {/* Visiting localhost:3000/about will show the about page. */}
           <Route
-            // shows AboutPage at all times (logged in or not)
+            // displays form for creating an new program
             path="/CreateProgram"
           >
             <CreateProgram />
+          </Route>
+
+          <Route
+            // shows AboutPage at all times (logged in or not)
+            path="/ReviewProgram"
+          >
+            <Program />
           </Route>
 
           {/* Visiting localhost:3000/about will show the about page. */}

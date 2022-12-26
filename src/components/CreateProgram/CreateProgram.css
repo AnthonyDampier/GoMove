@@ -7,15 +7,9 @@
 
 .create-new-program {
     padding: 10px;
-    width: 62vw;
+    width: 75vw;
     border: 1px black solid;
-    height: 60vh;
-}
-
-.your-program-performance {
-    padding: 10px;
-    width: 27vw;
-    border: 1px black solid;
+    height: fit-content;
 }
 
 .session-form {

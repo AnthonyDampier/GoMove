@@ -75,7 +75,7 @@ function createSetForm(props){
 
     return(
         <>
-            <div  className={saved && 'setSaved'}>
+            <div  className={saved? "setSaved": ""}>
                 <label>Sets {props.setId}</label>
                 <div>
                     <label>Reps</label>

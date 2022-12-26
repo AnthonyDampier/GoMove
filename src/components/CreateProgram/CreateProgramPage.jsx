@@ -17,9 +17,6 @@ function CreateProgramPage(){
             <div className="create-new-program">
                 <CreateProgramForm/>
             </div>
-            <div id="container" className="your-program-performance">
-                <YourTopPrograms/>
-            </div>
         </div>
     </>
     )

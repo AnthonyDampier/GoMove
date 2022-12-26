@@ -8,7 +8,6 @@ function CreateSessionsLoop(props){
 
     // renders new state on change of sessionsArray
     const [sessionsArray, setSessionArray] = useState([]);
-    const programId = useSelector(store => store.createdWorkoutProgram.id);
 
     // changes props.numOfSession into an array 
     const createArrayOfSessions = (props) =>{
@@ -16,9 +15,8 @@ function CreateSessionsLoop(props){
         let sessions = []
         // console.log('createArrayOfSessions');
         // loops based on props of numOfSessions
-        console.log(programId);
         for (let i = 1; i <= props.numOfSessions; i++){
-            sessions.push({key: i, programId: programId, sessionId: i});
+            sessions.push({key: i, sessionId: i});
             // console.log(i);
         }
         setSessionArray(sessions);
@@ -40,7 +38,6 @@ function CreateSessionsLoop(props){
                         return(
                             <CreateSessionForm 
                                 key={session.key} 
-                                programId={session.programId} 
                                 sessionId={session.key}
                                 submitProgram={props.submitProgram}
                             />

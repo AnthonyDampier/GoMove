@@ -15,13 +15,11 @@ function CreateProgramForm(){
     const [workoutGenre, setWorkoutType] = useState(0);
     const [numOfSessions, setNumOfSessions] = useState(0);
 
-    const [programId, setProgramId] = useState(useSelector(store => store.createdWorkoutProgram) !== undefined ? useSelector(store => store.createdWorkoutProgram) : -1);
+    const program  = useSelector(store => store.createdWorkoutProgram);
 
     const [createSession, setCreateSession] = useState(false);
     const [disableSessionSubmit, setDisableSessionButton] = useState(true);
     const [disable, setDisable] = useState(false);
-
-    const [submitProgram, setSubmitProgram] = useState(false);
 
     // updates type of Workout based on users selection input
     const updateGenre = (event) => {
@@ -64,14 +62,19 @@ function CreateProgramForm(){
     }
 
     const handleReviewProgram = () => {
-        console.log(programId.id);
-        history.push('/Program/'+ programId.id);
+        if(confirm('Any unsaved information will be lost in transition. Do you still want to proceed?')){
+            console.log(program.id);
+            history.push('/Program/'+ program.id);
+        }
+        console.log(program.id);
+
     }
 
     useEffect (() => {
         if (numOfSessions > 0 && workoutGenre !== 0 && title != ''){
             setDisableSessionButton(false);
         }
+        console.log(program);
     }, [numOfSessions, workoutGenre])
 
     useEffect(()=>{
@@ -130,7 +133,7 @@ function CreateProgramForm(){
                         </button>
                     </div>
                     { createSession === true && <SessionsLoop numOfSessions={numOfSessions}/>}
-                    { createSession === true && <button onClick={() => handleReviewProgram()}>Review</button>}
+                    { program.id != undefined && <button onClick={() => handleReviewProgram()}>Review</button>}
                 </div>
             </div>
         </>
