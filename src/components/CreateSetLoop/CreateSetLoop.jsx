@@ -12,9 +12,6 @@ function createSetLoop(props){
         for(let i = 1; i <= props.numOfSets; i++){
             sets.push({
                 key: i, 
-                programId: props.programId,
-                sessionId: props.sessionId,
-                exerciseId: props.exerciseId,
                 setId: i
             })
         }
@@ -35,6 +32,7 @@ function createSetLoop(props){
                         programId={props.programId}
                         sessionId={props.sessionId}
                         exerciseId={props.exerciseId}
+                        exerciseType={props.exerciseType}
                         setId={set.setId}
                         submitProgram={props.submitProgram}
                     />

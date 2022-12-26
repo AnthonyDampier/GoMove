@@ -17,7 +17,7 @@ function* insertWorkoutProgram(action) {
     try {
         yield axios.post('/api/workoutProgram/EnterProgram', action.payload);
     } catch {
-        console.log('Program failed to be inserted in DB')
+        console.log('Program failed to be inserted in saga')
     }
 }
 
@@ -27,7 +27,15 @@ function* fetchCreatedProgram(action){
         // sets ID to be retrieved in store to continue creating sessions and exercises.
         yield put({type: 'SET_CREATED_PROGRAM', payload: response.data});
     } catch {
-        console.log('Program failed to be inserted in DB');
+        console.log('Program failed to be inserted in saga');
+    }
+}
+
+function* insertProgramSetRow(action){
+    try {
+        yield axios.post('/api/workoutProgram/insertProgramSet', action.payload);
+    } catch {
+        console.log('Set insertion failed in saga');
     }
 }
 
@@ -36,6 +44,7 @@ function* workoutProgramSaga() {
     yield takeEvery('FETCH_PROGRAMS', fetchWorkoutPrograms);
     yield takeEvery('INSERT_PROGRAM', insertWorkoutProgram);
     yield takeEvery('GET_CREATED_PROGRAM', fetchCreatedProgram);
+    yield takeEvery('INSERT_EXERCISE', insertProgramSetRow);
 }
 
 export default workoutProgramSaga;

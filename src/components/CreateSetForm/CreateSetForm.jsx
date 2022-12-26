@@ -6,11 +6,16 @@
 // setId={set.setId}
 // submitProgram={props.submitProgram}
 
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 function createSetForm(props){
+    const dispatch = useDispatch();
+
     const [reps, setReps] = useState(0);
     const [percentOfMax, setPercentOfMax] = useState(100);
+    const program = useSelector(store => store.createdWorkoutProgram)
 
     const updateReps = (event) => {
         let updateReps = event.target.value;
@@ -33,19 +38,11 @@ function createSetForm(props){
     }
 
     useEffect(()=> {
-        console.log(
-            'programId', props.programId,
-            'sessionId:', props.sessionId, 
-            'exerciseId: ', props.exerciseId,
-            'sets: ', props.setId,
-            'reps: ', reps,
-            'percentOfMax: ', percentOfMax, '%',
-            'SubmitProgram is: ', props.submitProgram,
-        );
         if (props.submitProgram === true && reps !== 0){
-                console.log('programId', props.programId,
+                console.log('programId', program.id,
                             'sessionId:', props.sessionId, 
                             'exerciseId: ', props.exerciseId,
+                            'exerciseType:', props.exerciseType,
                             'setId: ', props.setId,
                             'reps: ', reps,
                             'percentOfMax: ', percentOfMax, '%',
@@ -53,6 +50,20 @@ function createSetForm(props){
                             );
                 // TODO: Dispatch from here programID, sessionID, exerciseID, ExerciseType, Sets, Reps
                 // !! remember to divide percentOfMax by 100.
+
+                dispatch({
+                    type: 'INSERT_EXERCISE', 
+                    payload: {
+                        programId: program.id,
+                        sessionId: props.sessionId,
+                        exerciseId: props.exerciseId,
+                        exerciseType: props.exerciseType,
+                        setId: props.setId,
+                        reps: reps,
+                        percentageOfMax: percentOfMax/100,
+                    }
+                })
+
         }
     }, [props.submitProgram])
 

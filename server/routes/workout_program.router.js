@@ -60,4 +60,18 @@ router.post('/EnterProgram', (req, res) => {
     })
 });
 
+router.post('/insertProgramSet', (req, res) => {
+    console.log('in workout_program.router for post set');
+    console.log('req.body: ', req.body);
+    const queryText = `INSERT INTO "program_set" (program_id, session_id, exercise_id, exercise_type, set_id, reps, percent_of_max)
+    Values ($1, $2, $3, $4, $5, $6, $7);`;
+
+    pool.query(queryText, [req.body.programId, req.body.sessionId, req.body.exerciseId, req.body.exerciseType, req.body.setId, req.body.reps, req.body.percentageOfMax])
+    .then(() => {
+        console.log('Successfully posted set of; ', req.body);
+    })
+    .catch((error) => {
+        console.log('ERROR posting set: ', req.body);
+    })
+})
 module.exports = router;

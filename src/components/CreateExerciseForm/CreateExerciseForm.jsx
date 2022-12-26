@@ -125,6 +125,7 @@ function ExerciseForm(props){
                     programId={props.programId}
                     sessionId={props.sessionId}
                     exerciseId={props.exerciseId}
+                    exerciseType={exercise}
                     numOfSets={sets}
                     submitProgram={props.submitProgram}
                 />}
