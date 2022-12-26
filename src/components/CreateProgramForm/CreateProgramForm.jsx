@@ -15,8 +15,7 @@ function CreateProgramForm(){
     const [workoutGenre, setWorkoutType] = useState(0);
     const [numOfSessions, setNumOfSessions] = useState(0);
 
-    // TODO: props to session programId
-    const [programId, setProgramId] = useState(useSelector(store => store.createdWorkoutProgram) != undefined? useSelector(store => store.createdWorkoutProgram) : -1);
+    const [programId, setProgramId] = useState(useSelector(store => store.createdWorkoutProgram) !== undefined ? useSelector(store => store.createdWorkoutProgram) : -1);
 
     const [createSession, setCreateSession] = useState(false);
     const [disableSessionSubmit, setDisableSessionButton] = useState(true);
@@ -54,8 +53,8 @@ function CreateProgramForm(){
         console.log(
             'Program Title: ', title, 
             'workoutGenre: ', workoutGenre,
-            'Number of Sessions: ', numOfSessions);
-        // TODO yield dispatch ({type: CreateProgram})
+            'Number of Sessions: ', numOfSessions
+            );
         dispatch({type: 'INSERT_PROGRAM', payload: {title: title, workoutGenre: workoutGenre, numOfSessions: numOfSessions}});
 
         dispatch({type: 'GET_CREATED_PROGRAM'});
@@ -65,6 +64,7 @@ function CreateProgramForm(){
     }
 
     const handleReviewProgram = () => {
+        console.log(programId.id);
         history.push('/Program/'+ programId.id);
     }
 
@@ -130,7 +130,7 @@ function CreateProgramForm(){
                         </button>
                     </div>
                     { createSession === true && <SessionsLoop numOfSessions={numOfSessions}/>}
-                    { createSession === true && <button onClick={() => handleReviewProgram()}>Submit Program</button>}
+                    { createSession === true && <button onClick={() => handleReviewProgram()}>Review</button>}
                 </div>
             </div>
         </>
