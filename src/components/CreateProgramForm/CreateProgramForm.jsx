@@ -64,7 +64,10 @@ function CreateProgramForm(){
     const handleReviewProgram = () => {
         if(confirm('Any unsaved information will be lost in transition. Do you still want to proceed?')){
             console.log(program.id);
-            history.push('/Program/'+ program.id);
+            let id = program.id;
+            history.push({
+                pathname: '/ReviewProgram/'+id,
+            });
         }
         console.log(program.id);
 

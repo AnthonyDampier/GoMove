@@ -22,6 +22,8 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 
 // create program
 import CreateProgram from '../CreateProgram/CreateProgramPage.jsx';
+// review program from CreateProgram
+import ReviewProgram from '../ReviewProgram/ReviewProgram';
 
 import './App.css';
 
@@ -54,9 +56,9 @@ function App() {
 
           <Route
             // shows AboutPage at all times (logged in or not)
-            path="/ReviewProgram"
+            path="/ReviewProgram/:id"
           >
-            <Program />
+            <ReviewProgram />
           </Route>
 
           {/* Visiting localhost:3000/about will show the about page. */}
