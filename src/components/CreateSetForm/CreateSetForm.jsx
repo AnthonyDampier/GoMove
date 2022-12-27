@@ -73,6 +73,10 @@ function createSetForm(props){
         }
     }
 
+    useEffect(()=>{
+        dispatch({type: 'GET_CREATED_PROGRAM'});
+    }, [])
+
     return(
         <>
             <div  className={saved? "setSaved": ""}>

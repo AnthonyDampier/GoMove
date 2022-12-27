@@ -83,6 +83,7 @@ function CreateProgramForm(){
     useEffect(()=>{
         dispatch({type: 'FETCH_EXERCISE_TYPES'});
         dispatch({type: 'FETCH_WORKOUT_GENRES'});
+        dispatch({type: 'GET_CREATED_PROGRAM'});
     }, [])
 
     return(
