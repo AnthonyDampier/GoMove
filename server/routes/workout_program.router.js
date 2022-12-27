@@ -38,6 +38,25 @@ router.get('/retrieveProgramID', (req, res) => {
     })
 });
 
+router.get('/fetchById/:id', (req, res) => {
+    // GET route code here
+    console.log('in workout_program.router for fetch by ID');
+    console.log('params: ', req.params.id);
+    const queryText = `SELECT session_id, exercise_id, exercise_type, set_id, reps, percent_of_max FROM program_set 
+                    WHERE program_id = $1
+                    ORDER BY session_id, exercise_id, set_id;`;
+
+    pool.query(queryText, [req.params.id])
+    .then( (response) => {
+        console.log('Results:', response.rows);
+        res.send(response.rows);
+    })
+    .catch(() => {
+        console.log('ERROR: in workout_program.router');
+        res.sendStatus(500);
+    })
+});
+
 /**
  * POST route template
  */
