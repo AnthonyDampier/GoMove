@@ -10,7 +10,9 @@ function ReviewProgram(){
     const id = useParams();
     console.log('id',id);
     const programInfo = useSelector(store => store.createdWorkoutProgram);
+    console.log('program info', programInfo);
     const programInternal = useSelector(store => store.workoutsReducer);
+    console.log('program internal sessions', programInternal)
     const exerciseTypes = useSelector(store => store.exerciseType);
 
 
@@ -19,9 +21,16 @@ function ReviewProgram(){
         dispatch({type: 'GET_CREATED_PROGRAM'});
         dispatch({type: 'FETCH_WORKOUTS_BY_ID', payload: id});
         dispatch({type: 'FETCH_EXERCISE_TYPES'});
-    }, [])
+    }, [programInfo, programInternal, exerciseTypes])
 
-
+    const getExerciseType = (typeId) => {
+        for (let exercise of exerciseTypes){
+            if(exercise.id === typeId){
+                console.log(exercise);
+                return exercise.exercise_name;
+            }
+        }
+    }
 
 
     return(
@@ -38,12 +47,18 @@ function ReviewProgram(){
                 <h4>Set: set_id</h4>
                 <h5>Reps: reps</h5>
             </div>
+            <section>
+                {programInternal.map(session => {
+                    return (
+                        <div>
+                            <h1>{JSON.stringify(session)}</h1>
+                            <h2>session {JSON.stringify(session.session_id)}</h2>
+                            <h3>{JSON.stringify(getExerciseType(session.exerciseType))}</h3>
+                        </div>
+                    )
+                })}
+            </section>
             <h1>Program sessions</h1>
-            {programInternal.map((session) =>
-                <>
-                    <h1>{JSON.stringfy(session)}</h1>
-                </>
-            )}
         </>
     )
 }
