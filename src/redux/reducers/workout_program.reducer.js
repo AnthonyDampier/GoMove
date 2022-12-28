@@ -1,6 +1,8 @@
-const workoutProgramReducer = (state = {}, action) => {
+const workoutProgramReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_CREATED_PROGRAM':
+            return action.payload;
+        case 'SET_PROGRAM_INFO':
             return action.payload;
         default:
             return state;

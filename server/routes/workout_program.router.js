@@ -38,6 +38,24 @@ router.get('/retrieveProgramID', (req, res) => {
     })
 });
 
+router.get('/:id', (req, res) => {
+    // GET route code here
+    console.log('in workout_program.router', req.params);
+    const queryText = `Select * from "program" WHERE id = $1;`;
+
+    pool.query(queryText, [req.params.id])
+    .then( (response) => {
+        console.log('Results:', response.rows);
+        res.send(response.rows);
+    })
+    .catch(() => {
+        console.log('ERROR: in workout_program.router');
+        res.sendStatus(500);
+    })
+});
+
+
+
 router.get('/fetchById/:id', (req, res) => {
     // GET route code here
     console.log('in workout_program.router for fetch by ID');
