@@ -39,7 +39,7 @@ function* insertProgramSetRow(action){
     }
 }
 
-function* fetchProgramById(action){
+function* fetchWorkoutsByProgramId(action){
     try{
         const response = yield axios.get('/api/workoutProgram/fetchById/'+ action.payload.id);
 
@@ -49,13 +49,23 @@ function* fetchProgramById(action){
     }
 }
 
+function* fetchProgramInfoByProgramID(action){
+    try{
+        const response = yield axios.get('/api/workoutProgram/'+ action.payload.id)
+        yield put({type: 'SET_PROGRAM_INFO', payload: response.data[0]});
+    } catch {
+        console.log('Failed to get program by id');
+    }
+}
+
 function* workoutProgramSaga() {
     console.log('in program.saga');
     yield takeEvery('FETCH_PROGRAMS', fetchWorkoutPrograms);
-    yield takeEvery('FETCH_WORKOUTS_BY_ID', fetchProgramById);
+    yield takeEvery('FETCH_WORKOUTS_BY_ID', fetchWorkoutsByProgramId);
     yield takeEvery('INSERT_PROGRAM', insertWorkoutProgram);
     yield takeEvery('GET_CREATED_PROGRAM', fetchCreatedProgram);
     yield takeEvery('INSERT_EXERCISE', insertProgramSetRow);
+    yield takeEvery('GET_PROGRAM_BY_ID', fetchProgramInfoByProgramID);
 }
 
 export default workoutProgramSaga;
