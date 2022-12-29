@@ -1,5 +1,5 @@
-import { array } from "prop-types";
 import { useEffect, useState } from "react";
+import Session from "../ReviewSession/ReviewSession";
 
 function reviewSessions(props){
 
@@ -40,26 +40,15 @@ function reviewSessions(props){
 
     useEffect(() => {
         arrayOfSessionNumbers(numOfSessions);
-    }, [])
+    }, [props])
 
     return(
         <>  
-            <h1>{JSON.stringify(programInternal)}</h1>
-            <h1>{JSON.stringify(numOfSessions)}</h1>
-            {programInternal.map((item) => {
-                return(
-                <>
-                    <h2>Session: {item.session_id}</h2>
-                    {/* <h1>Session: {nextSession(item.session_id)}</h1> */}
-                    {/* {console.log(sessionNumber!=item.session_id)} */}
-                    <p>Exercise: {getExerciseType(item)}</p>
-                    <p>Set: {item.set_id} Rep: {item.reps} PRx: {item.percent_of_max*100}%</p>
-                </>
-                )
-            })}
-            {arrayLengthOfSessions.map((item, index) => {
+            <h1>Number of Sessions: {JSON.stringify(numOfSessions)}</h1>
+
+            {arrayLengthOfSessions.map((item) => {
                 // todo gets session exercises and produces exercises of session
-                return (<p>{item}</p>)
+                return(<Session selectedSessionId={item} programInternal={programInternal} exerciseTypes={exerciseTypes}/>)
             })}
         </>
     )
