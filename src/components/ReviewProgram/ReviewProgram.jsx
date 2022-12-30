@@ -49,9 +49,8 @@ function ReviewProgram(){
     return(
         <>  
             <h1>Program Review</h1>
-            <p>Program Id: </p>
             <h2>Program Title: {programInfo.program_title}</h2>
-            <p>{id.id}</p>
+            {/* <p>{id.id}</p> */}
             <h3>Workout Type: {getGenre(programInfo.program_genre)}</h3>
             {/* <p>{JSON.stringify(programInfo)}</p> */}
             {/* <h4>Program Internals:</h4> */}
