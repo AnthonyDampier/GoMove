@@ -5,7 +5,7 @@ import { put, takeEvery } from 'redux-saga/effects';
 function* fetchWorkoutPrograms() {
     try {
         const response = yield axios.get('/api/workoutProgram', action.payload );
-        console.log(response.data);
+        // console.log(response.data);
         yield put({ type: 'SET_PROGRAMS', payload: response.data});
 
     } catch (error) {
@@ -59,7 +59,7 @@ function* fetchProgramInfoByProgramID(action){
 }
 
 function* workoutProgramSaga() {
-    console.log('in program.saga');
+    // console.log('in program.saga');
     yield takeEvery('FETCH_PROGRAMS', fetchWorkoutPrograms);
     yield takeEvery('FETCH_WORKOUTS_BY_ID', fetchWorkoutsByProgramId);
     yield takeEvery('INSERT_PROGRAM', insertWorkoutProgram);

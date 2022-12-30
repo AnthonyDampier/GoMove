@@ -14,7 +14,7 @@ function* fetchWorkoutGenre() {
 }
 
 function* workoutGenreSaga() {
-    console.log('in workout_genre.saga');
+    // console.log('in workout_genre.saga');
     yield takeEvery('FETCH_WORKOUT_GENRES', fetchWorkoutGenre);
 }
 

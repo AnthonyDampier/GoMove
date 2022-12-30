@@ -14,7 +14,7 @@ import workoutProgram from './workout_program.saga';
 // the registration triggers a login
 // and login triggers setting the user
 export default function* rootSaga() {
-  console.log('In _root.saga');
+  // console.log('In _root.saga');
   yield all([
     loginSaga(), // login saga is now registered
     registrationSaga(),

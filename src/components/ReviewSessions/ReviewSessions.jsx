@@ -15,7 +15,7 @@ function reviewSessions(props){
             newArray.push(i);
         }
         setArray(newArray);
-        console.log('array session length:', arrayLengthOfSessions.length);
+        // console.log('array session length:', arrayLengthOfSessions.length);
     }
 
     useEffect(() => {

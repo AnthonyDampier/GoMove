@@ -8,7 +8,7 @@ import ReviewSet from "../ReviewSet/ReviewSet";
 
 function ReviewExercise(props){
     const id = useParams();
-    console.log('id',id);
+    // console.log('id',id);
     const [setIds, setSetIds] = useState([]);
 
     const getExerciseType = (exerciseId) => {

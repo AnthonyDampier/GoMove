@@ -10,11 +10,11 @@ function ReviewProgram(){
     const dispatch = useDispatch();
 
     const id = useParams();
-    console.log('id',id);
+    // console.log('id',id);
     const programInfo = useSelector(store => store.workoutPrograms);
-    console.log('program info', programInfo);
+    // console.log('program info', programInfo);
     const programInternal = useSelector(store => store.workoutsReducer);
-    console.log('program internal sessions', programInternal)
+    // console.log('program internal sessions', programInternal)
     const exerciseTypes = useSelector(store => store.exerciseType);
     const workoutGenre = useSelector(store => store.workoutGenre);
 
@@ -28,10 +28,10 @@ function ReviewProgram(){
     }, [])
 
     const getExerciseType = (session) => {
-        console.log('typeId:', session.exercise_type);
+        // console.log('typeId:', session.exercise_type);
         for (let exercise of exerciseTypes){
             if(exercise.id == session.exercise_type){
-                console.log(exercise);
+                // console.log(exercise);
                 return `${exercise.exercise_name}`;
             }
         }

@@ -15,7 +15,7 @@ function* fetchExerciseType() {
 }
 
 function* exerciseTypeSaga() {
-    console.log('in exercise_type.saga.js');
+    // console.log('in exercise_type.saga.js');
     yield takeEvery('FETCH_EXERCISE_TYPES', fetchExerciseType);
 }
 
