@@ -1,0 +1,17 @@
+.session {
+    border: 2px black solid;
+}
+
+.exercises {
+    border: 2px black solid;
+}
+
+.exercise {
+    border: 2px rgb(169, 83, 21) solid;
+    display: flex;
+    width: fit-content;
+}
+
+.set {
+    border: 2px black solid;
+}

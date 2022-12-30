@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { batch, useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import ReviewSessions from "../ReviewSessions/ReviewSessions"
+import '../ReviewProgram/ReviewProgram.css'
+import SessionsLoop from "../ReviewSessions/ReviewSessions"
 
 
 function ReviewProgram(){   
@@ -20,12 +21,10 @@ function ReviewProgram(){
 
     useEffect(() => {
         //TODO : Fetch all programs information and session by programID
-        batch(()=> {
             dispatch({type: 'FETCH_WORKOUTS_BY_ID', payload: id});
             dispatch({type: 'GET_PROGRAM_BY_ID', payload: id});
             dispatch({type: 'FETCH_EXERCISE_TYPES'});
             dispatch({type: 'FETCH_WORKOUT_GENRES'});
-        })
     }, [])
 
     const getExerciseType = (session) => {
@@ -50,21 +49,21 @@ function ReviewProgram(){
     return(
         <>  
             <h1>Program Review</h1>
-            <p>pProgram Id: {JSON.stringify(id)}</p>
             <h2>Program Title: {programInfo.program_title}</h2>
+            {/* <p>{id.id}</p> */}
             <h3>Workout Type: {getGenre(programInfo.program_genre)}</h3>
-            <p>{JSON.stringify(programInfo)}</p>
-            <h4>Program Internals:</h4>
-            <p>{JSON.stringify(programInternal)}</p>
-            <h4>Exercise Types</h4>
-            <p>{JSON.stringify(exerciseTypes)}</p>
+            {/* <p>{JSON.stringify(programInfo)}</p> */}
+            {/* <h4>Program Internals:</h4> */}
+            {/* <p>{JSON.stringify(programInternal)}</p> */}
+            {/* <h4>Exercise Types</h4> */}
+            {/* <p>{JSON.stringify(exerciseTypes)}</p> */}
             {/* <div>
                 <h2>Session : session_id</h2>
                 <h3>Exercise: exerciseType</h3>
                 <p>Set: set_id Reps: reps</p>
             </div> */}
 
-            <ReviewSessions 
+            <SessionsLoop
                 numOfSessions={programInfo.num_of_sessions} 
                 exerciseTypes={exerciseTypes} 
                 programInternal={programInternal}

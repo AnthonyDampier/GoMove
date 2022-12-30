@@ -37,8 +37,7 @@ function createSetLoop(props){
                         submitProgram={props.submitProgram}
                     />
                 )
-            })
-            }
+            })}
         </>
     )
 }
