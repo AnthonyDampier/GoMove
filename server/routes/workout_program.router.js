@@ -54,8 +54,6 @@ router.get('/:id', (req, res) => {
     })
 });
 
-
-
 router.get('/fetchById/:id', (req, res) => {
     // GET route code here
     console.log('in workout_program.router for fetch by ID');
@@ -74,6 +72,105 @@ router.get('/fetchById/:id', (req, res) => {
         res.sendStatus(500);
     })
 });
+
+router.get('/distinctExerciseIds/:programId/:sessionId', (req, res) => {
+    // GET route code here
+    console.log('in /distinctExerciseIds');
+    console.log('params: ', req.params);
+    const queryText = `SELECT distinct exercise_id FROM program_set
+        WHERE program_id = $1 AND session_id = $2;
+        `;
+
+    pool.query(queryText, [req.params.programId, req.params.sessionId])
+    .then( (response) => {
+        console.log('Results:', response.rows);
+        res.send(response.rows);
+    })
+    .catch(() => {
+        console.log('ERROR: in /distinctExerciseIds');
+        res.sendStatus(500);
+    })
+});
+
+router.get('/exerciseType/:programId/:sessionId/:exerciseId', (req, res) => {
+    // GET route code here
+    console.log('in /distinctExerciseIds');
+    console.log('params: ', req.params);
+    const queryText = `SELECT distinct exercise_name From exercise_types
+    JOIN program_set ON program_set.exercise_type = exercise_types.id
+    WHERE program_id=$1 AND session_id=$2 AND exercise_id=$3;
+    
+        `;
+
+    pool.query(queryText, [req.params.programId, req.params.sessionId, req.params.exerciseId])
+    .then( (response) => {
+        console.log('Results:', response.rows);
+        res.send(response.rows);
+    })
+    .catch(() => {
+        console.log('ERROR: in /distinctExerciseIds');
+        res.sendStatus(500);
+    })
+});
+
+router.get('/setIds/:programId/:sessionId/:exerciseId', (req, res) => {
+    // GET route code here
+    console.log('in /distinctExerciseIds');
+    console.log('params: ', req.params);
+    const queryText = `SELECT set_id FROM program_set
+    WHERE program_id=$1 AND session_id=$2 AND exercise_id=$3;
+        `;
+
+    pool.query(queryText, [req.params.programId, req.params.sessionId, req.params.exerciseId])
+    .then( (response) => {
+        console.log('Results:', response.rows);
+        res.send(response.rows);
+    })
+    .catch(() => {
+        console.log('ERROR: in /distinctExerciseIds');
+        res.sendStatus(500);
+    })
+});
+
+router.get('/setInfo/:programId/:sessionId/:exerciseId/:setId', (req, res) => {
+    // GET route code here
+    console.log('in /setInfo');
+    console.log('params: ', req.params);
+    const queryText = `SELECT reps, percent_of_max FROM program_set
+    WHERE program_id=$1 AND session_id=$2 AND exercise_id=$3 AND set_id=$4;
+        `;
+
+    pool.query(queryText, [req.params.programId, req.params.sessionId, req.params.exerciseId, req.params.setId])
+    .then( (response) => {
+        console.log('Results:', response.rows);
+        res.send(response.rows);
+    })
+    .catch(() => {
+        console.log('ERROR: in /distinctExerciseIds');
+        res.sendStatus(500);
+    })
+});
+
+router.get('/exercises/:exerciseId', (req, res) => {
+    // GET route code here
+    console.log('in workout_program.router for fetch by exerciseIDs');
+    console.log('params: ', req.body);
+    const queryText = `SELECT distinct exercise_id FROM program_set
+        WHERE program_id = 11 AND session_id = 1 AND exercise_id = 1;
+        `;
+
+    pool.query(queryText, [req.params.exerciseId])
+    .then( (response) => {
+        console.log('Results:', response.rows);
+        res.send(response.rows);
+    })
+    .catch(() => {
+        console.log('ERROR: in workout_program.router');
+        res.sendStatus(500);
+    })
+});
+
+
 
 /**
  * POST route template

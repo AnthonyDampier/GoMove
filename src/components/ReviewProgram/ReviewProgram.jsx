@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { batch, useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import '../ReviewProgram/ReviewProgram.css'
 import SessionsLoop from "../ReviewSessions/ReviewSessions"
 
 
