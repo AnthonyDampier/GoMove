@@ -21,12 +21,10 @@ function ReviewProgram(){
 
     useEffect(() => {
         //TODO : Fetch all programs information and session by programID
-        batch(()=> {
             dispatch({type: 'FETCH_WORKOUTS_BY_ID', payload: id});
             dispatch({type: 'GET_PROGRAM_BY_ID', payload: id});
             dispatch({type: 'FETCH_EXERCISE_TYPES'});
             dispatch({type: 'FETCH_WORKOUT_GENRES'});
-        })
     }, [])
 
     const getExerciseType = (session) => {
