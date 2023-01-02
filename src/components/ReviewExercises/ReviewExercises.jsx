@@ -17,6 +17,9 @@ function ReviewExercises(props){
             {/* <h1>Exercise Id: {JSON.stringify(props.exerciseId)}</h1> */}
             <h2>Exercise Type: {exerciseType}</h2>
             <ExerciseLoop programId={props.programId} sessionId={props.sessionId} exerciseId={props.exerciseId}/>
+            <div>
+                <button>Save / EDIT</button>
+            </div>
         </div>
     )
 }
