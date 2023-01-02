@@ -1,11 +1,15 @@
 import { useEffect, useState} from "react";
 import ExerciseLoop from "../ReviewExercise/ReviewExercise";
 import axios from "axios";
+import ExerciseTypeOptions from "../ExerciseTypeOptions/ExerciseTypeOptions";
 
 function ReviewExercises(props){
-    const [exerciseType, setExerciseType] = useState();
+    const [exerciseTypeId, setExerciseType] = useState(props.exerciseTypeId);
     const editState= props.editState;
 
+    const changeExercise = (workoutType) => {
+        setExerciseType(workoutType);
+    }
 
     useEffect(() => {
         // axios.get('/api/workoutProgram/exerciseType/'+props.programId+'/'+props.sessionId+'/'+props.exerciseId).then(response =>{ setExerciseType(response.data[0].exercise_name)}).catch(error => console.log(error));
@@ -15,9 +19,15 @@ function ReviewExercises(props){
 
     return(
         <div className="exercises" >  
-            <h1>Exercise Id: {JSON.stringify(props.exercise_name)}</h1>
-            <h2>Exercise Type: {props.exerciseType}</h2>
-            <ExerciseLoop programId={props.programId} sessionId={props.sessionId} exerciseId={props.exerciseId} editState={props.editState}/>
+            <h1>Exercise Id: {JSON.stringify(exerciseTypeId)}</h1>
+            <h2>Exercise Type: {!props.editState ? props.exerciseType : <select onChange={(event) => changeExercise(event.target.value)}><ExerciseTypeOptions/></select>}</h2>
+            <ExerciseLoop 
+                programId={props.programId} 
+                sessionId={props.sessionId} 
+                exerciseId={props.exerciseId} 
+                exerciseTypeId={exerciseTypeId} 
+                editState={props.editState}
+            />
         </div>
     )
 }

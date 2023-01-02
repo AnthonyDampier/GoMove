@@ -31,7 +31,17 @@ function ReviewExercise(props){
             {/* <h3>Exercise: {getExerciseType(exercise.exercise_type)}</h3> */}
             {
                 setInfo.map((set,index) => {
-                    return(<ReviewSet programId={props.programId} sessionId={props.sessionId} exerciseId={props.exerciseId} setId={set.set_id} reps={set.reps} percentOfMax={set.percent_of_max} key={index}/>)
+                    return(<ReviewSet 
+                        editState={props.editState}
+                        programId={props.programId} 
+                        sessionId={props.sessionId} 
+                        exerciseId={props.exerciseId}
+                        exerciseTypeId={props.exerciseTypeId} 
+                        setId={set.set_id} 
+                        reps={set.reps} 
+                        percentOfMax={set.percent_of_max} 
+                        key={index}
+                    />)
                     // return(<h4>{JSON.stringify(set.set_id)}</h4>)
                 })
             }

@@ -103,7 +103,9 @@ router.get('/distinctExerciseIds/:programId/:sessionId', (req, res) => {
     // GET route code here
     console.log('in /distinctExerciseIds');
     console.log('params: ', req.params);
-    const queryText = `SELECT distinct exercise_id, "exercise_types".exercise_name
+    const queryText = `SELECT distinct exercise_id, 
+        "exercise_types".exercise_name, 
+        exercise_type as exercise_type_id
         FROM program_set
         JOIN "exercise_types" ON "exercise_types".id = 
         program_set.exercise_type
