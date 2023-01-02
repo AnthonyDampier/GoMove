@@ -4,17 +4,18 @@ import axios from 'axios';
 import Exercise from "../ReviewExercises/ReviewExercises";
 
 function ReviewSession(props){
-    const programInternal = props.programInternal;
+    const id = useParams();
     const selectedSessionId = props.selectedSessionId;
     const exerciseTypes = props.exerciseTypes;
     const [exerciseIds, setExerciseIds] = useState([]);
-    let sessionArray = [];
+    const [editState, setEdit] = useState(false);
 
-    const id = useParams();
+    const handleEdit = () => {
+        setEdit(!editState);
+    }
 
     useEffect(() => {
-        // programInternal = props.programInternal;
-        // selectedSessionId = props.selectedSessionId;
+
     }, [props]);
 
     useEffect(() => {
@@ -24,11 +25,12 @@ function ReviewSession(props){
     return (
         <div className="session">  
             <h1>Session: {selectedSessionId}</h1>
+            <button onClick={() => handleEdit()}>{editState ? 'save': 'edit'}</button>
             {/* <h2>{JSON.stringify(id.id)}</h2> */}
-            {/* <h3>{JSON.stringify(exerciseIds)}</h3> */}
+            <h3>{JSON.stringify(exerciseIds)}</h3>
             {exerciseIds.map((item, index) => {
                     return (
-                        <Exercise programId={id.id} sessionId={selectedSessionId} exerciseId={item.exercise_id} exerciseTypes={exerciseTypes} key={index}/>
+                        <Exercise programId={id.id} sessionId={selectedSessionId} exerciseId={item.exercise_id} exerciseType={item.exercise_name} key={index} editState={editState}/>
                     )
             })}
         </div>

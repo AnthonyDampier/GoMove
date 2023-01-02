@@ -103,7 +103,10 @@ router.get('/distinctExerciseIds/:programId/:sessionId', (req, res) => {
     // GET route code here
     console.log('in /distinctExerciseIds');
     console.log('params: ', req.params);
-    const queryText = `SELECT distinct exercise_id FROM program_set
+    const queryText = `SELECT distinct exercise_id, "exercise_types".exercise_name
+        FROM program_set
+        JOIN "exercise_types" ON "exercise_types".id = 
+        program_set.exercise_type
         WHERE program_id = $1 AND session_id = $2;
         `;
 
@@ -145,7 +148,7 @@ router.get('/setIds/:programId/:sessionId/:exerciseId', (req, res) => {
     // GET route code here
     console.log('in /distinctExerciseIds');
     console.log('params: ', req.params);
-    const queryText = `SELECT set_id FROM program_set
+    const queryText = `SELECT set_id, reps, percent_of_max FROM program_set
     WHERE program_id=$1 AND session_id=$2 AND exercise_id=$3;
         `;
 
