@@ -2,6 +2,32 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
+// get 10 programs from database and delivers to ListOFTenProgram
+router.get('/TenPrograms', (req, res) => {
+    // GET route code here
+    console.log('in /TenPrograms');
+    const queryText = `SELECT 
+        program.id,
+        program.program_title, 
+        "user".username as author,
+        "workout_genre".genre  as genre
+        FROM program
+        JOIN "user" ON "user".id = program.author_user_id
+        JOIN "workout_genre" ON "workout_genre".id = program.program_genre
+        LIMIT 10;`;
+
+    pool.query(queryText)
+    .then( (response) => {
+        console.log('Results:', response.rows);
+        res.send(response.rows);
+    })
+    .catch((error) => {
+        console.log('ERROR: in /TemPrograms', error);
+
+        res.sendStatus(500);
+    })
+});
+
 router.get('/', (req, res) => {
   // GET route code here
     console.log('in workout_program.router');
@@ -91,6 +117,8 @@ router.get('/distinctExerciseIds/:programId/:sessionId', (req, res) => {
         res.sendStatus(500);
     })
 });
+
+
 
 router.get('/exerciseType/:programId/:sessionId/:exerciseId', (req, res) => {
     // GET route code here
