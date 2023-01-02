@@ -203,8 +203,6 @@ router.get('/exercises/:exerciseId', (req, res) => {
     })
 });
 
-
-
 /**
  * POST route template
  */
@@ -239,6 +237,33 @@ router.post('/insertProgramSet', (req, res) => {
     })
     .catch((error) => {
         console.log('ERROR posting set: ', req.body);
+    })
+})
+
+// updated set from review program
+router.put('/updateSet/:programId/:sessionId/:exerciseId/:setId' , (req,res) => {
+    console.log('in set update');
+    console.log('body: ', req.body);
+    console.log('params:', req.params);
+    const queryText =`
+    UPDATE program_set 
+        SET reps = $1, percent_of_max=$2
+        WHERE program_id = $3 AND session_id = $4 AND exercise_id = $5 AND set_id = $6;
+    `;
+
+    pool.query(queryText, [
+        req.body.rep, 
+        Number(req.body.percentOfMax),
+        req.params.programId,
+        req.params.sessionId,
+        req.params.exerciseId,
+        req.params.setId
+    ])
+    .then(() => {
+        console.log('Successfully updated set');
+    })
+    .catch((error) => {
+        console.log('ERROR updating set: ', error);
     })
 })
 module.exports = router;

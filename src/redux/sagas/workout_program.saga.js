@@ -58,6 +58,14 @@ function* fetchProgramInfoByProgramID(action){
     }
 }
 
+function* updateSet(action){
+    try{
+        axios.put('/api/workoutProgram/updateSet/'+action.payload.programId+'/'+action.payload.sessionId+'/'+action.payload.exerciseId+'/'+action.payload.setId, {rep: action.payload.rep, percentOfMax: action.payload.percentOfMax})
+    } catch {
+        console.log('Failed to update set');
+    }
+}
+
 function* workoutProgramSaga() {
     // console.log('in program.saga');
     yield takeEvery('FETCH_PROGRAMS', fetchWorkoutPrograms);
@@ -66,6 +74,7 @@ function* workoutProgramSaga() {
     yield takeEvery('GET_CREATED_PROGRAM', fetchCreatedProgram);
     yield takeEvery('INSERT_EXERCISE', insertProgramSetRow);
     yield takeEvery('GET_PROGRAM_BY_ID', fetchProgramInfoByProgramID);
+    yield takeEvery('UPDATE_SET', updateSet);
 }
 
 export default workoutProgramSaga;
