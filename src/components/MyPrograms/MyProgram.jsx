@@ -18,8 +18,8 @@ function MyPrograms(){
         <>
             <h1>{user.username}'s Workout Programs</h1>
             <ul>
-                {MyPrograms.map(program => {
-                    return <li>{JSON.stringify(program)}</li>
+                {MyPrograms.map((program, index) => {
+                    return <li key={index} onClick={() => reviewProgram(program.id)}>{JSON.stringify(program)}</li>
                 })}
             </ul>
         </>

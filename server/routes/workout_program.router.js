@@ -29,7 +29,7 @@ router.get('/TenPrograms', (req, res) => {
     })
 });
 
-router.get('/userProgram/', (req, res) => {
+router.get('/userPrograms/', (req, res) => {
     // GET route code here
     console.log('in /TenPrograms');
     console.log('Req.user.id', req.user.id);
@@ -42,18 +42,17 @@ router.get('/userProgram/', (req, res) => {
         JOIN "user" ON "user".id = program.author_user_id
         JOIN "workout_genre" ON "workout_genre".id = program.program_genre
         WHERE "user".id = $1
-        LIMIT 10;`;
+        ;`;
 
-    // pool.query(queryText, [req.user.id])
-    // .then( (response) => {
-    //     console.log('Results:', response.rows);
-    //     res.send(response.rows);
-    // })
-    // .catch((error) => {
-    //     console.log('ERROR: in /TemPrograms', error);
-
-    //     res.sendStatus(500);
-    // })
+    pool.query(queryText, [req.user.id])
+    .then( (response) => {
+        console.log('Results:', response.rows);
+        res.send(response.rows);
+    })
+    .catch((error) => {
+        console.log('ERROR: in /TemPrograms', error);
+        res.sendStatus(500);
+    })
 });
 
 
@@ -93,10 +92,10 @@ router.get('/retrieveProgramID', (req, res) => {
     })
 });
 
-router.get('/:id', (req, res) => {
+router.get('/byId/:id', (req, res) => {
     // GET route code here
     console.log('in workout_program.router', req.params);
-    const queryText = `Select * from "program" WHERE id = $1;`;
+    const queryText = `Select * from "program" WHERE id = $1 Limit 1;`;
 
     pool.query(queryText, [req.params.id])
     .then( (response) => {
