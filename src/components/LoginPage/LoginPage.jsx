@@ -1,4 +1,5 @@
 import React from 'react';
+import '../LoginPage/LoginPage.css';
 import LoginForm from '../LoginForm/LoginForm';
 import { useHistory } from 'react-router-dom';
 
@@ -6,7 +7,7 @@ function LoginPage() {
   const history = useHistory();
 
   return (
-    <div>
+    <div id="login-page">
       <LoginForm />
 
       <center>
@@ -17,7 +18,7 @@ function LoginPage() {
             history.push('/registration');
           }}
         >
-          Register
+          Sign Up
         </button>
       </center>
     </div>

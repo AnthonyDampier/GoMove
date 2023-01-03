@@ -32,31 +32,35 @@ function LoginForm() {
           {errors.loginMessage}
         </h3>
       )}
+      <center>
       <div>
         <label htmlFor="username">
-          Username:
+          {/* Username: */}
           <input
             type="text"
             name="username"
             required
             value={username}
+            placeholder="username"
             onChange={(event) => setUsername(event.target.value)}
           />
         </label>
       </div>
       <div>
         <label htmlFor="password">
-          Password:
+          {/* Password: */}
           <input
             type="password"
             name="password"
             required
             value={password}
+            placeholder="password"
             onChange={(event) => setPassword(event.target.value)}
           />
         </label>
       </div>
-      <div>
+      </center>
+      <div id="login-submit-btn">
         <input className="btn" type="submit" name="submit" value="Log In" />
       </div>
     </form>
