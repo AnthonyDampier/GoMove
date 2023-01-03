@@ -17,9 +17,9 @@ function UserPage() {
       {/* <p>Your ID is: {user.id}</p> */}
       <div id="section" className="user-page">
           <ListOfTenPrograms/>
-        <div id="container" className="your-program-performance">
-          <YourTopPrograms/>
-        </div>
+          <div id="container" className="your-program-performance">
+            <YourTopPrograms/>
+          </div>
       </div>
       {/* <LogOutButton className="btn" /> */}
     </div>

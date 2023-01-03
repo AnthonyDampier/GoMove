@@ -1,12 +1,13 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
 import {useDispatch, useSelector } from "react-redux";
+import { useParams, useHistory } from "react-router-dom";
 import '../ReviewProgram/ReviewProgram.css'
 import SessionsLoop from "../ReviewSessions/ReviewSessions"
 
 
 function ReviewProgram(){   
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const id = useParams();
     // console.log('id',id);
@@ -50,6 +51,7 @@ function ReviewProgram(){
         if (confirm('Do you want to delete this program?')){
             console.log('Deleted program: ', id);
             dispatchDeletePost(id);
+            history.push('/');
         } else {
             console.log('Delete Canceled');
         }
@@ -58,8 +60,9 @@ function ReviewProgram(){
     const dispatchDeletePost = () => {
         dispatch({
             type: 'DELETE_PROGRAM',
-            payload: {programId: id}
+            payload: {programId: id.id}
         })
+        
     }
 
 

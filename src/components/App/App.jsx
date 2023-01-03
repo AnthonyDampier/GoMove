@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import MyPrograms from '../MyPrograms/MyProgram';
 
 // create program
 import CreateProgram from '../CreateProgram/CreateProgramPage.jsx';
@@ -52,6 +53,13 @@ function App() {
             path="/CreateProgram"
           >
             <CreateProgram />
+          </Route>
+
+          <Route
+            // displays form for creating an new program
+            path="/MyPrograms"
+          >
+            <MyPrograms />
           </Route>
 
           <Route

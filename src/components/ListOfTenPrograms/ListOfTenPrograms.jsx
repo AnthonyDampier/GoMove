@@ -14,7 +14,7 @@ function ListOfTenPrograms(){
         }).catch( error => {
             console.log('ERROR in 10 programs get: ',error);
         })
-    })
+    }, []);
 
 
     return(
