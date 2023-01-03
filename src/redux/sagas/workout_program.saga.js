@@ -60,7 +60,7 @@ function* fetchProgramInfoByProgramID(action){
 
 function* updateSet(action){
     try{
-        axios.put('/api/workoutProgram/updateSet/'+action.payload.programId+'/'+action.payload.sessionId+'/'+action.payload.exerciseId+'/'+action.payload.setId, 
+        yield axios.put('/api/workoutProgram/updateSet/'+action.payload.programId+'/'+action.payload.sessionId+'/'+action.payload.exerciseId+'/'+action.payload.setId, 
         {rep: action.payload.rep, percentOfMax: action.payload.percentOfMax})
     } catch {
         console.log('Failed to update set');
@@ -69,10 +69,18 @@ function* updateSet(action){
 
 function* updateExerciseType(action){
     try{
-        axios.put('/api/workoutProgram/updateExerciseType/'+action.payload.programId+'/'+action.payload.sessionId+'/'+action.payload.exerciseId, 
+        yield axios.put('/api/workoutProgram/updateExerciseType/'+action.payload.programId+'/'+action.payload.sessionId+'/'+action.payload.exerciseId, 
         {exerciseTypeId: action.payload.exerciseTypeId})
     } catch {
         console.log('Error in updateExerciseType');
+    }
+}
+
+function* deleteWorkoutProgram(action){
+    try{
+        yield axios.delete('/api/workoutProgram/deleteProgram/'+action.payload.programId);
+    } catch {
+        console.log('Error in deleteWorkoutProgram');
     }
 }
 
@@ -86,6 +94,7 @@ function* workoutProgramSaga() {
     yield takeEvery('GET_PROGRAM_BY_ID', fetchProgramInfoByProgramID);
     yield takeEvery('UPDATE_SET', updateSet);
     yield takeEvery('UPDATE_EXERCISE_TYPE', updateExerciseType);
+    yield takeEvery('DELETE_PROGRAM', deleteWorkoutProgram);
 }
 
 export default workoutProgramSaga;

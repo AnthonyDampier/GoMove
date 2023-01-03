@@ -1,3 +1,4 @@
+const { response } = require('express');
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
@@ -27,6 +28,34 @@ router.get('/TenPrograms', (req, res) => {
         res.sendStatus(500);
     })
 });
+
+router.get('/userProgram/', (req, res) => {
+    // GET route code here
+    console.log('in /TenPrograms');
+    console.log('Req.user.id', req.user.id);
+    const queryText = `SELECT 
+        program.id,
+        program.program_title, 
+        "user".username as author,
+        "workout_genre".genre  as genre
+        FROM program
+        JOIN "user" ON "user".id = program.author_user_id
+        JOIN "workout_genre" ON "workout_genre".id = program.program_genre
+        WHERE "user".id = $1
+        LIMIT 10;`;
+
+    // pool.query(queryText, [req.user.id])
+    // .then( (response) => {
+    //     console.log('Results:', response.rows);
+    //     res.send(response.rows);
+    // })
+    // .catch((error) => {
+    //     console.log('ERROR: in /TemPrograms', error);
+
+    //     res.sendStatus(500);
+    // })
+});
+
 
 router.get('/', (req, res) => {
   // GET route code here
@@ -59,7 +88,7 @@ router.get('/retrieveProgramID', (req, res) => {
         res.send(response.rows);
     })
     .catch(() => {
-        console.log('ERROR: in workout_program.router');
+        console.log('ERROR: in workout_program.router /retrieveProgramId');
         res.sendStatus(500);
     })
 });
@@ -75,7 +104,7 @@ router.get('/:id', (req, res) => {
         res.send(response.rows);
     })
     .catch(() => {
-        console.log('ERROR: in workout_program.router');
+        console.log('ERROR: in workout_program.router /:id');
         res.sendStatus(500);
     })
 });
@@ -122,8 +151,6 @@ router.get('/distinctExerciseIds/:programId/:sessionId', (req, res) => {
         res.sendStatus(500);
     })
 });
-
-
 
 router.get('/exerciseType/:programId/:sessionId/:exerciseId', (req, res) => {
     // GET route code here
@@ -219,9 +246,13 @@ router.post('/EnterProgram', (req, res) => {
     pool.query(queryText, [req.body.title, req.user.id, req.body.workoutGenre, req.body.numOfSessions])
     .then(() => {
         console.log('Successful post of: ', req.body.title, ' by ', req.user.id);
+        res.sendStatus(200);
+
     })
     .catch(error => {
         console.log('ERROR posting program entry: ', error);
+        res.sendStatus(500);
+
     })
 });
 
@@ -234,9 +265,13 @@ router.post('/insertProgramSet', (req, res) => {
     pool.query(queryText, [req.body.programId, req.body.sessionId, req.body.exerciseId, req.body.exerciseType, req.body.setId, req.body.reps, req.body.percentageOfMax])
     .then(() => {
         console.log('Successfully posted set of; ', req.body);
+        res.sendStatus(200);
+
     })
     .catch((error) => {
         console.log('ERROR posting set: ', req.body);
+        res.sendStatus(500);
+
     })
 })
 
@@ -261,9 +296,12 @@ router.put('/updateSet/:programId/:sessionId/:exerciseId/:setId' , (req,res) => 
     ])
     .then(() => {
         console.log('Successfully updated set');
+        res.sendStatus(200);
+
     })
     .catch((error) => {
         console.log('ERROR updating set: ', error);
+        res.sendStatus(500);
     })
 })
 
@@ -285,10 +323,51 @@ router.put('/updateExerciseType/:programId/:sessionId/:exerciseId' , (req,res) =
     ])
     .then(() => {
         console.log('Successfully updated exercise type');
+        res.sendStatus(200);
     })
     .catch((error) => {
         console.log('ERROR updating set: ', error);
+        res.sendStatus(500);
+
     })
 })
 
+router.delete('/deleteProgram/:programId', (req, res) => {
+    console.log('in deleteProgram by id');
+    console.log('body: ', req.body);
+    console.log('params: ', req.params);
+    console.log('userId: ', req.user.id);
+    const queryText = `
+        DELETE FROM "program" 
+        WHERE program."id" = $1 AND program."author_user_id" = $2;
+    `
+
+    pool.query(queryText, [
+        req.params.programId,
+        req.user.id
+    ])
+    .then((response) => {
+        console.log('Successful delete from program');
+        const queryText =`
+            DELETE FROM program_set
+            WHERE program_id = $1;
+        `
+
+        pool.query(queryText, [
+            req.params.programId
+        ])
+        .then ((response) => {
+            console.log('Successful delete from program_set');
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('Failed to delete program_set', error);
+            res.sendStatus(500);
+        })
+    })
+    .catch((error) => {
+        console.lof('Failed to delete program', error);
+        res.sendStatus(500);
+    })
+})
 module.exports = router;
