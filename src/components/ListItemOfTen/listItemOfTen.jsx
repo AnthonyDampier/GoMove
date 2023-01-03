@@ -9,11 +9,23 @@ function ListItemOfTen(props){
     }
 
     return(
-        <li onClick={() => reviewProgram(props.program.id)} key={props.program.id}>
-                {/* program title */}<b>{props.program.program_title}</b>
-                {/* Program Author */} - {props.program.author}
-                {/* program Genre */} - {props.program.genre}
-        </li>
+        <tr key={props.program.id}>
+                {/* program title */}
+                <td>
+                    {props.program.program_title}
+                </td>
+                {/* Program Author */}
+                <td>
+                    {props.program.author}
+                </td>
+                {/* program Genre */}
+                <td>
+                    {props.program.genre}
+                </td>
+                <td>
+                    <button onClick={() => reviewProgram(props.program.id)}>View</button>
+                </td>
+        </tr>
     )
 }
 

@@ -3,10 +3,11 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector} from 'react-redux';
 //import jsx
 import YourTopPrograms from '../YourTopPrograms/YourTopPrograms';
-import ListOfTenPrograms from '../ListOfTenPrograms/ListOfTenPrograms';
+import ListOfTenPrograms from '../ListOfPrograms/ListOfPrograms';
 
 //import css
 import './UserPage.css'
+import CreateProgramPage from '../CreateProgram/CreateProgramPage';
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -22,6 +23,9 @@ function UserPage() {
           </div>
       </div>
       {/* <LogOutButton className="btn" /> */}
+      <div>
+        <CreateProgramPage/>
+      </div>
     </div>
   );
 }
