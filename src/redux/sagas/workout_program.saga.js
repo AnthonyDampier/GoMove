@@ -61,7 +61,7 @@ function* fetchProgramInfoByProgramID(action){
 function* updateSet(action){
     try{
         axios.put('/api/workoutProgram/updateSet/'+action.payload.programId+'/'+action.payload.sessionId+'/'+action.payload.exerciseId+'/'+action.payload.setId, 
-        {rep: action.payload.rep, percentOfMax: action.payload.percentOfMax, exerciseTypeId: exerciseTypeId})
+        {rep: action.payload.rep, percentOfMax: action.payload.percentOfMax})
     } catch {
         console.log('Failed to update set');
     }

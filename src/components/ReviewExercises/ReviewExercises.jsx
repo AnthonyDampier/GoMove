@@ -15,9 +15,7 @@ function ReviewExercises(props){
 
     const changeExercise = (event) => {
         console.log('exercise Id: ', event.target.value);
-        console.log('exercise name: ', exerciseTypes[Number(exerciseTypeId)].exercise_name);
         setExerciseTypeId(event.target.value);
-        setExerciseName(exerciseTypes[Number(exerciseTypeId)].exercise_name);
         // setExerciseName(event.target.innerText);
     }
 
@@ -47,7 +45,7 @@ function ReviewExercises(props){
                 exerciseName
                 : 
                 <select 
-                    value={props.exerciseType} 
+                    value={exerciseTypeId} 
                     onChange={(event) => changeExercise(event)}
                     >
                         <ExerciseTypeOptions />

@@ -44,7 +44,7 @@ function ReviewSet(props){
                     programId: props.programId,
                     sessionId: props.sessionId,
                     exerciseId: props.exerciseId,
-                    exerciseTypeId: props.exerciseTypeId,
+                    // exerciseTypeId: props.exerciseTypeId,
                     setId: props.setId,
                     rep: reps,
                     percentOfMax: Number(percentage)
