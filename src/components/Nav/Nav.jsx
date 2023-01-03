@@ -36,7 +36,7 @@ function Nav() {
             {/* <Link className="navLink" to="/info">
               Info Page
             </Link> */}
-            <LogOutButton className="navLink" />
+            <LogOutButton className="navLink" to="/login"/>
           </>
         )}
         {/* <Link className="navLink" to="/about">
