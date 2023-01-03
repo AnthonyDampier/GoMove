@@ -80,8 +80,8 @@ Button
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #008183;
-  color: #008183;
+  /* border-color: #008183; */
+  color: orange;
 }
 
 /* --------------------------------------------------------------------------------
@@ -112,8 +112,8 @@ Form Treatment
   margin-top: 18vh;
   /* background-color: #efefef; */
   border-radius: 3px;
-  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
-  backdrop-filter: blur(2px);
+  /* box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px); */
   contain: content;
 }
 
@@ -165,8 +165,57 @@ Form Treatment
   margin-top: 10px;
   margin-right: -420px;
   color: orange;
+  border: none;
+
 }
 
 input::-webkit-input-placeholder{
   color: black;
+}
+
+/* registration page */
+
+.formPanel div#register-submit-btn input{
+  height: 40px;
+  width: 468px;
+  margin-left: -0.2px;
+  padding-top: 2px;
+  padding-bottom: 3px;
+  text-align: center;
+  background: #FFA500;
+  border: 2px solid #FFA500;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(2px);
+  /* Note: backdrop-filter has minimal browser support */
+  border-radius: 5px;
+  color: black;
+}
+
+.formPanel div#register-submit-btn input{
+  height: 40px;
+  width: 468px;
+  margin-left: -0.2px;
+  padding-top: 2px;
+  padding-bottom: 3px;
+  text-align: center;
+  background: #FFA500;
+  border: 2px solid #FFA500;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(2px);
+  /* Note: backdrop-filter has minimal browser support */
+  border-radius: 5px;
+  color: black;
+}
+
+#register-page button {
+  margin-top: 10px;
+  margin-right: -420px;
+  color: orange;
+  border: none;
+}
+
+#register-page button:hover {
+  font-size: larger;
+  color: orange;
+
 }
