@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { batch, useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector } from "react-redux";
 import '../ReviewProgram/ReviewProgram.css'
 import SessionsLoop from "../ReviewSessions/ReviewSessions"
 
@@ -17,6 +16,7 @@ function ReviewProgram(){
     // console.log('program internal sessions', programInternal)
     const exerciseTypes = useSelector(store => store.exerciseType);
     const workoutGenre = useSelector(store => store.workoutGenre);
+    const userId = useSelector(store => store.user.id);
 
 
     useEffect(() => {
@@ -45,6 +45,23 @@ function ReviewProgram(){
         }
     }
 
+    const handleDelete = (id) => {
+        console.log('Request for delete program id: ', id);
+        if (confirm('Do you want to delete this program?')){
+            console.log('Deleted program: ', id);
+            dispatchDeletePost(id);
+        } else {
+            console.log('Delete Canceled');
+        }
+    }
+
+    const dispatchDeletePost = () => {
+        dispatch({
+            type: 'DELETE_PROGRAM',
+            payload: {programId: id}
+        })
+    }
+
 
     return(
         <>  
@@ -62,7 +79,7 @@ function ReviewProgram(){
                 <h3>Exercise: exerciseType</h3>
                 <p>Set: set_id Reps: reps</p>
             </div> */}
-
+            {userId == programInfo.author_user_id && <button onClick={() => handleDelete(id.id)}>DELETE</button>}
             <SessionsLoop
                 numOfSessions={programInfo.num_of_sessions} 
                 exerciseTypes={exerciseTypes} 
