@@ -42,7 +42,7 @@ function ReviewExercises(props){
         <div className="exercises" >  
             <h1>Exercise Id: {JSON.stringify(exerciseTypeId)}</h1>
             <h2>{!props.editState ? 
-                exerciseName
+                exerciseTypes[exerciseTypeId-1].exercise_name
                 : 
                 <select 
                     value={exerciseTypeId} 
