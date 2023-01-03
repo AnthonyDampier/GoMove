@@ -266,4 +266,29 @@ router.put('/updateSet/:programId/:sessionId/:exerciseId/:setId' , (req,res) => 
         console.log('ERROR updating set: ', error);
     })
 })
+
+router.put('/updateExerciseType/:programId/:sessionId/:exerciseId' , (req,res) => {
+    console.log('in set update');
+    console.log('body: ', req.body);
+    console.log('params:', req.params);
+    const queryText =`
+    UPDATE program_set 
+        SET exercise_type = $1
+        WHERE program_id = $2 AND session_id = $3 AND exercise_id = $4;
+    `;
+
+    pool.query(queryText, [
+        req.body.exerciseTypeId,
+        req.params.programId,
+        req.params.sessionId,
+        req.params.exerciseId,
+    ])
+    .then(() => {
+        console.log('Successfully updated exercise type');
+    })
+    .catch((error) => {
+        console.log('ERROR updating set: ', error);
+    })
+})
+
 module.exports = router;

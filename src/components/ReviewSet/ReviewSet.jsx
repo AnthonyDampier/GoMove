@@ -44,8 +44,8 @@ function ReviewSet(props){
                     programId: props.programId,
                     sessionId: props.sessionId,
                     exerciseId: props.exerciseId,
+                    exerciseTypeId: props.exerciseTypeId,
                     setId: props.setId,
-                    exerciseType: props.exerciseTypeId,
                     rep: reps,
                     percentOfMax: Number(percentage)
                 }
@@ -58,7 +58,7 @@ function ReviewSet(props){
 
     return(
         <div className="set" key={props.index}>
-            <h4>{JSON.stringify(props)}</h4>
+            {/* <h4>{JSON.stringify(props)}</h4> */}
             <h3>Set {props.setId}</h3>
             <h4>{JSON.stringify(editState)}</h4>
             <h4>Reps:  {!editState ? 

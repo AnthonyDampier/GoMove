@@ -60,9 +60,19 @@ function* fetchProgramInfoByProgramID(action){
 
 function* updateSet(action){
     try{
-        axios.put('/api/workoutProgram/updateSet/'+action.payload.programId+'/'+action.payload.sessionId+'/'+action.payload.exerciseId+'/'+action.payload.setId, {rep: action.payload.rep, percentOfMax: action.payload.percentOfMax})
+        axios.put('/api/workoutProgram/updateSet/'+action.payload.programId+'/'+action.payload.sessionId+'/'+action.payload.exerciseId+'/'+action.payload.setId, 
+        {rep: action.payload.rep, percentOfMax: action.payload.percentOfMax, exerciseTypeId: exerciseTypeId})
     } catch {
         console.log('Failed to update set');
+    }
+}
+
+function* updateExerciseType(action){
+    try{
+        axios.put('/api/workoutProgram/updateExerciseType/'+action.payload.programId+'/'+action.payload.sessionId+'/'+action.payload.exerciseId, 
+        {exerciseTypeId: action.payload.exerciseTypeId})
+    } catch {
+        console.log('Error in updateExerciseType');
     }
 }
 
@@ -75,6 +85,7 @@ function* workoutProgramSaga() {
     yield takeEvery('INSERT_EXERCISE', insertProgramSetRow);
     yield takeEvery('GET_PROGRAM_BY_ID', fetchProgramInfoByProgramID);
     yield takeEvery('UPDATE_SET', updateSet);
+    yield takeEvery('UPDATE_EXERCISE_TYPE', updateExerciseType);
 }
 
 export default workoutProgramSaga;

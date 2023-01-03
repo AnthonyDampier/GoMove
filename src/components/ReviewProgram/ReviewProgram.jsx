@@ -67,6 +67,7 @@ function ReviewProgram(){
                 numOfSessions={programInfo.num_of_sessions} 
                 exerciseTypes={exerciseTypes} 
                 programInternal={programInternal}
+                programInfo={programInfo}
             />
 
             <h1>Program sessions</h1>

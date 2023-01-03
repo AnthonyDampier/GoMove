@@ -26,7 +26,13 @@ function reviewSessions(props){
         <div className=""> 
             {arrayLengthOfSessions.map((item, index) => {
                 // todo gets session exercises and produces exercises of session
-                return(<Session selectedSessionId={item} programInternal={programInternal} exerciseTypes={exerciseTypes} key={index}/>)
+                return(<Session 
+                        selectedSessionId={item} 
+                        programInternal={programInternal} 
+                        exerciseTypes={exerciseTypes} 
+                        programInfo={props.programInfo}
+                        key={index}
+                    />)
             })}
         </div>
     )
