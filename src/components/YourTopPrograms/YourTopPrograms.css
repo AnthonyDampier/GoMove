@@ -19,3 +19,8 @@ th {
 #table-edit {
     width: 6vw;
 }
+
+#top-programs{
+    flex: content;
+    display: inline-flex;
+}

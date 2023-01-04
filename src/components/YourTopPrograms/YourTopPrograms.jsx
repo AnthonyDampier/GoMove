@@ -1,11 +1,19 @@
+import { useSelector } from 'react-redux';
+
 import './YourTopPrograms.css';
 
 function YourTopPrograms(){
+    const user = useSelector(store => store.user);
     return(
-        <>
-            <h2 id="title">
-                Your Program Performance
-            </h2>
+        <>  
+            <div id="top-programs title">
+                <h2 >
+                    Your Top Program
+                </h2>
+                <h4>
+                    by {user.username}
+                </h4>
+            </div>
             <table>
                 <thead>
                     <tr>
