@@ -27,7 +27,7 @@ function MyPrograms(){
     }
 
     return(
-        <center>
+        <center id="my-program-page">
         <div className="my-programs">
                 <h1>{user.username}'s Workout Programs</h1>
                 <table>

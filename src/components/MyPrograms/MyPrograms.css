@@ -1,3 +1,6 @@
+center#my-program-page{
+    padding: 20px;
+}
 .my-programs {
     width: fit-content;
     font-size: 22px;
@@ -7,7 +10,6 @@
     height: fit-content;
     border-radius: 5px;
     border: 1px black solid;
-    
 }
 
 .my-programs table{
