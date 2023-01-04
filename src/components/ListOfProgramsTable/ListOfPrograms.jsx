@@ -22,7 +22,7 @@ function ListOfPrograms(){
     return(
         <>
             <div id="container" className="top-programs">
-                <h1>List of top 10 programs</h1>
+                <h1>List of 20 programs</h1>
                 <table className="styled-table">
                     <thead>
                     <tr>

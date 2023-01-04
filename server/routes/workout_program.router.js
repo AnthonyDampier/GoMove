@@ -15,7 +15,7 @@ router.get('/TenPrograms', (req, res) => {
         FROM program
         JOIN "user" ON "user".id = program.author_user_id
         JOIN "workout_genre" ON "workout_genre".id = program.program_genre
-        LIMIT 10;`;
+        LIMIT 20;`;
 
     pool.query(queryText)
     .then( (response) => {
