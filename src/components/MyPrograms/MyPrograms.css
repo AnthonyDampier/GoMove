@@ -1,0 +1,56 @@
+.my-programs {
+    width: fit-content;
+    font-size: 22px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15),0 0 20px rgba(0, 0, 0, 0.15),0 0 20px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(9px);
+    padding: 20px;
+    height: fit-content;
+    border-radius: 5px;
+    border: 1px black solid;
+    
+}
+
+.my-programs table{
+    
+}
+
+td#title-col{
+    width: 200px;
+}
+
+td#users-col{
+    width: 175px;
+}
+
+td {
+    padding-left: 5px;
+}
+
+td.genre-col{
+    display: block;
+    width: auto;
+}
+
+td.view-col {
+    width: 1px;
+}
+
+button#view-btn {
+    background-color: orange;
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    width: 100px;
+}
+
+button#view-btn:hover {
+    border: 1px solid orange;
+    background: none;
+    color: orange;
+}
+
+
+th {
+    padding-left: 3px;
+    text-align: left;
+}

@@ -19,7 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import MyPrograms from '../MyPrograms/MyProgram';
+import MyPrograms from '../MyPrograms/MyPrograms';
 
 // create program
 import CreateProgram from '../CreateProgram/CreateProgramPage.jsx';

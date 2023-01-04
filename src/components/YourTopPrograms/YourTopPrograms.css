@@ -1,26 +1,49 @@
 .your-program-performance {
-    padding: 10px;
-    width: 27vw;
+    width: 500px;
+    font-size: 22px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15),0 0 20px rgba(0, 0, 0, 0.15),0 0 20px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(9px);
+    padding: 20px;
+    height: fit-content;
+    border-radius: 5px;
     border: 1px black solid;
+    
 }
+
+.your-program-performance div{
+    display: flex;
+}
+
+.your-program-performance div h2{
+    margin-left: 6px;
+    position: relative;
+}
+
+.your-program-performance div h4{
+    margin-left: 6px;
+    position: relative;
+    bottom: -7px;
+}
+
+.your-program-performance table{
+    width: 500px;
+}
+
+td#title-col{
+    width: 275px;
+}
+
+td#users-col{
+    width: 175px;
+}
+
+td {
+    padding-left: 5px;
+}
+
+
 
 th {
+    padding-left: 3px;
     text-align: left;
-}
-
-#table-title {
-    width: 30px;
-}
-
-#table-users {
-    width: 10px;
-}
-
-#table-edit {
-    width: 6vw;
-}
-
-#top-programs{
-    flex: content;
-    display: inline-flex;
 }
