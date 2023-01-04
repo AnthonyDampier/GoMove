@@ -24,10 +24,6 @@
   margin: 0;
 }
 
-.nav-title:hover {
-  color: orange;
-}
-
 .navLink {
   display: inline-block;
   color: black;
@@ -48,4 +44,5 @@
 .navLink:hover {
   color: orange;
   /* text-shadow: black; */
+  background: none;
 }

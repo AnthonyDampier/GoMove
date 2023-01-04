@@ -3,6 +3,7 @@ Grid
 -------------------------------------------------------------------------------- */
 
 .grid {
+  margin: 20px;
   display: flex;
   flex: 0 1 auto;
   /* defaults to 'row' */
@@ -63,9 +64,15 @@ Grid
 .grid-col.grid-col_8 {
   flex-basis: 66.66666667%;
   max-width: 66.66666667%;
+
+}
+
+.welcome-note {
   backdrop-filter: blur(50px);
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
+  width: 800px;
+  padding: 20px;
 }
 
 .grid-col_9 {
