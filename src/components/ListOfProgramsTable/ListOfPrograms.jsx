@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-import ProgramRows from "../ListItemOfTen/listItemOfTen";
+import ProgramRows from "../ListTableProgramItem/ListTableProgramItem";
+
+import './ListOfPrograms.css'
 
 function ListOfPrograms(){
     // TODO: dispatch get 10 program
@@ -21,13 +23,13 @@ function ListOfPrograms(){
         <>
             <div id="container" className="top-programs">
                 <h1>List of top 10 programs</h1>
-                <table>
+                <table className="styled-table">
                     <thead>
                     <tr>
-                        <th id='table-title'>Title</th>
-                        <th id='table-genre'>Genre</th>
-                        <th id='table-author'>Trainer</th>
-                        <th id='table-view'>View</th>
+                        <th className='table-title-col'>Title</th>
+                        <th className='table-genre-col'>Genre</th>
+                        <th className='table-author-col'>Trainer</th>
+                        <th className='table-view-col'>View</th>
                     </tr>
                     </thead>
                     <tbody>

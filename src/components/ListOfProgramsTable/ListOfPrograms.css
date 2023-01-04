@@ -1,0 +1,64 @@
+div#container.top-programs {
+    width: 1000px;
+    font-size: 22px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(7px);
+    padding: 20px;
+    height: fit-content;
+    border-radius: 5px;
+    border: none;
+}
+
+table {
+    border-collapse: collapse;
+    font-size: 20px;
+    width: 1000px;
+    padding: 20px;
+}
+
+th.table-title-col {
+    font-weight: bolder;
+    font-size: 23px;
+    width: 550px;
+}
+
+th.table-genre-col {
+    width: 200px;
+}
+
+th.table-author-col {
+    width: 150px;
+}
+
+th {
+    font-size: 23px;
+    border-bottom: 2px solid black;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+tr {
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.table-title-col {
+    padding-left: 10px;
+}
+
+#table-btn {
+    background-color: orange;
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    width: 100px;
+}
+
+#table-btn:hover {
+    border: 1px solid orange;
+    background: none;
+    color: orange;
+}
+
+
+
+

@@ -1,14 +1,19 @@
+.your-program-performance {
+    padding: 10px;
+    width: 27vw;
+    border: 1px black solid;
+}
 
 th {
     text-align: left;
 }
 
 #table-title {
-    width: 13vw;
+    width: 30px;
 }
 
 #table-users {
-    width: 6vw;
+    width: 10px;
 }
 
 #table-edit {
