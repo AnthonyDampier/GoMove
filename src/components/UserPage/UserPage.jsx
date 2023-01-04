@@ -7,25 +7,23 @@ import ListOfTenPrograms from '../ListOfProgramsTable/ListOfPrograms.jsx';
 
 //import css
 import './UserPage.css'
-import CreateProgramPage from '../CreateProgram/CreateProgramPage';
+// import CreateProgramPage from '../CreateProgram/CreateProgramPage';
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
   return (
     <div>
-      <h1>Welcome, {user.username}!</h1>
+      {/* <h1>Welcome, {user.username}!</h1> */}
       {/* <p>Your ID is: {user.id}</p> */}
-      <div id="section" className="user-page">
+      <div className="user-page">
           <ListOfTenPrograms/>
-          <div id="container" className="your-program-performance">
-            <YourTopPrograms/>
-          </div>
+          <YourTopPrograms/>
       </div>
       {/* <LogOutButton className="btn" /> */}
-      <div>
+      {/* <div>
         <CreateProgramPage/>
-      </div>
+      </div> */}
     </div>
   );
 }

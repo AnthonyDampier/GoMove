@@ -1,12 +1,12 @@
 div#container.top-programs {
     width: 1000px;
     font-size: 22px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15),0 0 20px rgba(0, 0, 0, 0.15),0 0 20px rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(7px);
     padding: 20px;
     height: fit-content;
     border-radius: 5px;
-    border: none;
+    border: 1px black solid;
 }
 
 table {
