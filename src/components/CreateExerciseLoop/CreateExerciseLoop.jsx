@@ -24,7 +24,7 @@ function CreateExerciseLoop(props){
     }, []);
 
     return(
-        <>
+        <div id="exercise-loop">
             {/* loop for the number of exercise in props */}
             {exerciseArray.map(exercise => {
                 return (
@@ -38,7 +38,7 @@ function CreateExerciseLoop(props){
                     />
                 )
             })}
-        </>
+        </div>
     )
 }
 

@@ -83,28 +83,32 @@ function CreateProgramForm(){
     useEffect(()=>{
         dispatch({type: 'FETCH_EXERCISE_TYPES'});
         dispatch({type: 'FETCH_WORKOUT_GENRES'});
-        dispatch({type: 'GET_CREATED_PROGRAM'});
     }, [])
 
+    useEffect(() => {
+        dispatch({type: 'GET_CREATED_PROGRAM'});
+    }, [createSession]);
+
     return(
-        <>
-            <h2 id="title">
+        <div>
+            <h2 id="create-title">
                 Create a New Program
             </h2>
             <div>
                 <div id="create-program">
-                    <div>
+                    <div id="create-program-header">
                         <label>
-                            Title
+                            Title:
                         </label>
                         <input 
+                            id="text"
                             type="text"
                             onChange={(event) => setTitle(event.target.value)}
                             // will disable after submit form
                             disabled={disable}
                             />
                         <label>
-                            Workout Type
+                            Workout Genre:
                         </label>
                         <select 
                             name="workoutType"
@@ -117,7 +121,7 @@ function CreateProgramForm(){
                             <WorkoutTypeOptions/>
                         </select>
                         <label>
-                            Number of Sessions
+                            Number of Sessions:
                         </label>
                         <input 
                             type="number" 
@@ -137,10 +141,10 @@ function CreateProgramForm(){
                         </button>
                     </div>
                     { createSession === true && <SessionsLoop numOfSessions={numOfSessions}/>}
-                    { program.id != undefined && <button onClick={() => handleReviewProgram()}>Review</button>}
+                    { disable === true && <button onClick={() => handleReviewProgram()}>View</button>}
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

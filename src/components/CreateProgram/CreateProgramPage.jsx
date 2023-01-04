@@ -11,14 +11,11 @@ function CreateProgramPage(){
 
 
     return(
-    <>
-        <h1>Creation Page</h1>
-        <div id="section" className="creation-page">
-            <div className="create-new-program">
-                <CreateProgramForm/>
-            </div>
+    <center id="creation-page-padding">
+        <div className="create-new-program">
+            <CreateProgramForm/>
         </div>
-    </>
+    </center>
     )
 }
 

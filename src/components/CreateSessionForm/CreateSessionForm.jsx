@@ -10,6 +10,7 @@ function CreateSessionForm(props){
     const [createExercises, setCreateExercises] = useState(false);
     const [submitSession, setSubmitSession] = useState(props.submitProgram);
     const programId = useSelector(store => store.createdWorkoutProgram)
+    const [disableBtn, setDisableBtn] = useState(false)
 
     // session limits
     const min = 0;
@@ -19,6 +20,7 @@ function CreateSessionForm(props){
     const updateExerciseNumber = (event) => {
         const exercises = event.target.value
         // console.log(exercises);
+        //limits user entry
         if (exercises > max){
             setNumberOfExercise(max);
         } else if (exercises < min){
@@ -65,23 +67,38 @@ function CreateSessionForm(props){
     //props contains {sessionId: , programId: }
     return(
         <div className="session-form">
-            <h4>Session: {props.sessionId}</h4>
-            <label>Number of Exercise</label>
-            <input 
-                type='number'
-                min={min} 
-                max={max} 
-                value={numOfExercises}
-                onChange={(event)=> updateExerciseNumber(event)}/>
-            <button onClick={() => generateExercise()}>Create Exercises</button>
-            <div>
-                {createExercises && <CreateExerciseLoop 
-                    numOfExercises={numOfExercises} 
-                    programId={programId.id}
-                    sessionId={props.sessionId}
-                    submitProgram={props.submitProgram}
-                />}
+            <h2 id="session-title">Session: 
+                <span>  {props.sessionId}</span>
+            </h2>
+            <div id="session-header">
+                
+                <label>Number of Exercise: 
+                <input 
+                    type='number'
+                    min={min} 
+                    max={max} 
+                    value={numOfExercises}
+                    onChange={(event)=> updateExerciseNumber(event)}
+                    />
+                </label>
+                <button 
+                    disabled={numOfExercises<=0}
+                    onClick={() => generateExercise()}
+                    >
+                    Create Exercises
+                </button>
+                
             </div>
+            
+                <center>
+                    {createExercises && <CreateExerciseLoop 
+                        numOfExercises={numOfExercises} 
+                        programId={programId.id}
+                        sessionId={props.sessionId}
+                        submitProgram={props.submitProgram}
+                    />}
+                </center>
+            
         </div>
     )
 }
