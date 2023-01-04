@@ -1,5 +1,7 @@
 import { useHistory } from "react-router-dom";
 
+import '../ListOfProgramsTable/ListOfPrograms.css'
+
 function ListItemOfTen(props){
     const history = useHistory();
     const reviewProgram = (id) => {
@@ -11,19 +13,24 @@ function ListItemOfTen(props){
     return(
         <tr key={props.program.id}>
                 {/* program title */}
-                <td>
+                <td className="table-title-col">
                     {props.program.program_title}
                 </td>
                 {/* Program Author */}
-                <td>
-                    {props.program.author}
-                </td>
-                {/* program Genre */}
-                <td>
+                <td className='table-genre-col'>
                     {props.program.genre}
                 </td>
-                <td>
-                    <button onClick={() => reviewProgram(props.program.id)}>View</button>
+                {/* program Genre */}
+                <td className='table-author-col'>
+                    {props.program.author}
+                </td>
+                <td className='table-view-col'>
+                    <button 
+                        onClick={() => reviewProgram(props.program.id)}
+                        id='table-btn'
+                        >
+                            View
+                    </button>
                 </td>
         </tr>
     )

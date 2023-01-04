@@ -3,7 +3,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector} from 'react-redux';
 //import jsx
 import YourTopPrograms from '../YourTopPrograms/YourTopPrograms';
-import ListOfTenPrograms from '../ListOfPrograms/ListOfPrograms';
+import ListOfTenPrograms from '../ListOfProgramsTable/ListOfPrograms.jsx';
 
 //import css
 import './UserPage.css'
