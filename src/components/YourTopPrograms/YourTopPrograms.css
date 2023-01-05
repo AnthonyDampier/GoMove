@@ -1,5 +1,5 @@
 .your-program-performance {
-    width: 500px;
+    width: fit-content;
     font-size: 22px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15),0 0 20px rgba(0, 0, 0, 0.15),0 0 20px rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(9px);
@@ -25,24 +25,14 @@
 }
 
 .your-program-performance table{
-    width: 500px;
-}
-
-td#title-col{
-    width: 275px;
-}
-
-td#users-col{
-    width: 175px;
-}
-
-td {
-    padding-left: 5px;
+    width: fit-content;
 }
 
 
 
-th {
+#user-top-program-title {
+    width: 300px;
+    max-width: 500px;
     padding-left: 3px;
     text-align: left;
 }

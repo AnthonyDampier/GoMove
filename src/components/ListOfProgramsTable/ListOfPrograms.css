@@ -1,5 +1,5 @@
 div#container.top-programs {
-    width: 1000px;
+    width: fit-content;
     font-size: 22px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15),0 0 20px rgba(0, 0, 0, 0.15),0 0 20px rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(7px);
@@ -12,7 +12,7 @@ div#container.top-programs {
 table {
     border-collapse: collapse;
     font-size: 20px;
-    width: 1000px;
+    width: 700px;
     padding: 20px;
 }
 

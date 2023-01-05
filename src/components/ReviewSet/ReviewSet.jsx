@@ -19,8 +19,8 @@ function ReviewSet(props){
 
     const percentageUpdate = (newPercent) => {
         console.log('percent change: ', newPercent);
-        if(newPercent > 1){
-            setPercentage(1);
+        if(newPercent > 100){
+            setPercentage(100);
         } else if(newPercent <0){
             setPercentage(0);
         } else {
@@ -29,15 +29,15 @@ function ReviewSet(props){
     }
 
     useEffect(() => {
-        console.log('Editing: ','exerciseId: ', props.exerciseId,'setId', props.setId, editState);
-        console.log('reps: ', reps);
-        console.log('percent:', percentage);
-        console.log('Was reps changed: ', reps !== reps);
-        console.log('Was percent changed: ', percentage !== percentage);
-        console.log('dispatch put request');
+        // console.log('Editing: ','exerciseId: ', props.exerciseId,'setId', props.setId, editState);
+        // console.log('reps: ', reps);
+        // console.log('percent:', percentage);
+        // console.log('Was reps changed: ', reps !== reps);
+        // console.log('Was percent changed: ', percentage !== percentage);
+        // console.log('dispatch put request');
         // dispatch({type: 'UPDATE_EXERCISE', payload: {title: title, workoutGenre: workoutGenre, numOfSessions: numOfSessions}});
         if(!editState && renderCounter > 0){
-            console.log('save?');
+            // console.log('save?');
             dispatch({
                 type: 'UPDATE_SET', 
                 payload: {
@@ -47,7 +47,7 @@ function ReviewSet(props){
                     // exerciseTypeId: props.exerciseTypeId,
                     setId: props.setId,
                     rep: reps,
-                    percentOfMax: Number(percentage)
+                    percentOfMax: Number(percentage)/100
                 }
             })
         } else {
@@ -60,7 +60,7 @@ function ReviewSet(props){
         <div className="set" key={props.index}>
             {/* <h4>{JSON.stringify(props)}</h4> */}
             <h3>Set {props.setId}</h3>
-            <h4>{JSON.stringify(editState)}</h4>
+            {/* <h4>{JSON.stringify(editState)}</h4> */}
             <h4>Reps:  {!editState ? 
                 <b>{reps}</b>  
                 : 
@@ -71,19 +71,18 @@ function ReviewSet(props){
                     />}
             </h4>
             <h4>% of max: {!editState ? 
-                <b>{percentage*100}%</b>  
+                <b>{percentage}%</b>  
                 : 
                 <input 
                     type='number' 
                     // defaultValue={percentage} 
                     value={percentage}
-                    max={1}
+                    max={100}
                     min={0}
-                    step="0.01"
                     onChange={(event) => percentageUpdate(event.target.value)}
                 />} 
             </h4>
-            {editState ? <label>Editing</label>: <label>Saved</label>}
+            {/* {editState ? <label>Editing</label>: <label>Saved</label>} */}
         </div>
     )
 }

@@ -67,31 +67,35 @@ function ReviewProgram(){
 
 
     return(
-        <>  
-            <h1>Program Review</h1>
-            <h2>Program Title: {programInfo.program_title}</h2>
-            {/* <p>{id.id}</p> */}
-            <h3>Workout Type: {getGenre(programInfo.program_genre)}</h3>
-            {/* <p>{JSON.stringify(programInfo)}</p> */}
-            {/* <h4>Program Internals:</h4> */}
-            {/* <p>{JSON.stringify(programInternal)}</p> */}
-            {/* <h4>Exercise Types</h4> */}
-            {/* <p>{JSON.stringify(exerciseTypes)}</p> */}
-            {/* <div>
-                <h2>Session : session_id</h2>
-                <h3>Exercise: exerciseType</h3>
-                <p>Set: set_id Reps: reps</p>
-            </div> */}
-            {userId == programInfo.author_user_id && <button onClick={() => handleDelete(id.id)}>DELETE</button>}
-            <SessionsLoop
-                numOfSessions={programInfo.num_of_sessions} 
-                exerciseTypes={exerciseTypes} 
-                programInternal={programInternal}
-                programInfo={programInfo}
-            />
-
-            <h1>Program sessions</h1>
-        </>
+        <div id="empty-space-program-review-page">
+            <div id="program-review-page">  
+                <h1>Program Title: {programInfo.program_title}</h1>
+                {/* <p>{id.id}</p> */}
+                <h3>Workout Type: {getGenre(programInfo.program_genre)}</h3>
+                {/* <p>{JSON.stringify(programInfo)}</p> */}
+                {/* <h4>Program Internals:</h4> */}
+                {/* <p>{JSON.stringify(programInternal)}</p> */}
+                {/* <h4>Exercise Types</h4> */}
+                {/* <p>{JSON.stringify(exerciseTypes)}</p> */}
+                {/* <div>
+                    <h2>Session : session_id</h2>
+                    <h3>Exercise: exerciseType</h3>
+                    <p>Set: set_id Reps: reps</p>
+                </div> */}
+                {userId == programInfo.author_user_id && 
+                    <button 
+                        onClick={() => handleDelete(id.id)}>
+                        DELETE
+                    </button>
+                }
+                <SessionsLoop
+                    numOfSessions={programInfo.num_of_sessions} 
+                    exerciseTypes={exerciseTypes} 
+                    programInternal={programInternal}
+                    programInfo={programInfo}
+                />
+            </div>
+        </div>
     )
 }
 

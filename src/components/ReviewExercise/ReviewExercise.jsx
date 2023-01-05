@@ -39,7 +39,7 @@ function ReviewExercise(props){
                         exerciseTypeId={props.exerciseTypeId} 
                         setId={set.set_id} 
                         reps={set.reps} 
-                        percentOfMax={set.percent_of_max} 
+                        percentOfMax={set.percent_of_max*100} 
                         key={index}
                     />)
                     // return(<h4>{JSON.stringify(set.set_id)}</h4>)

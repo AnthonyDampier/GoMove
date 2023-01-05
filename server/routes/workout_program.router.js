@@ -177,7 +177,8 @@ router.get('/setIds/:programId/:sessionId/:exerciseId', (req, res) => {
     console.log('in /distinctExerciseIds');
     console.log('params: ', req.params);
     const queryText = `SELECT set_id, reps, percent_of_max FROM program_set
-    WHERE program_id=$1 AND session_id=$2 AND exercise_id=$3;
+    WHERE program_id=$1 AND session_id=$2 AND exercise_id=$3
+    ORDER BY set_id ASC;
         `;
 
     pool.query(queryText, [req.params.programId, req.params.sessionId, req.params.exerciseId])
@@ -196,7 +197,8 @@ router.get('/setInfo/:programId/:sessionId/:exerciseId/:setId', (req, res) => {
     console.log('in /setInfo');
     console.log('params: ', req.params);
     const queryText = `SELECT reps, percent_of_max FROM program_set
-    WHERE program_id=$1 AND session_id=$2 AND exercise_id=$3 AND set_id=$4;
+    WHERE program_id=$1 AND session_id=$2 AND exercise_id=$3 AND set_id=$4
+    ORDER BY set_id;
         `;
 
     pool.query(queryText, [req.params.programId, req.params.sessionId, req.params.exerciseId, req.params.setId])
@@ -228,6 +230,27 @@ router.get('/exercises/:exerciseId', (req, res) => {
         res.sendStatus(500);
     })
 });
+
+router.get('/byUserID/:id', (req, res) => {
+    // GET route code here
+    console.log('in workout_program.router for fetch by user id');
+    console.log('params: ', req.body);
+    const queryText = `SELECT * FROM program
+        WHERE author_user_id = $1 LIMIT 5;
+        `;
+
+    pool.query(queryText, [req.params.id])
+    .then( (response) => {
+        console.log('Results:', response.rows);
+        res.send(response.rows);
+    })
+    .catch(() => {
+        console.log('ERROR: in workout_program.router');
+        res.sendStatus(500);
+    })
+});
+
+
 
 /**
  * POST route template
