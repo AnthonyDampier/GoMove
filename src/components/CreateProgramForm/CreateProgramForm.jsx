@@ -141,7 +141,14 @@ function CreateProgramForm(){
                         </button>
                     </div>
                     { createSession === true && <SessionsLoop numOfSessions={numOfSessions}/>}
-                    { disable === true && <button onClick={() => handleReviewProgram()}>View</button>}
+                    { disable === true && 
+                        <button 
+                            id="view-program-btn"
+                            onClick={() => handleReviewProgram()}
+                            >
+                            View Program
+                        </button>
+                    }
                 </div>
             </div>
         </div>

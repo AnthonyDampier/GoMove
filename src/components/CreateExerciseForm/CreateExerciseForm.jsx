@@ -39,10 +39,13 @@ function ExerciseForm(props){
     }
 
     useEffect(() => {
-        if (sets > 0 && exercise > 0){
+        if (sets > 0 && exercise > 0 && createSets === false){
             setDisableSetBtn(false);
         }
-    }, [sets, exercise])
+        if(createSets === true){
+            setDisableSetBtn(true);
+        }
+    }, [sets, exercise, props])
 
     // useEffect(()=> {
     //     console.log('programId', props.programId,
@@ -102,24 +105,26 @@ function ExerciseForm(props){
             <div>
                 <label>
                     Exercises:
+                    <select 
+                        onChange={(event) => updateExercise(event)}
+                        value={exercise}
+                        >
+                        <ExerciseTypeOptions/>
+                    </select>
                 </label>
-                <select 
-                    onChange={(event) => updateExercise(event)}
-                    value={exercise}
-                    >
-                    <ExerciseTypeOptions/>
-                </select>
             </div>
             <div>
                 <label>
                     Sets:
+                
+                    <input 
+                    type='number'
+                    value={sets}
+                    onChange={(event) => updateSets(event)}/>
                 </label>
-                <input 
-                type='number'
-                value={sets}
-                onChange={(event) => updateSets(event)}/>
                 <button onClick={() => handleSetClick()} disabled={disableSetBtn}>Create Sets</button>
             </div>
+            <hr/>
             <div>
                 {createSets && <CreateSetLoop 
                     programId={props.programId}

@@ -34,12 +34,11 @@ Button
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #014041;
-  border-width: 1px 1px 3px;
-  border-radius: 4px;
-  background-color: #00acb0;
-  color: #f8f8f8;
-  font-size: 1.1rem;
+  /* border-color: #014041; */
+  border-radius: 5px;
+  border: none;
+  background-color: orange;
+  color: black;
   outline: 0;
   cursor: pointer;
 }
@@ -60,7 +59,7 @@ Button
 }
 
 .btn:hover {
-  background-color: #008183;
+  /* background-color: #008183; */
   text-decoration: none;
 }
 
@@ -214,5 +213,4 @@ input::-webkit-input-placeholder{
 #register-page button:hover {
   font-size: larger;
   color: orange;
-
 }

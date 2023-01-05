@@ -78,20 +78,28 @@ function createSetForm(props){
     }, [])
 
     return(
-        <>
+        <div className="set-form">
             <div  className={saved? "setSaved": ""}>
-                <label>Sets {props.setId}</label>
+                <label className="set-num">Sets {props.setId}</label>
                 <div>
-                    <label>Reps</label>
+                    <label>Reps: 
                     <input type='number' value={reps} onChange={(event) => updateReps(event)}/>
+                    </label>
                 </div>
                 <div>
-                    <label>% of Max</label>
-                    <input type='number' value={percentOfMax} onChange={(event) => updatePercentOfMax(event)}/>
+                    <label>% of Max: 
+                        <input 
+                            id="percent"
+                            type='number' 
+                            value={percentOfMax} 
+                            onChange={(event) => updatePercentOfMax(event)}
+                        />
+                    </label>
                 </div>
                 <button onClick={() => saveSet()} disabled={saved}>SAVE</button>
             </div>
-        </>
+            <hr/>
+        </div>
     )
 }
 
