@@ -4,7 +4,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 // get 10 programs from database and delivers to ListOFTenProgram
-router.get('/TenPrograms', (req, res) => {
+router.get('/TwentyPrograms', (req, res) => {
     // GET route code here
     console.log('in /TenPrograms');
     const queryText = `SELECT 

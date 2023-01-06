@@ -11,7 +11,7 @@ function ListOfPrograms(){
     const [programs, setPrograms] = useState([]);
 
     useEffect(() => {
-        axios.get('/api/workoutProgram/TenPrograms').then((response) => {
+        axios.get('/api/workoutProgram/TwentyPrograms').then((response) => {
             setPrograms(response.data)
         }).catch( error => {
             console.log('ERROR in 10 programs get: ',error);

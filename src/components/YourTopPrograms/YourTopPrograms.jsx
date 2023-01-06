@@ -1,5 +1,6 @@
 import { useState, useEffect  } from 'react';
 import { useSelector} from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import './YourTopPrograms.css';
@@ -8,8 +9,16 @@ import './YourTopPrograms.css';
 
 function YourTopPrograms(){
     const user = useSelector(store => store.user);
+    const history = useHistory();
+
     const [programs, setPrograms] = useState([]);
     const userId = useSelector(store => store.user.id);
+
+    const handleViewClick = (id) => {
+        history.push({
+            pathname: '/ReviewProgram/'+id,
+        });
+    }
 
 
     useEffect(() => {
@@ -46,7 +55,12 @@ function YourTopPrograms(){
                             <td id='user-top-program-title'>{programs.program_title}</td>
                             {/* <td id="users-col">0</td> */}
                             <td id="edit-col">
-                                <button value={programs.id} id="table-btn"> view </button>
+                                <button 
+                                    value={programs.id} 
+                                    id="table-btn"
+                                    onClick={(event) => handleViewClick(event.target.value)}> 
+                                    view 
+                                </button>
                             </td>
                         </tr>)
                     })}
