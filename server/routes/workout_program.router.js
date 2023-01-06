@@ -56,6 +56,30 @@ router.get('/userPrograms/', (req, res) => {
     })
 });
 
+router.get('/unapprovedPrograms/', (req, res) => {
+    // GET unapproved programs
+    console.log('In unapproved programs');
+    const queryText = `SELECT 
+    program.id,
+    program.program_title, 
+    "user".username as author,
+    "workout_genre".genre  as genre
+    FROM program
+    JOIN "user" ON "user".id = program.author_user_id
+    JOIN "workout_genre" ON "workout_genre".id = program.program_genre
+    WHERE program.approved = false`;
+
+    pool.query(queryText)
+    .then((response) => {
+        console.log('Results: ', response.rows);
+        res.send(response.rows);
+    })
+    .catch((err) =>{
+        console.log('ERROR in unapproved programs');
+        res.sendStatus(500);
+    })
+})
+
 
 router.get('/', (req, res) => {
   // GET route code here
@@ -352,6 +376,24 @@ router.put('/updateExerciseType/:programId/:sessionId/:exerciseId' , (req,res) =
         console.log('ERROR updating set: ', error);
         res.sendStatus(500);
 
+    })
+})
+
+router.put('/approveProgram/:programId', (req, res) => {
+    const programId = req.params.programId;
+    console.log('Approve program:', programId);
+
+    const queryText = `UPDATE program
+        SET approved = True
+        WHERE id = $1`
+
+    pool.query(queryText, [programId])
+    .then(() => {
+        console.log('Successful update of program: ', programId);
+        res.sendStatus(200);
+    })
+    .catch((error) => {
+        console.log('Error in approveProgram :', error);
     })
 })
 

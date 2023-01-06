@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import MyPrograms from '../MyPrograms/MyPrograms';
+import Admin from '../Admin/Admin';
 
 // create program
 import CreateProgram from '../CreateProgram/CreateProgramPage.jsx';
@@ -96,6 +97,14 @@ function App() {
             path="/info"
           >
             <InfoPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/Admin"
+          >
+            <Admin />
           </ProtectedRoute>
 
           <Route
