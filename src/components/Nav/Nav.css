@@ -46,3 +46,21 @@
   /* text-shadow: black; */
   background: none;
 }
+
+span#admin-notification{
+  position:relative;
+  font-size: 10px;
+  background-color: orange;
+  padding: 9px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 30px;
+  top: -12px;
+  left: -11px;
+  z-index: -100;
+}
+
+span#admin-notification:hover{
+  background-color: black;
+  color: orange;
+}

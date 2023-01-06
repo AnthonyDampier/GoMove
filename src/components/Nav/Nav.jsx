@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 import LogOutButton from '../LogOutButton/LogOutButton';
+
 import './Nav.css';
-import { useSelector } from 'react-redux';
 
 function Nav() {
+  const dispatch = useDispatch();
+
   const user = useSelector((store) => store.user);
+  const numOfUnapprovedPrograms = useSelector(store => store.unapprovedPrograms.length);
+  dispatch({type: 'FETCH_UNAPPROVED_PROGRAMS'});
+  useEffect(() => {
+    // TODO dispatch fetch all unapproved programs
+    dispatch({type: 'FETCH_UNAPPROVED_PROGRAMS'});
+  }, [numOfUnapprovedPrograms]);
 
   return (
     <div className="nav">
@@ -29,6 +39,7 @@ function Nav() {
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
+          {/* <h1>Unapproved: {JSON.stringify(numOfUnapprovedPrograms)}</h1> */}
             <Link className="navLink" to="/home">
               Home
             </Link>
@@ -43,7 +54,10 @@ function Nav() {
             </Link> */}
             {user.access_level>0 && (
               <Link className="navLink" to="/Admin">
-                Admin
+                Admin 
+                {numOfUnapprovedPrograms > 0 && 
+                  <span id="admin-notification">{JSON.stringify(numOfUnapprovedPrograms)}</span>
+                }
               </Link>
             )
 

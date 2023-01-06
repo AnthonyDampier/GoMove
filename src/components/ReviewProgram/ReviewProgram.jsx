@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import '../ReviewProgram/ReviewProgram.css'
@@ -17,7 +17,11 @@ function ReviewProgram(){
     // console.log('program internal sessions', programInternal)
     const exerciseTypes = useSelector(store => store.exerciseType);
     const workoutGenre = useSelector(store => store.workoutGenre);
+
     const userId = useSelector(store => store.user.id);
+    const userAuthority = useSelector(store => store.user.access_level);
+
+    const [update, setUpdate] = useState(true);
 
 
     useEffect(() => {
@@ -26,7 +30,7 @@ function ReviewProgram(){
             dispatch({type: 'GET_PROGRAM_BY_ID', payload: id});
             dispatch({type: 'FETCH_EXERCISE_TYPES'});
             dispatch({type: 'FETCH_WORKOUT_GENRES'});
-    }, [])
+    }, [update])
 
     const getExerciseType = (session) => {
         // console.log('typeId:', session.exercise_type);
@@ -62,7 +66,12 @@ function ReviewProgram(){
             type: 'DELETE_PROGRAM',
             payload: {programId: id.id}
         })
-        
+    }
+
+    const handleApproval = (id) => {
+        //TODO : create dispatch to approve programs in server
+        dispatch({type: 'APPROVE_PROGRAM', payload: id})
+        setUpdate(!update);
     }
 
 
@@ -82,12 +91,24 @@ function ReviewProgram(){
                     <h3>Exercise: exerciseType</h3>
                     <p>Set: set_id Reps: reps</p>
                 </div> */}
-                {userId == programInfo.author_user_id && 
-                    <button 
-                        onClick={() => handleDelete(id.id)}>
-                        DELETE
-                    </button>
-                }
+                <div id='button-div'>
+                    {userId == programInfo.author_user_id && 
+                        <button 
+                            onClick={() => handleDelete(id.id)}>
+                            DELETE
+                        </button>
+                    }
+                    {
+                        userAuthority > 0 && programInfo.approved === false ? 
+                        <button 
+                            id="approval-btn"
+                            onClick={() => handleApproval(id.id)}>
+                            Approve
+                        </button>
+                        : 
+                        <></>
+                    }
+                </div>
                 <SessionsLoop
                     numOfSessions={programInfo.num_of_sessions} 
                     exerciseTypes={exerciseTypes} 
