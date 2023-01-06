@@ -6,6 +6,7 @@ import workoutGenre from './workout_genre.reducer';
 import workoutPrograms from './workout_program.reducer';
 import createdWorkoutProgram from './create_workout_program.reducer';
 import workoutsReducer from './workouts.reducer';
+import unapprovedPrograms from './unapproved.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   workoutPrograms,
   createdWorkoutProgram,
   workoutsReducer,
+  unapprovedPrograms,
 });
 
 export default rootReducer;

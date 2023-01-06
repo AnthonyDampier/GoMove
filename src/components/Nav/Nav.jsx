@@ -42,7 +42,7 @@ function Nav() {
               Info Page
             </Link> */}
             {user.access_level>0 && (
-              <Link className="navLink" to="/CreateProgram">
+              <Link className="navLink" to="/Admin">
                 Admin
               </Link>
             )

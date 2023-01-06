@@ -84,6 +84,24 @@ function* deleteWorkoutProgram(action){
     }
 }
 
+function* fetchUnapprovedPrograms(action){
+    try{
+        const unapproved = yield axios.get('/api/workoutProgram/unapprovedPrograms');
+        console.log(unapproved.data);
+        yield put({type: 'SET_UNAPPROVED_PROGRAMS', payload: unapproved.data});
+    } catch {
+        console.log('ERROR in fetchUnapprovedPrograms Saga');
+    }
+}
+
+function* approveProgram(action){
+    try{
+        yield axios.put('/api/workoutProgram/approveProgram/'+action.payload);
+    } catch {
+        console.log('ERROR in approvedProgram');
+    }
+}
+
 function* workoutProgramSaga() {
     // console.log('in program.saga');
     yield takeEvery('FETCH_PROGRAMS', fetchWorkoutPrograms);
@@ -95,6 +113,8 @@ function* workoutProgramSaga() {
     yield takeEvery('UPDATE_SET', updateSet);
     yield takeEvery('UPDATE_EXERCISE_TYPE', updateExerciseType);
     yield takeEvery('DELETE_PROGRAM', deleteWorkoutProgram);
+    yield takeEvery('FETCH_UNAPPROVED_PROGRAMS', fetchUnapprovedPrograms);
+    yield takeEvery('APPROVE_PROGRAM', approveProgram);
 }
 
 export default workoutProgramSaga;
