@@ -16,15 +16,20 @@ function Nav() {
         {/* If no user is logged in, show these links */}
         {!user.id && (
           // If there's no user, show login/registration links
-          <Link className="navLink" to="/login">
-            Login / Register
-          </Link>
+          <>
+            <Link className="navLink" to="/home">
+                Home
+            </Link>
+            <Link className="navLink" to="/login">
+              Login / Register
+            </Link>
+          </>
         )}
 
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
-            <Link className="navLink" to="/user">
+            <Link className="navLink" to="/home">
               Home
             </Link>
             <Link className="navLink" to="/MyPrograms">
@@ -36,6 +41,13 @@ function Nav() {
             {/* <Link className="navLink" to="/info">
               Info Page
             </Link> */}
+            {user.access_level>0 && (
+              <Link className="navLink" to="/CreateProgram">
+                Admin
+              </Link>
+            )
+
+            }
             <LogOutButton className="navLink" to="/login"/>
           </>
         )}

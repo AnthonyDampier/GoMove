@@ -15,6 +15,7 @@ router.get('/TenPrograms', (req, res) => {
         FROM program
         JOIN "user" ON "user".id = program.author_user_id
         JOIN "workout_genre" ON "workout_genre".id = program.program_genre
+        WHERE program.approved = true
         LIMIT 20;`;
 
     pool.query(queryText)
@@ -262,8 +263,8 @@ router.post('/EnterProgram', (req, res) => {
     console.log('req.body', req.body);
     console.log('req.user:', req.user);
     const queryText =`Insert into "program" 
-        ("program_title", "author_user_id", "program_genre", "num_of_sessions")
-        VALUES ($1, $2, $3, $4);`;
+        ("program_title", "author_user_id", "program_genre", "num_of_sessions", "approved")
+        VALUES ($1, $2, $3, $4, false);`;
     
     pool.query(queryText, [req.body.title, req.user.id, req.body.workoutGenre, req.body.numOfSessions])
     .then(() => {
