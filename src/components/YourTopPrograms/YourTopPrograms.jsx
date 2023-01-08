@@ -45,7 +45,7 @@ function YourTopPrograms(){
                     <tr>
                         <th id='user-top-program-title'>Title</th>
                         {/* <th id='table-user users-col'>Users</th> */}
-                        <th id='table-edit edit-col'>View</th>
+                        <th id='table-view'>View</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,7 +54,7 @@ function YourTopPrograms(){
                         <tr key={index}>
                             <td id='user-top-program-title'>{programs.program_title}</td>
                             {/* <td id="users-col">0</td> */}
-                            <td id="edit-col">
+                            <td id="view-col">
                                 <button 
                                     value={programs.id} 
                                     id="table-btn"

@@ -40,7 +40,7 @@ function Nav() {
         {user.id && (
           <>
           {/* <h1>Unapproved: {JSON.stringify(numOfUnapprovedPrograms)}</h1> */}
-            <Link className="navLink" to="/home">
+            <Link className="navLink home-nav" to="/home">
               Home
             </Link>
             <Link className="navLink" to="/MyPrograms">

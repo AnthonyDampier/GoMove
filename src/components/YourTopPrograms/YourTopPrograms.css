@@ -3,7 +3,7 @@
     font-size: 22px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15),0 0 20px rgba(0, 0, 0, 0.15),0 0 20px rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(9px);
-    padding: 20px;
+    padding: 10px;
     height: fit-content;
     border-radius: 5px;
     border: 1px black solid;
@@ -28,11 +28,11 @@
     width: fit-content;
 }
 
-
-
 #user-top-program-title {
-    width: 300px;
-    max-width: 500px;
+    width: 250px;
     padding-left: 3px;
     text-align: left;
+}
+#table-view{
+    width: 100px;
 }
