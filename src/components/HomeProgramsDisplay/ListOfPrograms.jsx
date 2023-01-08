@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-import ProgramRows from "../ListTableProgramItem/ListTableProgramItem";
+import ProgramRows from "../HomeProgramItem/ListTableProgramItem";
 
 import './ListOfPrograms.css'
 
@@ -22,22 +22,11 @@ function ListOfPrograms(){
     return(
         <>
             <div id="container" className="top-programs">
-                <h1>List of 20 programs</h1>
-                <table className="styled-table">
-                    <thead>
-                    <tr>
-                        <th className='table-title-col'>Title</th>
-                        <th className='table-genre-col'>Genre</th>
-                        <th className='table-author-col'>Trainer</th>
-                        <th className='table-view-col'>View</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+                <div id="card-section">
                         {programs.map(program => {
                             return <ProgramRows program={program} key={program.id}/>
                         })}
-                    </tbody>
-                </table>
+                </div>
             </div>
         </>
     )

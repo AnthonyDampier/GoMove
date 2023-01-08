@@ -13,8 +13,8 @@ center#my-program-page{
     border: 1px black solid;
 }
 
-td#title-col{
-    width: 200px;
+th#table-title{
+    width: 500px;
 }
 
 td#users-col{

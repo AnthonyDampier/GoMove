@@ -3,7 +3,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector} from 'react-redux';
 //import jsx
 import YourTopPrograms from '../YourTopPrograms/YourTopPrograms';
-import ListOfTwentyPrograms from '../ListOfProgramsTable/ListOfPrograms.jsx';
+import ListOfTwentyPrograms from '../HomeProgramsDisplay/ListOfPrograms.jsx';
 
 //import css
 import './Home.css'
@@ -17,7 +17,7 @@ function UserPage() {
     <div>
       {/* <h1>Welcome, {user.username}!</h1> */}
       {/* <p>Your ID is: {user.id}</p> */}
-      <div className="user-page">
+      <div className="home-page">
           <ListOfTwentyPrograms/>
           {user.id && (
             <>
