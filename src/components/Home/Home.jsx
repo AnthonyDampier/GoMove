@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector} from 'react-redux';
+import axios from 'axios';
 //import jsx
 import YourTopPrograms from '../YourTopPrograms/YourTopPrograms';
 import ListOfTwentyPrograms from '../HomeProgramsDisplay/ListOfPrograms.jsx';
@@ -13,6 +14,18 @@ import './Home.css'
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
+  const [programs, setPrograms] = useState([]);
+  console.log(user);
+  
+  useEffect(() => {
+    if(user.id){
+      axios.get('/api/workoutProgram/byUserID/'+user.id).then((response) => {
+          setPrograms(response.data)
+      }).catch( error => {
+          console.log('ERROR in 10 programs get: ',error);
+      })
+    }
+  }, []);
   
   return (
     <div>
@@ -21,9 +34,9 @@ function UserPage() {
       <LandingPage/>
       <div className="home-page">
         <ListOfTwentyPrograms/>
-        {user.id && (
+        {programs[0] === '' && (
           <>
-            <YourTopPrograms/>
+            <YourTopPrograms programs={programs}/>
           </>
           )
         }

@@ -7,12 +7,9 @@ import './YourTopPrograms.css';
 
 
 
-function YourTopPrograms(){
+function YourTopPrograms(props){
     const user = useSelector(store => store.user);
     const history = useHistory();
-
-    const [programs, setPrograms] = useState([]);
-    const userId = useSelector(store => store.user.id);
 
     const handleViewClick = (id) => {
         history.push({
@@ -21,13 +18,13 @@ function YourTopPrograms(){
     }
 
 
-    useEffect(() => {
-        axios.get('/api/workoutProgram/byUserID/'+userId).then((response) => {
-            setPrograms(response.data)
-        }).catch( error => {
-            console.log('ERROR in 10 programs get: ',error);
-        })
-    }, []);
+    // useEffect(() => {
+    //     axios.get('/api/workoutProgram/byUserID/'+userId).then((response) => {
+    //         setPrograms(response.data)
+    //     }).catch( error => {
+    //         console.log('ERROR in 10 programs get: ',error);
+    //     })
+    // }, []);
 
 
     return(
@@ -49,7 +46,7 @@ function YourTopPrograms(){
                     </tr>
                 </thead>
                 <tbody>
-                    {programs.map((programs, index) => {
+                    {props.programs.map((programs, index) => {
                         return(
                         <tr key={index}>
                             <td id='user-top-program-title'>{programs.program_title}</td>

@@ -10,7 +10,8 @@ div#container.top-programs {
 
 div#card-section{
     display:grid;
-    grid-template-columns: 600px 600px;
+    grid-template-columns: 590px 590px;
+    margin-left: 0px;
     column-gap: 20px;
     row-gap: 20px;
 }
