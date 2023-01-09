@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux';
 //import jsx
 import YourTopPrograms from '../YourTopPrograms/YourTopPrograms';
 import ListOfTwentyPrograms from '../HomeProgramsDisplay/ListOfPrograms.jsx';
+import LandingPage from '../LandingPage/LandingPage';
 
 //import css
 import './Home.css'
@@ -17,14 +18,15 @@ function UserPage() {
     <div>
       {/* <h1>Welcome, {user.username}!</h1> */}
       {/* <p>Your ID is: {user.id}</p> */}
+      <LandingPage/>
       <div className="home-page">
-          <ListOfTwentyPrograms/>
-          {user.id && (
-            <>
-              <YourTopPrograms/>
-            </>
-            )
-          }
+        <ListOfTwentyPrograms/>
+        {user.id && (
+          <>
+            <YourTopPrograms/>
+          </>
+          )
+        }
       </div>
       {/* <LogOutButton className="btn" /> */}
       {/* <div>
