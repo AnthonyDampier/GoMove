@@ -97,6 +97,7 @@ function CreateProgramForm(){
             <div>
                 <div id="create-program">
                     <div id="create-program-header">
+                        <div>
                         <label>
                             Title:
                         </label>
@@ -132,6 +133,10 @@ function CreateProgramForm(){
                             // will disable after submit form
                             disabled={disable}
                             />
+                        <textarea
+                            placeholder="Describe Your Program Here"
+                            />
+                            </div>
                         <button 
                             onClick={() => createProgram()}
                             // will disable after submit form

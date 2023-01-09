@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 import './LandingPage.css';
 
 // CUSTOM COMPONENTS
-import RegisterForm from '../RegisterForm/RegisterForm';
+// import RegisterForm from '../RegisterForm/RegisterForm';
+import ListOfTwentyPrograms from '../HomeProgramsDisplay/ListOfPrograms'
+
 
 function LandingPage() {
-  const [heading, setHeading] = useState('Welcome');
   const history = useHistory();
+
+  const user = useSelector(store => store.user);
+  console.log(user);
 
   const onLogin = (event) => {
     history.push('/login');
@@ -15,53 +21,39 @@ function LandingPage() {
 
   return (
     <div className="container">
-      <h2>{heading}</h2>
+        <center>
+          <div className="welcome-note">
+            <img src={require('../../images/BuildMuscle.jpg')}/>
+            <div id='message'>
+              <p>
+              Welcome!
+              </p>
+              <p> 
+              We are so excited that you have decided to join our web application. 
+              As a personal trainer, you have the unique opportunity to help your clients achieve their health 
+              and fitness goals and improve their overall quality of life. 
+              </p>
+              <p>
+              We believe that our platform can support 
+              and enhance your work as a trainer by providing a range of tools and resources to help you plan and 
+              track your clients' progress, communicate with them effectively, and grow your business. We hope that you 
+              find our platform useful and we look forward to seeing the positive impact that you have on your clients' 
+              health and well-being.
+              </p>
 
-      <div className="grid">
-        <div className="welcome-note">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            id felis metus. Vestibulum et pulvinar tortor. Morbi pharetra lacus
-            ut ex molestie blandit. Etiam et turpis sit amet risus mollis
-            interdum. Suspendisse et justo vitae metus bibendum fringilla sed
-            sed justo. Aliquam sollicitudin dapibus lectus, vitae consequat odio
-            elementum eget. Praesent efficitur eros vitae nunc interdum, eu
-            interdum justo facilisis. Sed pulvinar nulla ac dignissim efficitur.
-            Quisque eget eros metus. Vestibulum bibendum fringilla nibh a
-            luctus. Duis a sapien metus.
-          </p>
-
-          <p>
-            Praesent consectetur orci dui, id elementum eros facilisis id. Sed
-            id dolor in augue porttitor faucibus eget sit amet ante. Nunc
-            consectetur placerat pharetra. Aenean gravida ex ut erat commodo, ut
-            finibus metus facilisis. Nullam eget lectus non urna rhoncus
-            accumsan quis id massa. Curabitur sit amet dolor nisl. Proin
-            euismod, augue at condimentum rhoncus, massa lorem semper lacus, sed
-            lobortis augue mi vel felis. Duis ultrices sapien at est convallis
-            congue.
-          </p>
-
-          <p>
-            Fusce porta diam ac tortor elementum, ut imperdiet metus volutpat.
-            Suspendisse posuere dapibus maximus. Aliquam vitae felis libero. In
-            vehicula sapien at semper ultrices. Vivamus sed feugiat libero. Sed
-            sagittis neque id diam euismod, ut egestas felis ultricies. Nullam
-            non fermentum mauris. Sed in enim ac turpis faucibus pretium in sit
-            amet nisi.
-          </p>
-        </div>
-        {/* <div className="grid-col grid-col_4">
-          <RegisterForm />
-
-          <center>
-            <h4>Already a Member?</h4>
-            <button className="login-btn landing" onClick={onLogin}>
-              Login
-            </button>
-          </center>
-        </div> */}
-      </div>
+              <p>
+              We believe that our platform can support 
+              and enhance your work as a trainer by providing a range of tools and resources to help you plan and 
+              track your clients' progress, communicate with them effectively, and grow your business. We hope that you 
+              find our platform useful and we look forward to seeing the positive impact that you have on your clients' 
+              health and well-being.
+              </p>
+            </div>
+          </div>
+          {!user.id && 
+          <ListOfTwentyPrograms/>
+          }
+        </center>
     </div>
   );
 }

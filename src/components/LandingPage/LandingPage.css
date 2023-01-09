@@ -1,101 +1,33 @@
-/* --------------------------------------------------------------------------------
-Grid
--------------------------------------------------------------------------------- */
-
-.grid {
-  margin: 20px;
-  display: flex;
-  flex: 0 1 auto;
-  /* defaults to 'row' */
-  flex-direction: row;
-  flex-wrap: wrap;
-  /* defaults to 'flex-start' */
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
-.grid-col {
-  flex: 0 0 auto;
-  padding: 0 0.5rem 0.5rem;
-  box-sizing: border-box;
-}
-
-.grid-col_1 {
-  flex-basis: 8.33333333%;
-  max-width: 8.33333333%;
-}
-
-.grid-col_2 {
-  flex-basis: 16.66666667%;
-  max-width: 16.66666667%;
-}
-
-.grid-col_3 {
-  flex-basis: 25%;
-  max-width: 25%;
-}
-
-.grid-col_4 {
-  flex-basis: 33.33333333%;
-  max-width: 33.33333333%;
-  margin-top: -200px;
-}
-
-.grid-col_5 {
-  flex-basis: 41.66666667%;
-  max-width: 41.66666667%;
-}
-
-.grid-col_6 {
-  flex-basis: 50%;
-  max-width: 50%;
-}
-
-.grid-col_7 {
-  flex-basis: 58.33333333%;
-  max-width: 58.33333333%;
-}
-
-.grid-col_8 {
-  flex-basis: 66.66666667%;
-  max-width: 66.66666667%;
-}
-
-.grid-col.grid-col_8 {
-  flex-basis: 66.66666667%;
-  max-width: 66.66666667%;
-
-}
-
 .welcome-note {
-  backdrop-filter: blur(50px);
+  background-color: white;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-  width: 800px;
-  padding: 20px;
+  margin-top: 50px;
+  width: 1620px;
+  height: 600px;
+  margin-bottom: 20px;
+  
+  display: flex;
 }
 
-.grid-col_9 {
-  flex-basis: 75%;
-  max-width: 75%;
+.welcome-note div#message {
+  font-size: 20px;
+  padding: 40px;
+  text-align: left;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
-.grid-col_10 {
-  flex-basis: 83.33333333%;
-  max-width: 83.33333333%;
+.welcome-note div#message p {
+  padding-bottom: 8px;
 }
 
-.grid-col_11 {
-  flex-basis: 91.66666667%;
-  max-width: 91.66666667%;
+.welcome-note img {
+  height: 600px;
+  border-radius: 5px 0px 0px 5px;
 }
 
-.grid-col_12 {
-  flex-basis: 100%;
-  max-width: 100%;
-}
-
-button.login-btn.landing {
+/* button.login-btn.landing {
   height: 40px;
   width: 468px;
   margin-left: -0.2px;
@@ -106,11 +38,12 @@ button.login-btn.landing {
   border: 2px solid #FFA500;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(2px);
-  /* Note: backdrop-filter has minimal browser support */
   border-radius: 5px;
   color: black;
-}
-
+} 
+*/
+/* 
 button:hover {
   background-color: #FFA500;
-}
+} 
+*/
