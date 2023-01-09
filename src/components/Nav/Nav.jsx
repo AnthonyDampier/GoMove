@@ -12,13 +12,10 @@ function Nav(props) {
   const user = useSelector((store) => store.user);
   const numOfUnapprovedPrograms = useSelector(store => store.unapprovedPrograms.length);
 
-  dispatch({type: 'FETCH_UNAPPROVED_PROGRAMS'});
-
   // assigned current path name to variable
   const pathname = useLocation().pathname;
   //removes "/" from front of path
   const splitLocation = pathname.split("/");
-  console.log("location ",splitLocation[1]);
 
   useEffect(() => {
     // TODO dispatch fetch all unapproved programs
