@@ -34,7 +34,7 @@ function UserPage() {
       <LandingPage/>
       <div className="home-page">
         <ListOfTwentyPrograms/>
-        {programs[0] === '' && (
+        {programs[0] !== [] && (
           <>
             <YourTopPrograms programs={programs}/>
           </>
