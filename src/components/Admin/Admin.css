@@ -2,7 +2,7 @@ div#admin-page {
     width: fit-content;
     font-size: 22px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15),0 0 20px rgba(0, 0, 0, 0.15),0 0 20px rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(7px);
+    backdrop-filter: blur(80px);
     padding: 20px;
     height: fit-content;
     border-radius: 5px;
