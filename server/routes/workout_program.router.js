@@ -11,7 +11,8 @@ router.get('/TwentyPrograms', (req, res) => {
         program.id,
         program.program_title, 
         "user".username as author,
-        "workout_genre".genre  as genre
+        "workout_genre".genre  as genre,
+        program.description as description
         FROM program
         JOIN "user" ON "user".id = program.author_user_id
         JOIN "workout_genre" ON "workout_genre".id = program.program_genre
@@ -287,10 +288,10 @@ router.post('/EnterProgram', (req, res) => {
     console.log('req.body', req.body);
     console.log('req.user:', req.user);
     const queryText =`Insert into "program" 
-        ("program_title", "author_user_id", "program_genre", "num_of_sessions", "approved")
-        VALUES ($1, $2, $3, $4, false);`;
+        ("program_title", "author_user_id", "program_genre", "num_of_sessions", "approved", "description")
+        VALUES ($1, $2, $3, $4, false, $5);`;
     
-    pool.query(queryText, [req.body.title, req.user.id, req.body.workoutGenre, req.body.numOfSessions])
+    pool.query(queryText, [req.body.title, req.user.id, req.body.workoutGenre, req.body.numOfSessions, req.body.description])
     .then(() => {
         console.log('Successful post of: ', req.body.title, ' by ', req.user.id);
         res.sendStatus(200);

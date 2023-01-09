@@ -18,6 +18,7 @@ function ListItemOfTen(props){
             return (require(databaseImage));
         }
     }
+    console.log(props.program);
 
     return(
         <div className="card" onClick={() => reviewProgram(props.program.id)}>
@@ -28,7 +29,7 @@ function ListItemOfTen(props){
                 {/* <p>{JSON.stringify(props)}</p> */}
                 <h4>{props.program.program_title}</h4>
                 <h5>{props.program.genre}</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>{props.program.description}</p>
                 <h6>By {props.program.author}</h6>
             </div>
         </div>

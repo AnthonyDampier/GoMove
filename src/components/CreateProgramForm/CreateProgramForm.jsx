@@ -14,6 +14,7 @@ function CreateProgramForm(){
     const [title, setTitle] = useState('');
     const [workoutGenre, setWorkoutType] = useState(0);
     const [numOfSessions, setNumOfSessions] = useState(0);
+    const [description, setDescribe] = useState('');
 
     const program  = useSelector(store => store.createdWorkoutProgram);
 
@@ -51,9 +52,10 @@ function CreateProgramForm(){
         console.log(
             'Program Title: ', title, 
             'workoutGenre: ', workoutGenre,
-            'Number of Sessions: ', numOfSessions
+            'Number of Sessions: ', numOfSessions,
+            'desciption: ', description
             );
-        dispatch({type: 'INSERT_PROGRAM', payload: {title: title, workoutGenre: workoutGenre, numOfSessions: numOfSessions}});
+        dispatch({type: 'INSERT_PROGRAM', payload: {title: title, workoutGenre: workoutGenre, numOfSessions: numOfSessions, description: description}});
 
         dispatch({type: 'GET_CREATED_PROGRAM'});
 
@@ -132,17 +134,27 @@ function CreateProgramForm(){
                             onChange={(event)=> updateSessionNumber(event)}
                             // will disable after submit form
                             disabled={disable}
-                            />
-                        <textarea
-                            placeholder="Describe Your Program Here"
-                            />
-                            </div>
+                        />
+                        <div id="description">
+                            <label>
+                                Describe your program:
+                            </label>
+                            <input 
+                                id="text"
+                                type="text"
+                                onChange={(event) => setDescribe(event.target.value)}
+                                // will disable after submit form
+                                disabled={disable}
+                                />
+                        </div>
+                        </div>
+                        
                         <button 
                             onClick={() => createProgram()}
                             // will disable after submit form
                             disabled={disableSessionSubmit}
                             >
-                            submit
+                            ENTER
                         </button>
                     </div>
                     { createSession === true && <SessionsLoop numOfSessions={numOfSessions}/>}

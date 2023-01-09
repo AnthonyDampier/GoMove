@@ -43,7 +43,7 @@ function Nav(props) {
             <Link 
               className="navLink" 
               to="/login"
-              id={splitLocation[1] === "login" || "registration" ? "active" : "" } 
+              
               >
               Login / Register
             </Link>

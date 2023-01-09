@@ -67,6 +67,14 @@ div#create-program-header select {
     margin-right: 15px;
 }
 
+div#description{
+    margin-top: 10px;
+    text-align: left;
+}
+div#create-program-header div#description input{
+    width: 727px;
+}
+
 div#create-program-header input#text{
     width: 300px;
     margin-left:5px;
@@ -77,9 +85,10 @@ div#create-program-header button{
     background-color: orange;
     border: none;
     border-radius: 5px;
-    height: 35px;
-    width: 100px;
+    height: 70x;
+    width: 200px;
     cursor: pointer;
+    font-size: 30px;
 }
 
 div#create-program-header button:disabled{

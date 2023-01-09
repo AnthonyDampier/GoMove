@@ -48,19 +48,23 @@ div.card div p {
     font-size: 15px;
 }
 
-h4 {
+.card-information h4 {
     margin-bottom: 12px;
 }
 
-h5 {
+.card-information h5 {
+    margin-top: 20px;
     margin-bottom: 12px;
 }
 
-h6, .h4, .h5, .h6 {
-    margin-top: 0;
+.card-information h6, .h4, .h5, .h6 {
+    margin-top: 20px;
     margin-bottom: 0;
 }
 
+.card-information p{
+    margin-top: 25px;
+}
 
 
 
