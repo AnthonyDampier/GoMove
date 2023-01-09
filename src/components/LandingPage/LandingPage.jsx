@@ -13,7 +13,7 @@ function LandingPage() {
   const history = useHistory();
 
   const user = useSelector(store => store.user);
-  console.log(user);
+  // console.log(user);
 
   const onLogin = (event) => {
     history.push('/login');

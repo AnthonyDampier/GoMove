@@ -15,7 +15,7 @@ function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
   const [programs, setPrograms] = useState([]);
-  console.log(user);
+  // console.log(user);
   
   useEffect(() => {
     if(user.id){

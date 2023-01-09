@@ -18,7 +18,7 @@ function ListItemOfTen(props){
             return (require(databaseImage));
         }
     }
-    console.log(props.program);
+    // console.log(props.program);
 
     return(
         <div className="card" onClick={() => reviewProgram(props.program.id)}>

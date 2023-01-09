@@ -73,9 +73,9 @@ function createSetForm(props){
         }
     }
 
-    useEffect(()=>{
-        dispatch({type: 'GET_CREATED_PROGRAM'});
-    }, [])
+    // useEffect(()=>{
+    //     dispatch({type: 'GET_CREATED_PROGRAM'});
+    // }, [])
 
     return(
         <div className="set-form">

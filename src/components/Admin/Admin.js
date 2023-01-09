@@ -13,7 +13,7 @@ function Admin(){
     useEffect(() => {
         // TODO dispatch fetch all unapproved programs
         dispatch({type: 'FETCH_UNAPPROVED_PROGRAMS'});
-    }, [programs]);
+    }, []);
 
     return(
         <div id="admin-page">
