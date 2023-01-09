@@ -72,7 +72,7 @@ function createSetForm(props){
             alert('Enter reps for all exercises');
         }
     }
-
+    
     // useEffect(()=>{
     //     dispatch({type: 'GET_CREATED_PROGRAM'});
     // }, [])

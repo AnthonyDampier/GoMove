@@ -11,14 +11,32 @@ function ListItemOfTen(props){
         });
     }
 
-    const getImage = (databaseImage) => {
-        if(!databaseImage){      
-            return (require('../../images/BackgroundGoMove.jpg'));
+    let lastPhotoNum = -1;
+    const getImage = (Image) => {
+        const randomNum = Math.floor(Math.random() * 5); 
+        while (randomNum === lastPhotoNum){
+            randomNum = Math.floor(Math.floor()*5);
+        }
+        lastPhotoNum = randomNum;
+
+        if(!Image){      
+            switch(randomNum){
+                case 0:
+                    return require('../../images/BuildMuscle.jpg');
+                case 1:
+                    return require('../../images/female_build_muscle.webp');
+                case 2:
+                    return require('../../images/female_lean.jpg');
+                case 3:
+                    return require('../../images/female_lean2.jpg');
+                case 4:
+                    return require('../../images/male_build_muscle.jpg');
+            }
         } else {
-            return (require(databaseImage));
+            return (require(Image));
         }
     }
-    // console.log(props.program);
+    console.log(props.program);
 
     return(
         <div className="card" onClick={() => reviewProgram(props.program.id)}>

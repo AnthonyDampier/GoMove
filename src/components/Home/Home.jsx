@@ -34,12 +34,13 @@ function UserPage() {
       <LandingPage/>
       <div className="home-page">
         <ListOfTwentyPrograms/>
-        {programs[0] !== [] && (
-          <>
-            <YourTopPrograms programs={programs}/>
-          </>
-          )
-        }
+        {user.id && 
+          (
+            <>
+              <YourTopPrograms programs={programs}/>
+            </>
+            )
+      }
       </div>
       {/* <LogOutButton className="btn" /> */}
       {/* <div>
