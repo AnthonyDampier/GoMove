@@ -4,6 +4,7 @@ import {
   Redirect,
   Route,
   Switch,
+  useLocation,
 } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -44,7 +45,7 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav />
+        <Nav location={useLocation}/>
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />

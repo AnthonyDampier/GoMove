@@ -7,7 +7,7 @@
   margin: 0 0 30px;
   /* background-color: #00acb0; */
   overflow: hidden;
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(1000px);
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
 
@@ -60,4 +60,10 @@ span#admin-notification{
   left: -3px;
   z-index: -100;
   opacity: 80%;
+}
+
+
+/* active link will change based on page user is on */
+#active {
+  color: orange;
 }
