@@ -2,10 +2,11 @@ import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "FETCH_WORKOUT_GENRES" actions
-function* fetchWorkoutPrograms() {
+function* fetchWorkoutPrograms(action) {
     try {
-        const response = yield axios.get('/api/workoutProgram', action.payload );
-        // console.log(response.data);
+        console.log(action.payload.searchTerm);
+        const response = yield axios.get('/api/workoutProgram/TwentyPrograms/'+action.payload.searchTerm);
+        console.log('Fetched programs',response.data);
         yield put({ type: 'SET_PROGRAMS', payload: response.data});
 
     } catch (error) {

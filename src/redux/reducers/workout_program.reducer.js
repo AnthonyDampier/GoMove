@@ -4,6 +4,8 @@ const workoutProgramReducer = (state = [], action) => {
             return action.payload;
         case 'SET_PROGRAM_INFO':
             return action.payload;
+        case 'SET_PROGRAMS':
+            return action.payload;
         default:
             return state;
     }

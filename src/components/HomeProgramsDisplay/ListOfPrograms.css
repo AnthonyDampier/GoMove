@@ -66,5 +66,27 @@ div.card div p {
     margin-top: 25px;
 }
 
+div.search-input {
+    display: flex;
+    justify-content: center;
+    height: 27px;
+    width: 330px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15),0 0 20px rgba(0, 0, 0, 0.15),0 0 20px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(7px);
+    padding: 3px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+
+}
+
+div.search-input label#search-text{
+    margin-right: 3px;
+}
+
+input#search-input{
+    height: 20px;
+    font-size: 22px;
+    margin-right: 3px;
+}
 
 

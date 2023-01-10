@@ -12,15 +12,15 @@ function ListItemOfTen(props){
     }
 
     let lastPhotoNum = -1;
-    const getImage = (Image) => {
-        const randomNum = Math.floor(Math.random() * 5); 
-        while (randomNum === lastPhotoNum){
-            randomNum = Math.floor(Math.floor()*5);
-        }
-        lastPhotoNum = randomNum;
+    const getImage = (id, Image) => {
+        // const randomNum = Math.floor(Math.random() * 5); 
+        // while (randomNum === lastPhotoNum){
+        //     randomNum = Math.floor(Math.floor()*5);
+        // }
+        // lastPhotoNum = randomNum;
 
         if(!Image){      
-            switch(randomNum){
+            switch(id%5){
                 case 0:
                     return require('../../images/BuildMuscle.jpg');
                 case 1:
@@ -41,7 +41,7 @@ function ListItemOfTen(props){
     return(
         <div className="card" onClick={() => reviewProgram(props.program.id)}>
             <div id="img">
-                <img className="cards-image" src={getImage(props.program.image)} alt="Program Image"/>
+                <img className="cards-image" src={getImage(props.program.id, props.program.image)} alt="Program Image"/>
             </div>
             <div className="card-information">
                 {/* <p>{JSON.stringify(props)}</p> */}
