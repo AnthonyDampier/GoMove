@@ -6,7 +6,7 @@ const router = express.Router();
 // get 10 programs from database and delivers to ListOFTenProgram
 router.get('/TwentyPrograms', (req, res) => {
     // GET route code here
-    console.log('in /TenPrograms');
+    console.log('in /TwentyPrograms');
     const queryText = `SELECT 
         program.id,
         program.program_title, 
