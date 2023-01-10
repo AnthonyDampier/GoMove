@@ -53,7 +53,7 @@ function* fetchWorkoutsByProgramId(action){
 function* fetchProgramInfoByProgramID(action){
     try{
         const response = yield axios.get('/api/workoutProgram/byId/'+ action.payload.id)
-        yield put({type: 'SET_PROGRAM_INFO', payload: response.data[0]});
+        yield put({type: 'SET_PROGRAM_INFO', payload: response.data});
     } catch {
         console.log('Failed to get program by id');
     }

@@ -11,7 +11,7 @@ function ReviewProgram(){
 
     const id = useParams();
     // console.log('id',id);
-    const programInfo = useSelector(store => store.workoutPrograms);
+    const programInfo = useSelector(store => store.workoutPrograms[0]);
     // console.log('program info', programInfo);
     const programInternal = useSelector(store => store.workoutsReducer);
     // console.log('program internal sessions', programInternal)
