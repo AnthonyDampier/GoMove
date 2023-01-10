@@ -4,9 +4,41 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 // get 10 programs from database and delivers to ListOFTenProgram
-router.get('/TwentyPrograms', (req, res) => {
+router.get('/TwentyPrograms/:searchTerm', (req, res) => {
     // GET route code here
-    console.log('in /TwentyPrograms');
+    console.log('in /TwentyPrograms' );
+    console.log('params: ', req.params.searchTerm);
+    console.log('body: ', req.body);
+
+    const searchTerm = '%'+req.params.searchTerm+'%';
+
+    const queryText = `SELECT 
+        program.id,
+        program.program_title, 
+        "user".username as author,
+        "workout_genre".genre  as genre,
+        program.description as description
+        FROM program
+        JOIN "user" ON "user".id = program.author_user_id
+        JOIN "workout_genre" ON "workout_genre".id = program.program_genre
+        WHERE program.approved = true AND LOWER("user"."username") Like LOWER($1) OR LOWER("workout_genre"."genre") Like LOWER($1) OR LOWER(program.program_title) LIKE LOWER($1)
+        LIMIT 20;`;
+
+    pool.query(queryText, [searchTerm])
+    .then( (response) => {
+        console.log('Results:', response.rows);
+        res.send(response.rows);
+    })
+    .catch((error) => {
+        console.log('ERROR: in /TwentyPrograms', error);
+
+        res.sendStatus(500);
+    })
+});
+
+router.get('/TwentyPrograms/', (req, res) => {
+    // GET route code here
+
     const queryText = `SELECT 
         program.id,
         program.program_title, 
@@ -25,7 +57,7 @@ router.get('/TwentyPrograms', (req, res) => {
         res.send(response.rows);
     })
     .catch((error) => {
-        console.log('ERROR: in /TemPrograms', error);
+        console.log('ERROR: in /TwentyPrograms', error);
 
         res.sendStatus(500);
     })
