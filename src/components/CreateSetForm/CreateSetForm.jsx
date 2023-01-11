@@ -83,7 +83,7 @@ function createSetForm(props){
                 <label className="set-num">Sets {props.setId}</label>
                 <div>
                     <label>Reps: 
-                    <input type='number' value={reps} onChange={(event) => updateReps(event)}/>
+                    <input id="reps" type='number' value={reps} onChange={(event) => updateReps(event)}/>
                     </label>
                 </div>
                 <div>

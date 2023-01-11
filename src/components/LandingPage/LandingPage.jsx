@@ -50,9 +50,9 @@ function LandingPage() {
               </p>
             </div>
           </div>
-          {!user.id && 
+          {/* {!user.id && 
           <ListOfTwentyPrograms/>
-          }
+          } */}
         </center>
     </div>
   );

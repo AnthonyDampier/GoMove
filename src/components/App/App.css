@@ -10,7 +10,8 @@ body,
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
-  background: url(../../images/BackgroundGoMove.jpg) no-repeat center center fixed;
+  background: url(../../images/BackgroundGoMove.jpg) no-repeat center fixed;
+  background-color: #bbbbbb;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

@@ -2,6 +2,9 @@ const { response } = require('express');
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {
+    rejectUnauthenticated,
+    } = require('../modules/authentication-middleware');
 
 // get 10 programs from database and delivers to ListOFTenProgram
 router.get('/TwentyPrograms/:searchTerm', (req, res) => {
@@ -63,7 +66,7 @@ router.get('/TwentyPrograms/', (req, res) => {
     })
 });
 
-router.get('/userPrograms/', (req, res) => {
+router.get('/userPrograms/', rejectUnauthenticated, (req, res) => {
     // GET route code here
     console.log('in /TenPrograms');
     console.log('Req.user.id', req.user.id);
@@ -89,7 +92,7 @@ router.get('/userPrograms/', (req, res) => {
     })
 });
 
-router.get('/unapprovedPrograms/', (req, res) => {
+router.get('/unapprovedPrograms/', rejectUnauthenticated, (req, res) => {
     // GET unapproved programs
     console.log('In unapproved programs');
     const queryText = `SELECT 
@@ -114,7 +117,7 @@ router.get('/unapprovedPrograms/', (req, res) => {
 })
 
 
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
   // GET route code here
     console.log('in workout_program.router');
     const queryText = `Select * from "program";`;
@@ -215,9 +218,7 @@ router.get('/exerciseType/:programId/:sessionId/:exerciseId', (req, res) => {
     console.log('params: ', req.params);
     const queryText = `SELECT distinct exercise_name From exercise_types
     JOIN program_set ON program_set.exercise_type = exercise_types.id
-    WHERE program_id=$1 AND session_id=$2 AND exercise_id=$3;
-    
-        `;
+    WHERE program_id=$1 AND session_id=$2 AND exercise_id=$3;`;
 
     pool.query(queryText, [req.params.programId, req.params.sessionId, req.params.exerciseId])
     .then( (response) => {
@@ -313,7 +314,7 @@ router.get('/byUserID/:id', (req, res) => {
 /**
  * POST route template
  */
-router.post('/EnterProgram', (req, res) => {
+router.post('/EnterProgram',rejectUnauthenticated, (req, res) => {
   // POST route code here
     console.log('in workout_program.router for post');
     // receiving {numOfSessions: #, title: 'abc', workoutGenre: #}
@@ -336,7 +337,7 @@ router.post('/EnterProgram', (req, res) => {
     })
 });
 
-router.post('/insertProgramSet', (req, res) => {
+router.post('/insertProgramSet',rejectUnauthenticated, (req, res) => {
     console.log('in workout_program.router for post set');
     console.log('req.body: ', req.body);
     const queryText = `INSERT INTO "program_set" (program_id, session_id, exercise_id, exercise_type, set_id, reps, percent_of_max)
@@ -356,7 +357,7 @@ router.post('/insertProgramSet', (req, res) => {
 })
 
 // updated set from review program
-router.put('/updateSet/:programId/:sessionId/:exerciseId/:setId' , (req,res) => {
+router.put('/updateSet/:programId/:sessionId/:exerciseId/:setId', rejectUnauthenticated, (req,res) => {
     console.log('in set update');
     console.log('body: ', req.body);
     console.log('params:', req.params);
@@ -385,7 +386,7 @@ router.put('/updateSet/:programId/:sessionId/:exerciseId/:setId' , (req,res) => 
     })
 })
 
-router.put('/updateExerciseType/:programId/:sessionId/:exerciseId' , (req,res) => {
+router.put('/updateExerciseType/:programId/:sessionId/:exerciseId', rejectUnauthenticated , (req,res) => {
     console.log('in set update');
     console.log('body: ', req.body);
     console.log('params:', req.params);
@@ -412,7 +413,7 @@ router.put('/updateExerciseType/:programId/:sessionId/:exerciseId' , (req,res) =
     })
 })
 
-router.put('/approveProgram/:programId', (req, res) => {
+router.put('/approveProgram/:programId', rejectUnauthenticated, (req, res) => {
     const programId = req.params.programId;
     console.log('Approve program:', programId);
 
@@ -430,7 +431,7 @@ router.put('/approveProgram/:programId', (req, res) => {
     })
 })
 
-router.delete('/deleteProgram/:programId', (req, res) => {
+router.delete('/deleteProgram/:programId', rejectUnauthenticated, (req, res) => {
     console.log('in deleteProgram by id');
     console.log('body: ', req.body);
     console.log('params: ', req.params);

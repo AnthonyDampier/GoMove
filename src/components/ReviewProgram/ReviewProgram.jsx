@@ -73,7 +73,7 @@ function ReviewProgram(){
         dispatch({type: 'APPROVE_PROGRAM', payload: id})
         setUpdate(!update);
     }
-
+    console.log(programInfo)
 
     return(
         <div id="empty-space-program-review-page">

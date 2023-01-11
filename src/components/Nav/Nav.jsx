@@ -40,6 +40,9 @@ function Nav(props) {
               >
                 Home
             </Link>
+            <Link className="navLink" to="/about">
+              About
+            </Link>
             <Link 
               className="navLink" 
               to="/login"
@@ -89,15 +92,14 @@ function Nav(props) {
                   <span id="admin-notification">{JSON.stringify(numOfUnapprovedPrograms)}</span>
                 }
               </Link>
-            )
-
-            }
+            )}
+            <Link className="navLink" to="/about">
+              About
+            </Link>
             <LogOutButton className="navLink" to="/login"/>
           </>
         )}
-        {/* <Link className="navLink" to="/about">
-          About
-        </Link> */}
+
       </div>
     </div>
   );

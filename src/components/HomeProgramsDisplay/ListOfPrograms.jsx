@@ -14,12 +14,12 @@ function ListOfPrograms(){
     const [searchTerm, updateSearchTerm] = useState("");
 
     useEffect(() => {
-        console.log(searchTerm);
+        // console.log(searchTerm);
         dispatch({type: "FETCH_PROGRAMS", payload: {searchTerm: searchTerm}});
     }, [searchTerm]);
 
     useEffect(() => {
-        console.log(searchTerm);
+        // console.log(searchTerm);
         dispatch({type: "FETCH_PROGRAMS", payload: {searchTerm: searchTerm}});
     }, []);
 

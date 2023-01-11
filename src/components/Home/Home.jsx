@@ -33,10 +33,9 @@ function UserPage() {
       {/* <p>Your ID is: {user.id}</p> */}
       <LandingPage/>
       <div className="home-page">
-        <ListOfTwentyPrograms/>
-        {user.id && 
-          (
-            <>
+      {user.id && 
+          (<>
+              <ListOfTwentyPrograms/>
               <YourTopPrograms programs={programs}/>
             </>
             )

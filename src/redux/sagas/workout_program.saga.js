@@ -4,9 +4,9 @@ import { put, takeEvery } from 'redux-saga/effects';
 // worker Saga: will be fired on "FETCH_WORKOUT_GENRES" actions
 function* fetchWorkoutPrograms(action) {
     try {
-        console.log(action.payload.searchTerm);
+        // console.log(action.payload.searchTerm);
         const response = yield axios.get('/api/workoutProgram/TwentyPrograms/'+action.payload.searchTerm);
-        console.log('Fetched programs',response.data);
+        // console.log('Fetched programs',response.data);
         yield put({ type: 'SET_PROGRAMS', payload: response.data});
 
     } catch (error) {
@@ -17,8 +17,8 @@ function* fetchWorkoutPrograms(action) {
 function* insertWorkoutProgram(action) {
     try {
         yield axios.post('/api/workoutProgram/EnterProgram', action.payload);
-    } catch {
-        console.log('Program failed to be inserted in saga')
+    } catch (err){
+        console.log('Program failed to be inserted in saga',err)
     }
 }
 
@@ -27,16 +27,16 @@ function* fetchCreatedProgram(action){
         const response = yield axios.get('/api/workoutProgram/retrieveProgramID');
         // sets ID to be retrieved in store to continue creating sessions and exercises.
         yield put({type: 'SET_CREATED_PROGRAM', payload: response.data});
-    } catch {
-        console.log('Program failed to be inserted in saga');
+    } catch (err){
+        console.log('Program failed to be inserted in saga',err);
     }
 }
 
 function* insertProgramSetRow(action){
     try {
         yield axios.post('/api/workoutProgram/insertProgramSet', action.payload);
-    } catch {
-        console.log('Set insertion failed in saga');
+    } catch (err){
+        console.log('Set insertion failed in saga', err);
     }
 }
 
@@ -45,8 +45,8 @@ function* fetchWorkoutsByProgramId(action){
         const response = yield axios.get('/api/workoutProgram/fetchById/'+ action.payload.id);
 
         yield put({type: 'SET_WORKOUTS', payload: response.data})
-    } catch {
-        console.log('Failed fetch program by id in saga');
+    } catch (err){
+        console.log('Failed fetch program by id in saga', err);
     }
 }
 
@@ -54,8 +54,8 @@ function* fetchProgramInfoByProgramID(action){
     try{
         const response = yield axios.get('/api/workoutProgram/byId/'+ action.payload.id)
         yield put({type: 'SET_PROGRAM_INFO', payload: response.data});
-    } catch {
-        console.log('Failed to get program by id');
+    } catch (err){
+        console.log('Failed to get program by id',err);
     }
 }
 
@@ -63,8 +63,8 @@ function* updateSet(action){
     try{
         yield axios.put('/api/workoutProgram/updateSet/'+action.payload.programId+'/'+action.payload.sessionId+'/'+action.payload.exerciseId+'/'+action.payload.setId, 
         {rep: action.payload.rep, percentOfMax: action.payload.percentOfMax})
-    } catch {
-        console.log('Failed to update set');
+    } catch (err){
+        console.log('Failed to update set', err);
     }
 }
 
@@ -72,34 +72,34 @@ function* updateExerciseType(action){
     try{
         yield axios.put('/api/workoutProgram/updateExerciseType/'+action.payload.programId+'/'+action.payload.sessionId+'/'+action.payload.exerciseId, 
         {exerciseTypeId: action.payload.exerciseTypeId})
-    } catch {
-        console.log('Error in updateExerciseType');
+    } catch (err){
+        console.log('Error in updateExerciseType', err);
     }
 }
 
 function* deleteWorkoutProgram(action){
     try{
         yield axios.delete('/api/workoutProgram/deleteProgram/'+action.payload.programId);
-    } catch {
-        console.log('Error in deleteWorkoutProgram');
+    } catch (err){
+        console.log('Error in deleteWorkoutProgram', err);
     }
 }
 
 function* fetchUnapprovedPrograms(action){
     try{
         const unapproved = yield axios.get('/api/workoutProgram/unapprovedPrograms');
-        console.log(unapproved.data);
+        // console.log(unapproved.data);
         yield put({type: 'SET_UNAPPROVED_PROGRAMS', payload: unapproved.data});
-    } catch {
-        console.log('ERROR in fetchUnapprovedPrograms Saga');
+    } catch (error){
+        console.log('ERROR in fetchUnapprovedPrograms Saga', error);
     }
 }
 
 function* approveProgram(action){
     try{
         yield axios.put('/api/workoutProgram/approveProgram/'+action.payload);
-    } catch {
-        console.log('ERROR in approvedProgram');
+    } catch (err){
+        console.log('ERROR in approvedProgram', err);
     }
 }
 

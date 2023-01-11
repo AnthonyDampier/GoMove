@@ -11,7 +11,7 @@ function ListItemOfTen(props){
         });
     }
 
-    let lastPhotoNum = -1;
+    // let lastPhotoNum = -1;
     const getImage = (id, Image) => {
         // const randomNum = Math.floor(Math.random() * 5); 
         // while (randomNum === lastPhotoNum){
@@ -36,7 +36,7 @@ function ListItemOfTen(props){
             return (require(Image));
         }
     }
-    console.log(props.program);
+    // console.log(props.program);
 
     return(
         <div className="card" onClick={() => reviewProgram(props.program.id)}>
