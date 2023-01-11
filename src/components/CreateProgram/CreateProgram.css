@@ -211,6 +211,10 @@ div.set-form div label.set-num{
     margin: 50px;
 }
 
+div input#reps {
+    width: 40px;
+}
+
 .set-form div label input{
     margin: 0;
     margin-left: 5px;
