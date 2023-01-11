@@ -11,10 +11,30 @@ function AboutPage() {
   return (
     <div className="about-us container">
       <div className="developer">
-        <img src=""/>
-        <p>
-
-        </p>
+        <img src={require("../../images/porfolioHeadShot.jpeg")}/>
+        <div id="message">
+          <div id="header">
+            <h2>Anthony Dampier</h2>
+            <div className='professional-links'>
+              <div id="links">
+                <a href="https://www.linkedin.com/in/anthonydampier/" targat="_blank" rel="noreferrer">
+                  <img src={require("../../images/logos/LI-In-Bug.png")}/>
+                </a>
+                <a href="https://github.com/AnthonyDampier" targat="_blank" rel="noreferrer">
+                  <img src={require("../../images/logos/github-mark.png")}/>
+                </a>
+              </div>
+            </div>
+          </div>
+          <h4>Full Stack Application Developer</h4>
+          <p>
+            After years of writing my workouts in notebooks, saving them in mobile phone notes, and struggling the remember what comes next; I create GoMove.
+          </p>
+          <p>
+            GoMove is an Application built to make exercise programming and referencing said exercise program easier for individuals, Personal Trainers, Physical Therapists, and Physical Rehabilitation.
+          </p>
+          
+        </div>
       </div>
       <div className='tech'>
         <h5>Technology Used</h5>
