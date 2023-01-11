@@ -52,16 +52,16 @@ function CreateSessionForm(props){
         }
     }
 
-    useEffect(() => {
-        if (submitSession === true){
-            console.log(
-                'programId', programId,
-                'sessionId:', props.sessionId, 
-                'exerciseNumber: ', numOfExercises,
-                'SubmitProgram is: ', props.submitProgram
-            )
-        }
-    }, [submitSession]);
+    // useEffect(() => {
+    //     if (submitSession === true){
+    //         console.log(
+    //             'programId', programId,
+    //             'sessionId:', props.sessionId, 
+    //             'exerciseNumber: ', numOfExercises,
+    //             'SubmitProgram is: ', props.submitProgram
+    //         )
+    //     }
+    // }, [submitSession]);
 
 
     //props contains {sessionId: , programId: }

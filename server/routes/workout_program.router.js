@@ -133,7 +133,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     })
 });
 
-router.get('/retrieveProgramID', (req, res) => {
+router.get('/retrieveProgramID', rejectUnauthenticated, (req, res) => {
     // GET route code here
     console.log('in workout_program.router /retrieveProgramID');
     //retrieves most recent entry from current users
