@@ -22,7 +22,7 @@ function ExerciseForm(props){
     const updateSets = (event) => {
         // disallows user to input anything not at or between min and max
         const min = 0;
-        const max = 5;
+        const max = 10;
         const newSets = event.target.value;
         // console.log('sets input: ', newSets);
         if (newSets > max) {

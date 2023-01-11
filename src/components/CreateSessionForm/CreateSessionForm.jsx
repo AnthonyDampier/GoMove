@@ -14,7 +14,7 @@ function CreateSessionForm(props){
 
     // session limits
     const min = 0;
-    const max = 4;
+    const max = 10;
 
     // updates session number based on users number input; disallows above max and below min
     const updateExerciseNumber = (event) => {
