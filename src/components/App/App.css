@@ -10,6 +10,7 @@ body,
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
+  backdrop-filter: blur(10px);
   background: url(../../images/BackgroundGoMove.jpg) no-repeat center fixed;
   background-color: #bbbbbb;
   -webkit-background-size: cover;
