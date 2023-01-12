@@ -11,8 +11,11 @@ function ReviewProgram(){
 
     const id = useParams();
     // console.log('id',id);
-    const programInfo = useSelector(store => store.workoutPrograms[0]);
+    let programInfo = useSelector(store => store.workoutPrograms[0]);
     console.log('program info', programInfo);
+    if (programInfo == undefined){
+        programInfo = "";
+    }
     const programInternal = useSelector(store => store.workoutsReducer);
     console.log('program internal sessions', programInternal)
     const exerciseTypes = useSelector(store => store.exerciseType);
@@ -37,7 +40,7 @@ function ReviewProgram(){
             console.log('ReviewProgram ', error);
         }
         
-    }, [])
+    }, [update])
 
     const getExerciseType = (session) => {
         // console.log('typeId:', session.exercise_type);
@@ -85,7 +88,7 @@ function ReviewProgram(){
     return(
         <div id="empty-space-program-review-page">
             <div id="program-review-page"> 
-                <h1>{JSON.stringify(programInfo.program_title)}</h1>
+                <h1>{programInfo.program_title}</h1>
                 {/* <p>{id.id}</p> */}
                 <h3>Workout Type: {getGenre(programInfo.program_genre)}</h3>
                 {/* <p>{JSON.stringify(programInfo)}</p> */}

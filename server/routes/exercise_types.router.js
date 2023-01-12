@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
   // GET route code here
   console.log('in workout_types.router');
-  const queryText = `Select * from "exercise_types";`;
+  const queryText = `Select * from "exercise_types" ORDER BY id ASC;`;
   pool.query(queryText)
   .then( (response) => {
       console.log('Results:', response.rows);

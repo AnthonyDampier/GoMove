@@ -21,7 +21,9 @@ function ReviewExercise(props){
     }
 
     useEffect(()=>{
-        axios.get('/api/workoutProgram/setIds/'+props.programId+'/'+props.sessionId+'/'+props.exerciseId).then(response =>{ setSetInfo(response.data)}).catch(error => console.log(error));
+        axios.get('/api/workoutProgram/setIds/'+props.programId+'/'+props.sessionId+'/'+props.exerciseId)
+        .then(response =>{ setSetInfo(response.data)})
+        .catch(error => console.log(error));
     }, [])
 
     return(

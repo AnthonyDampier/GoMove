@@ -32,17 +32,18 @@ function ReviewExercises(props){
                     exerciseTypeId: Number(exerciseTypeId),
                 }
             })
+            setExerciseName(exerciseTypes[exerciseTypeId-1].exercise_name);
         } else {
             updateRenderCounter(renderCounter + 1);
         }
-    }, [editState]);
+    }, [editState, ]);
 
 
     return(
         <div className="exercises" >  
             {/* <h1>Exercise Id: {JSON.stringify(exerciseTypeId)}</h1> */}
             <h2>{!props.editState ? 
-                exerciseTypes[exerciseTypeId-1].exercise_name
+                exerciseName
                 : 
                 <select 
                     value={exerciseTypeId} 
