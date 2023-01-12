@@ -67,7 +67,7 @@ button:hover {
   cursor: pointer;
 }
 
-button:hover {
+.call-to-action:hover {
   animation:  shake 0.8s  ;
 }
 
