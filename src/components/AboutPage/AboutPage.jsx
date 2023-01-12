@@ -17,10 +17,10 @@ function AboutPage() {
             <h2>Anthony Dampier</h2>
             <div className='professional-links'>
               <div id="links">
-                <a href="https://www.linkedin.com/in/anthonydampier/" targat="_blank" rel="noreferrer">
+                <a href="https://www.linkedin.com/in/anthonydampier/" target="_blank" rel="noreferrer">
                   <img src={require("../../images/logos/LI-In-Bug.png")}/>
                 </a>
-                <a href="https://github.com/AnthonyDampier" targat="_blank" rel="noreferrer">
+                <a href="https://github.com/AnthonyDampier" target="_blank" rel="noreferrer">
                   <img src={require("../../images/logos/github-mark.png")}/>
                 </a>
               </div>
