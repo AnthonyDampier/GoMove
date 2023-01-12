@@ -117,7 +117,7 @@ router.get('/unapprovedPrograms/', rejectUnauthenticated, (req, res) => {
 })
 
 
-router.get('/', rejectUnauthenticated, (req, res) => {
+router.get('/', (req, res) => {
   // GET route code here
     console.log('in workout_program.router');
     const queryText = `Select * from "program";`;
@@ -133,7 +133,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     })
 });
 
-router.get('/retrieveProgramID', rejectUnauthenticated, (req, res) => {
+router.get('/retrieveProgramID', (req, res) => {
     // GET route code here
     console.log('in workout_program.router /retrieveProgramID');
     //retrieves most recent entry from current users

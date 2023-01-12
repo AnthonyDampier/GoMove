@@ -18,10 +18,10 @@ function ListOfPrograms(){
         dispatch({type: "FETCH_PROGRAMS", payload: {searchTerm: searchTerm}});
     }, [searchTerm]);
 
-    useEffect(() => {
-        // console.log(searchTerm);
-        dispatch({type: "FETCH_PROGRAMS", payload: {searchTerm: searchTerm}});
-    }, []);
+    // useEffect(() => {
+    //     // console.log(searchTerm);
+    //     dispatch({type: "FETCH_PROGRAMS", payload: {searchTerm: searchTerm}});
+    // }, []);
 
 
 

@@ -12,9 +12,9 @@ function ReviewProgram(){
     const id = useParams();
     // console.log('id',id);
     const programInfo = useSelector(store => store.workoutPrograms[0]);
-    // console.log('program info', programInfo);
+    console.log('program info', programInfo);
     const programInternal = useSelector(store => store.workoutsReducer);
-    // console.log('program internal sessions', programInternal)
+    console.log('program internal sessions', programInternal)
     const exerciseTypes = useSelector(store => store.exerciseType);
     const workoutGenre = useSelector(store => store.workoutGenre);
 
@@ -23,14 +23,21 @@ function ReviewProgram(){
 
     const [update, setUpdate] = useState(true);
 
-
+    
     useEffect(() => {
         //TODO : Fetch all programs information and session by programID
+        console.log('Review Program UseEffect');
+        try{
             dispatch({type: 'FETCH_WORKOUTS_BY_ID', payload: id});
             dispatch({type: 'GET_PROGRAM_BY_ID', payload: id});
             dispatch({type: 'FETCH_EXERCISE_TYPES'});
             dispatch({type: 'FETCH_WORKOUT_GENRES'});
-    }, [update])
+        }
+        catch(error){
+            console.log('ReviewProgram ', error);
+        }
+        
+    }, [])
 
     const getExerciseType = (session) => {
         // console.log('typeId:', session.exercise_type);
@@ -73,12 +80,12 @@ function ReviewProgram(){
         dispatch({type: 'APPROVE_PROGRAM', payload: id})
         setUpdate(!update);
     }
-    console.log(programInfo)
+    console.log(programInfo.program_title);
 
     return(
         <div id="empty-space-program-review-page">
-            <div id="program-review-page">  
-                <h1>Program Title: {programInfo.program_title}</h1>
+            <div id="program-review-page"> 
+                <h1>{JSON.stringify(programInfo.program_title)}</h1>
                 {/* <p>{id.id}</p> */}
                 <h3>Workout Type: {getGenre(programInfo.program_genre)}</h3>
                 {/* <p>{JSON.stringify(programInfo)}</p> */}
