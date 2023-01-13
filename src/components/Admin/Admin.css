@@ -9,6 +9,7 @@ div#admin-page {
     border: 1px black solid;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 50px;
 }
 
 div#admin-page table {

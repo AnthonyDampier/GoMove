@@ -68,7 +68,7 @@ function CreateSessionForm(props){
     return(
         <div className="session-form">
             <h2 id="session-title">Session: 
-                <span>  {props.sessionId}</span>
+                <span> {props.sessionId}</span>
             </h2>
             <div id="session-header">
                 

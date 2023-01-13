@@ -5,7 +5,7 @@ import { put, takeEvery } from 'redux-saga/effects';
 function* fetchExerciseType() {
     try {
     const response = yield axios.get('/api/exerciseType');
-    console.log(response.data);
+    // console.log(response.data);
     yield put({ type: 'SET_EXERCISE_TYPES', payload: response.data});
     } catch (error) {
         console.log('Exercise get request failed', error);

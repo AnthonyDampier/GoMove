@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import axios from 'axios';
 //import jsx
 import YourTopPrograms from '../YourTopPrograms/YourTopPrograms';
@@ -12,6 +12,8 @@ import './Home.css'
 // import CreateProgramPage from '../CreateProgram/CreateProgramPage';
 
 function UserPage() {
+  const dispatch = useDispatch();
+
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
   const [programs, setPrograms] = useState([]);
@@ -24,6 +26,10 @@ function UserPage() {
       }).catch( error => {
           console.log('ERROR in 10 programs get: ',error);
       })
+    }
+
+    if(user.access_level >= 1){
+      dispatch({type: 'FETCH_UNAPPROVED_PROGRAMS'});
     }
   }, []);
   

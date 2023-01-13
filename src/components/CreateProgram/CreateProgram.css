@@ -34,6 +34,10 @@
     margin: 0px;
 }
 
+.div#button-div{
+    margin-bottom: 100px;
+}
+
 
 h2#create-title {
     text-align: left;
@@ -43,7 +47,6 @@ div#create-program-header{
     display: flex;
     justify-content: space-between;
 }
-
 
 div#create-program-header label {
     font-size: 20px;
@@ -96,6 +99,18 @@ div#create-program-header button:disabled{
     backdrop-filter: blur(80px);
 }
 
+.session{
+    margin-top: 20px;
+}
+
+.session button{
+    margin-bottom: 10px !important;
+}
+
+.session button:hover {
+    margin-bottom: 9px !important;
+}
+
 
 div.session-form {
     height: fit-content;
@@ -104,8 +119,9 @@ div.session-form {
     background-color: white;
     border: 1px black solid;
     margin: 10px;
-    margin-top: 20px;
+    margin-bottom: 100px;
     padding: 20px;
+
 }
 
 div.session-form div#session-header {
@@ -135,6 +151,8 @@ div#session-header button[disabled]{
     color: #66666665;
     cursor: none;
 }
+
+
 
 div#session-header input{
     height: 25px;
@@ -168,12 +186,15 @@ div.exercise-form{
     font-size: 16px;
 }
 
-.exercise-form div label select{
-    font-size: 14px;
+select{
+    font-size: 15px;
+    width: fit-content;
+    max-width: 240px;
     height: 25px;
     border: 1px black solid;
     border-radius: 3px;
     margin: 5px;
+    margin-left: 10px;
 }
 
 .exercise-form div label input{
@@ -211,8 +232,14 @@ div.set-form div label.set-num{
     margin: 50px;
 }
 
-div input#reps {
-    width: 40px;
+
+input {
+    width: 30px;
+    margin: auto;
+}
+
+input#reps {
+    width: 45px;
 }
 
 .set-form div label input{

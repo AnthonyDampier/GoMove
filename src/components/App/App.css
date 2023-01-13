@@ -75,7 +75,13 @@ Button
   border-radius: 0;
   background: none;
   font: inherit;
+  font-size: 18px;
   color: #444;
+  padding-right: 22px;
+}
+
+.btn_asLink::placeholder{
+  opacity: 70%;
 }
 
 .btn_asLink:hover {

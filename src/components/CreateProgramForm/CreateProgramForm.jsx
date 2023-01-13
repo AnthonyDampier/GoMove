@@ -79,7 +79,7 @@ function CreateProgramForm(){
         if (numOfSessions > 0 && workoutGenre !== 0 && title != ''){
             setDisableSessionButton(false);
         }
-        console.log(program);
+        // console.log(program);
     }, [numOfSessions, workoutGenre])
 
     useEffect(()=>{

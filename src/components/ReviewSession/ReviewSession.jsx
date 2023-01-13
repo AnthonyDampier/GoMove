@@ -22,16 +22,10 @@ function ReviewSession(props){
             .catch(error => console.log(error));
     }, []);
 
-    // let render = true;
-
-    // const rerender = () => {
-    //     render = !render;
-    // }
-
     return (
         <div className="session">  
             <h1>Session: {selectedSessionId}</h1>
-            {userId == props.programInfo.author_user_id && <button onClick={() => handleEdit()}>{editState ? 'save': 'edit'}</button>}
+            {userId == props.programInfo.author_user_id && <button className="edit-btn" onClick={() => handleEdit()}>{editState ? 'save': 'edit'}</button>}
             {/* <h2>{JSON.stringify(props.programInfo)}</h2> */}
             {/* ÷\<h2>{JSON.stringify(userId)}</h2> */}
             {exercises.map((item, index) => {

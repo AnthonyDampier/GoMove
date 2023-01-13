@@ -77,10 +77,20 @@ function createSetForm(props){
     //     dispatch({type: 'GET_CREATED_PROGRAM'});
     // }, [])
 
+    const setForPres = () =>{
+        setReps(10);
+        setPercentOfMax(70);
+    }
+
     return(
         <div className="set-form">
             <div  className={saved? "setSaved": ""}>
-                <label className="set-num">Sets {props.setId}</label>
+                <label 
+                    className="set-num"
+                    onClick={() => setForPres()}
+                    >
+                    Sets {props.setId}
+                </label>
                 <div>
                     <label>Reps: 
                     <input id="reps" type='number' value={reps} onChange={(event) => updateReps(event)}/>
