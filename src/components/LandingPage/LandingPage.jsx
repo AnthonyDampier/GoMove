@@ -13,11 +13,15 @@ function LandingPage() {
   const history = useHistory();
 
   const user = useSelector(store => store.user);
-  // console.log(user);
+  console.log(user);
 
   const onLogin = (event) => {
     history.push('/login');
   };
+
+  const handlePushReg = () => {
+    history.push('/registration');
+  }
 
   return (
     <div className="container">
@@ -48,6 +52,15 @@ function LandingPage() {
               find our platform useful and we look forward to seeing the positive impact that you have on your clients' 
               health and well-being.
               </p>
+              <center>
+                {!user.id && 
+                  <button 
+                    className='call-to-action'
+                    onClick={() => handlePushReg()}
+                    >
+                      GoMove Today!!
+                  </button>}
+              </center>
             </div>
           </div>
           {/* {!user.id && 
