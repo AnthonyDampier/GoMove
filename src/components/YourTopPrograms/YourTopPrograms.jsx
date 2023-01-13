@@ -31,7 +31,7 @@ function YourTopPrograms(props){
         <div className="your-program-performance">  
             <div id="top-programs title">
                 <h2>
-                    Top 5 Program
+                    Programs
                 </h2>
                 <h4>
                     by {user.username}

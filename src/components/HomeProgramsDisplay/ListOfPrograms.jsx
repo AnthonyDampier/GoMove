@@ -29,16 +29,13 @@ function ListOfPrograms(){
         <>
             <div id="container" className="top-programs">
                 <div className="search-input">
-                    <label id="search-text">
-                        Search:
-                    </label> 
                     <input 
+                        placeholder="Search For A Program"
                         id="search-input"
                         type="text"
                         value={searchTerm}
                         onChange={(event) => updateSearchTerm(event.target.value)}
-                        />
-                    
+                    />
                 </div>
                 <div id="card-section">
                         {programs.map(program => {
