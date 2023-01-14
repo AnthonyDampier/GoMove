@@ -174,10 +174,11 @@ Form Treatment
   height: 100vh;
   background-image: url(../../images/BackgroundGoMove.jpg);
   background-repeat: no-repeat;
-  background-color: #c8cedf6d;
   background-size:cover;
   background-position: center;
-  background-position-y: -360px;
+  position:relative;
+  top: 0%;
+  z-index: 0;
 }
 
 #login-page button {
@@ -198,10 +199,11 @@ input::-webkit-input-placeholder{
   height: 100vh;
   background-image: url(../../images/BackgroundGoMove.jpg);
   background-repeat: no-repeat;
-  background-color: #c8cedf6d;
-  background-size: cover;
+  background-size:cover;
   background-position: center;
-  background-position-y: -360px;
+  position:relative;
+  top: 0%;
+  z-index: 0;
 }
 
 .formPanel div#register-submit-btn input{
