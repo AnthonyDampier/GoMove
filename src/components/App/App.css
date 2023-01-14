@@ -10,12 +10,11 @@ body,
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
-  background: url(../../images/BackgroundGoMove.jpg) no-repeat center fixed;
+  background-image: url(../../images/BackgroundGoMove.jpg);
+  background-repeat: no-repeat, repeat;
   background-color: #bbbbbb;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background-position: 0px -300px;
+  background-size: 200vh;
 }
 
 img {
