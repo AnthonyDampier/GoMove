@@ -29,7 +29,7 @@ function MyPrograms(){
     return(
         <center id="my-program-page">
         <div className="my-programs">
-                <h1>{user.username}'s Workout Programs</h1>
+                <h1 className="title">{user.username}'s Workout Programs</h1>
                 <table>
                     <thead>
                         <tr>

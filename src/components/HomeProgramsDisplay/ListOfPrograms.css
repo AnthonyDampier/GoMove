@@ -18,7 +18,7 @@ div#card-section{
 
 
 img.cards-image{
-    border-radius: 5px 0px 0px 5px;
+    border-radius: 4px 0px 0px 4px;
     width: 300px;
     height: 270px;
     object-fit: fill;
@@ -71,12 +71,12 @@ div.search-input {
     justify-content: center;
     width: fit-content;
     box-shadow: 0px 4px 4px rgba(2, 3, 4, 0.50);
-    backdrop-filter: blur(100px);
+    background-color: whitesmoke;
     padding: 1px;
     border-radius: 4px;
     margin-bottom: 10px;
     padding: 4px;
-    border: 1px black solid;
+    /* border: 1px black solid; */
 }
 
 
@@ -90,7 +90,8 @@ input#search-input{
     width: fit-content;
     font-size: 18px;
     border-radius: 3px;
-    border: 1px black solid;
+    border: none;
+    background-color: rgb(212, 212, 212);
 }
 
 input#search-input::placeholder{
