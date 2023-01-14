@@ -4,5 +4,16 @@
     justify-content: center;
     margin-top: -10px;
     padding-bottom: 100px;
+
+}
+
+.changeBackground{
+    height: 100vh;
+    background-image: url(../../images/BackgroundGoMove.jpg);
+    background-repeat: no-repeat;
+    background-color: #c8cedf6d;
+    background-size:cover;
+    background-position: center;
+    background-position-y: -360px;
 }
 

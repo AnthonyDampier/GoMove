@@ -1,28 +1,37 @@
 div#admin-page {
-    width: fit-content;
+    width: 1000px;
     font-size: 22px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15),0 0 20px rgba(0, 0, 0, 0.15),0 0 20px rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(80px);
+    box-shadow: 0px 4px 4px rgba(2, 3, 4, 0.50);
+    background-color: whitesmoke;
     padding: 20px;
+    
     height: fit-content;
     border-radius: 5px;
-    border: 1px black solid;
+    /* border: 1px black solid; */
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
 }
 
+#admin-title{
+    padding-top: 10px;
+    text-align: left;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+}
+
 div#admin-page table {
     border-collapse: collapse;
     font-size: 20px;
-    width: 1200px;
+    width: fit-content;
     padding: 20px;
 }
 
 th.table-title-col {
     font-weight: bolder;
     font-size: 23px;
-    width: 600px;
+    width: 500px;
 }
 
 th.table-genre-col {
@@ -34,11 +43,11 @@ th.table-author-col {
 }
 
 .table-view-col {
-    width: 150px;
+    width: 110px;
 }
 
 .table-approval-col {
-    width: 150px;
+    width: 110px;
 }
 
 th {

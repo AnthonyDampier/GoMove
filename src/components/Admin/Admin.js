@@ -17,7 +17,7 @@ function Admin(){
 
     return(
         <div id="admin-page">
-            <h1>Admin Page!!</h1>
+            <h1 id="admin-title">Admin Program View & Approval</h1>
             {/* <h4>{JSON.stringify(programs)}</h4> */}
             {/* table map of unapproved programs */}
             <table className="styled-table">

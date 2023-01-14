@@ -1,5 +1,5 @@
 import React from 'react';
-import '../LoginPage/LoginPage.css';
+import './LoginPage.css';
 import LoginForm from '../LoginForm/LoginForm';
 import { useHistory } from 'react-router-dom';
 

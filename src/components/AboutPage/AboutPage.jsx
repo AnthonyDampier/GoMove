@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import LandingPage from '../LandingPage/LandingPage';
 import './AboutPage.css';
 
@@ -7,9 +8,13 @@ import './AboutPage.css';
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is'
 
+
+
 function AboutPage() {
+  const user = useSelector(store => store.user);
+
   return (
-    <div className="about-us container">
+    <div className={!user.id ? "about-us container change-image" : "about-us container"}>
       <div className="developer">
         <img src={require("../../images/porfolioHeadShot.jpeg")}/>
         <div id="message">

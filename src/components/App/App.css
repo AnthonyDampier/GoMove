@@ -10,12 +10,16 @@ body,
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
-  background-image: url(../../images/BackgroundGoMove.jpg);
-  background-repeat: no-repeat, repeat;
-  background-color: #bbbbbb;
-  background-position: 0px -300px;
-  background-size: 200vh;
+  /* background-image: url(../../images/BackgroundGoMove.jpg);
+  background-repeat: no-repeat;
+  background-color: #cdd3e3;
+  background-size: 100%;
+  background-position-y: 300px; */
+  background-color: rgb(141, 141, 141);
+
 }
+
+
 
 img {
   display: inline-block;
@@ -114,7 +118,7 @@ Form Treatment
   max-width: 100%;
   padding: 5px;
   margin: 0 auto auto;
-  margin-top: 18vh;
+  padding-top: 18vh;
   /* background-color: #efefef; */
   border-radius: 3px;
   /* box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
@@ -166,6 +170,16 @@ Form Treatment
   color: black;
 }
 
+#login-page {
+  height: 100vh;
+  background-image: url(../../images/BackgroundGoMove.jpg);
+  background-repeat: no-repeat;
+  background-color: #c8cedf6d;
+  background-size:cover;
+  background-position: center;
+  background-position-y: -360px;
+}
+
 #login-page button {
   margin-top: 10px;
   margin-right: -420px;
@@ -179,6 +193,16 @@ input::-webkit-input-placeholder{
 }
 
 /* registration page */
+
+#register-page{
+  height: 100vh;
+  background-image: url(../../images/BackgroundGoMove.jpg);
+  background-repeat: no-repeat;
+  background-color: #c8cedf6d;
+  background-size: cover;
+  background-position: center;
+  background-position-y: -360px;
+}
 
 .formPanel div#register-submit-btn input{
   height: 40px;
