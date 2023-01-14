@@ -1,13 +1,13 @@
 .your-program-performance {
-    margin-top: 39px;
+    margin-top: 45px;
     width: fit-content;
     font-size: 22px;
     box-shadow: 0px 4px 4px rgba(2, 3, 4, 0.50);
-    backdrop-filter: blur(80px);
+    background-color: whitesmoke;
     padding: 10px;
     height: fit-content;
     border-radius: 5px;
-    border: 1px black solid;
+    /* border: 1px black solid; */
 }
 
 .your-program-performance div{

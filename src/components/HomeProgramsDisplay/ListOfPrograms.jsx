@@ -29,8 +29,9 @@ function ListOfPrograms(){
         <>
             <div id="container" className="top-programs">
                 <div className="search-input">
+                    <label>Search:</label>
                     <input 
-                        placeholder="Search For A Program"
+                        placeholder=""
                         id="search-input"
                         type="text"
                         value={searchTerm}
