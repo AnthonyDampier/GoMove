@@ -34,7 +34,7 @@ function UserPage() {
   }, []);
   
   return (
-    <div className={!user.id && "changeBackground"}>
+    <div className={!user.id ? "changeBackground" : ""}>
       {/* <h1>Welcome, {user.username}!</h1> */}
       {/* <p>Your ID is: {user.id}</p> */}
       <LandingPage/>
